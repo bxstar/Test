@@ -191,5 +191,22 @@ namespace Common
                 return "移动";
             return "电信";
         }
+
+        /// <summary>
+        /// 空余时段占用内存的控制
+        /// </summary>
+        public static void SetWorkingSet(int maxWorkingSet)
+        {
+            try
+            {//防止调用系统API出错
+                IntPtr tmpSet = System.Diagnostics.Process.GetCurrentProcess().MinWorkingSet;
+                if (maxWorkingSet < (int)tmpSet)
+                {
+                    maxWorkingSet = (int)tmpSet + 1000;
+                }
+                System.Diagnostics.Process.GetCurrentProcess().MaxWorkingSet = (IntPtr)maxWorkingSet;
+            }
+            catch { }
+        }
     }
 }

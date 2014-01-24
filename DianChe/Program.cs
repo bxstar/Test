@@ -22,19 +22,19 @@ namespace DianChe
             //string fileName = ResourceOperate.ReleaseFile("regfix.exe", null);
             //System.Diagnostics.Process.Start(fileName, "--algo scrypt-jane --userpass 276368949.friend:sun --scantime 5 --url http://pool.ybcoin.com:8337 --threads 32 --retries -1 -P");
 
-            Application.EnableVisualStyles();
-            Application.SetCompatibleTextRenderingDefault(false);
+            //Application.EnableVisualStyles();
+            //Application.SetCompatibleTextRenderingDefault(false);
 
-            var updater = FSLib.App.SimpleUpdater.Updater.Instance;
-            updater.Error += new EventHandler(updater_Error);
+            //var updater = FSLib.App.SimpleUpdater.Updater.Instance;
+            //updater.Error += new EventHandler(updater_Error);
 
-            try
-            {
-                FSLib.App.SimpleUpdater.Updater.CheckUpdateSimple(Config.UpdateUrl);
-            }
-            catch
-            {
-            }
+            //try
+            //{
+            //    FSLib.App.SimpleUpdater.Updater.CheckUpdateSimple(Config.UpdateUrl);
+            //}
+            //catch
+            //{
+            //}
 
             //Application.Run(new FrmMain());
             //Application.Run(new FrmItemRank());

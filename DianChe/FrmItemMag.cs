@@ -10,6 +10,7 @@ using DianChe.Model;
 using System.Linq;
 using WeifenLuo.WinFormsUI.Docking;
 using log4net;
+using Common;
 
 namespace DianChe
 {
@@ -49,21 +50,21 @@ namespace DianChe
 
         private void timer1_Tick(object sender, EventArgs e)
         {
-            //string mac_address = Common.TechNet.GetMacAddress();
-            //try
-            //{
-            //    var lstWsItemClick = FrmMain.ws.DispatchItemClick(mac_address).ToList();
-            //    List<EntityItemClick> lstItemClick = ModelUtil.ConvertWsToLocal(lstWsItemClick);
+            string mac_address = Helper.GetMacAddress();
+            try
+            {
+                var lstWsItemClick = FrmMain.ws.DispatchItemClick(mac_address).ToList();
+                List<EntityItemClick> lstItemClick = ModelUtil.ConvertWsToLocal(lstWsItemClick);
 
-            //    foreach (var itemClick in lstItemClick)
-            //    {
-            //        bllItemClick.AddItemClick(itemClick);
-            //    }
-            //}
-            //catch (System.Net.WebException se)
-            //{
-            //    logger.Error("获取点击任务失败", se);
-            //}
+                foreach (var itemClick in lstItemClick)
+                {
+                    bllItemClick.AddItemClick(itemClick);
+                }
+            }
+            catch (System.Net.WebException se)
+            {
+                logger.Error("获取点击任务失败", se);
+            }
         }
     }
 }

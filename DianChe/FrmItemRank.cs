@@ -415,6 +415,7 @@ namespace DianChe
         /// </summary>
         private void GetItemRank_Completed(object sender, RunWorkerCompletedEventArgs e)
         {
+            FrmMain.SetWorkingSet();
             GetRankBackground();
         }
 

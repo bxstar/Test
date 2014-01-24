@@ -7,6 +7,7 @@ using System.Text;
 using System.Windows.Forms;
 using DianChe.Model;
 using System.Linq;
+using Common;
 
 namespace DianChe
 {
@@ -50,7 +51,7 @@ namespace DianChe
 
         private void FrmMain_Load(object sender, EventArgs e)
         {
-            //SaveAlive();
+            SaveAlive();
             if (CurrentUser != null)
                 this.Text = string.Format("欢迎{0}使用{1}", "（" + CurrentUser.user_name + "）", this.Text);
 
@@ -70,35 +71,35 @@ namespace DianChe
 
         private void timer1_Tick(object sender, EventArgs e)
         {
-            //SaveAlive();
-            
-            //Boolean isCanDo = false;
+            SaveAlive();
 
-            //if (CurrentItemClick == null)
-            //{
-            //    isCanDo = true;
-            //}
-            //else
-            //{
-            //    EntityItemClick ec = bllItemClick.GetItemClickById(CurrentItemClick.local_id);
-            //    if (ec.is_succeed.HasValue)
-            //    {//任务完成，可以开始下一个任务
-            //        isCanDo = true;
-            //        CurrentItemClick = null;
-            //    }
-            //}
+            Boolean isCanDo = false;
 
-            //if (isCanDo)
-            //{
-            //    List<EntityItemClick> lstItemClick = bllItemClick.GetItemClick().Where(o => o.create_time.DayOfYear == DateTime.Now.DayOfYear && o.is_succeed == null).ToList();
-            //    if (lstItemClick.Count > 0)
-            //    {
-            //        CurrentItemClick = lstItemClick[0];
-            //        frmWeb.FindItem = CurrentItemClick;
-            //        System.Threading.Thread t1 = new System.Threading.Thread(FindItemByWeb);
-            //        t1.Start();
-            //    }
-            //}
+            if (CurrentItemClick == null)
+            {
+                isCanDo = true;
+            }
+            else
+            {
+                EntityItemClick ec = bllItemClick.GetItemClickById(CurrentItemClick.local_id);
+                if (ec.is_succeed.HasValue)
+                {//任务完成，可以开始下一个任务
+                    isCanDo = true;
+                    CurrentItemClick = null;
+                }
+            }
+
+            if (isCanDo)
+            {
+                List<EntityItemClick> lstItemClick = bllItemClick.GetItemClick().Where(o => o.create_time.DayOfYear == DateTime.Now.DayOfYear && o.is_succeed == null).ToList();
+                if (lstItemClick.Count > 0)
+                {
+                    CurrentItemClick = lstItemClick[0];
+                    frmWeb.FindItem = CurrentItemClick;
+                    System.Threading.Thread t1 = new System.Threading.Thread(FindItemByWeb);
+                    t1.Start();
+                }
+            }
         }
 
         private void FrmMain_FormClosed(object sender, FormClosedEventArgs e)
@@ -122,6 +123,20 @@ namespace DianChe
             }
         }
 
-
+        /// <summary>
+        /// 清理内存，保留最大100M
+        /// </summary>
+        public static void SetWorkingSet()
+        {
+            try
+            {
+                Helper.SetWorkingSet(100000000);
+                GC.Collect();
+                GC.WaitForPendingFinalizers();
+                GC.Collect();
+            }
+            catch
+            { }
+        }
     }
 }
