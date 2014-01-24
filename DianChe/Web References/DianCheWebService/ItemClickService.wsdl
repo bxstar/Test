@@ -1,0 +1,1289 @@
+<?xml version="1.0" encoding="utf-8"?>
+<wsdl:definitions xmlns:http="http://schemas.xmlsoap.org/wsdl/http/" xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:mime="http://schemas.xmlsoap.org/wsdl/mime/" xmlns:tns="http://tempuri.org/" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:tm="http://microsoft.com/wsdl/mime/textMatching/" xmlns:s1="http://microsoft.com/wsdl/types/" xmlns:s="http://www.w3.org/2001/XMLSchema" xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" targetNamespace="http://tempuri.org/" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">
+  <wsdl:types>
+    <s:schema elementFormDefault="qualified" targetNamespace="http://tempuri.org/">
+      <s:import namespace="http://microsoft.com/wsdl/types/" />
+      <s:element name="HelloWorld">
+        <s:complexType />
+      </s:element>
+      <s:element name="HelloWorldResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="HelloWorldResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="MySoapHeader" type="tns:MySoapHeader" />
+      <s:complexType name="MySoapHeader">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="1" name="UserName" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="PassWord" type="s:string" />
+        </s:sequence>
+        <s:anyAttribute />
+      </s:complexType>
+      <s:element name="IsExistUser">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="user_name" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="IsExistUserResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="IsExistUserResult" type="s:boolean" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="IsExistMac">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="mac_address" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="IsExistMacResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="IsExistMacResult" type="s:boolean" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="RegUser">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="user_name" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="pwd" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="phone" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="email" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="mac_address" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="cpu" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="mem" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="os" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="RegUserResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="RegUserResult" type="tns:EntityUser" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="EntityUser">
+        <s:sequence>
+          <s:element minOccurs="1" maxOccurs="1" name="user_id" type="s:int" />
+          <s:element minOccurs="0" maxOccurs="1" name="user_name" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="pwd" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="email" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="phone" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="mac_address" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="ip_address" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="cpu" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="mem" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="os" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="user_level" type="s:int" />
+          <s:element minOccurs="1" maxOccurs="1" name="start_date" type="s:dateTime" />
+          <s:element minOccurs="1" maxOccurs="1" name="end_date" type="s:dateTime" />
+          <s:element minOccurs="1" maxOccurs="1" name="create_time" type="s:dateTime" />
+          <s:element minOccurs="1" maxOccurs="1" name="update_time" type="s:dateTime" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="UserLogin">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="user_name" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="pwd" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="cpu" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="mem" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="os" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="UserLoginResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="UserLoginResult" type="tns:EntityUser" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="AddMyItem">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="model" type="tns:EntityItemTask" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="EntityItemTask">
+        <s:sequence>
+          <s:element minOccurs="1" maxOccurs="1" name="local_item_task_id" type="s1:guid" />
+          <s:element minOccurs="0" maxOccurs="1" name="nick" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="item_id" type="s:long" />
+          <s:element minOccurs="0" maxOccurs="1" name="item_title" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="img_url" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="img_data" type="s:base64Binary" />
+          <s:element minOccurs="1" maxOccurs="1" name="price" type="s:decimal" />
+          <s:element minOccurs="0" maxOccurs="1" name="creative_one_title" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="creative_two_title" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="keyword" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="max_click" type="s:int" />
+          <s:element minOccurs="1" maxOccurs="1" name="run_days" type="s:int" />
+          <s:element minOccurs="1" maxOccurs="1" name="create_time" type="s:dateTime" />
+          <s:element minOccurs="1" maxOccurs="1" name="update_time" type="s:dateTime" />
+          <s:element minOccurs="0" maxOccurs="1" name="remark" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="is_enable" type="s:boolean" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="AddMyItemResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="AddMyItemResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="DispatchItemClick">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="mac_address" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="DispatchItemClickResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="DispatchItemClickResult" type="tns:ArrayOfEntityItemClick" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="ArrayOfEntityItemClick">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="EntityItemClick" nillable="true" type="tns:EntityItemClick" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="EntityItemClick">
+        <s:sequence>
+          <s:element minOccurs="1" maxOccurs="1" name="local_id" type="s:long" />
+          <s:element minOccurs="1" maxOccurs="1" name="item_id" type="s:long" />
+          <s:element minOccurs="1" maxOccurs="1" name="local_item_task_id" type="s1:guid" />
+          <s:element minOccurs="0" maxOccurs="1" name="mac_address" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="item_title" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="creative_one_title" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="creative_two_title" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="nick" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="keyword" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="create_time" type="s:dateTime" />
+          <s:element minOccurs="1" maxOccurs="1" name="update_time" type="s:dateTime" />
+          <s:element minOccurs="1" maxOccurs="1" name="is_succeed" nillable="true" type="s:boolean" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="SaveAlive">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="mac_address" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="SaveAliveResponse">
+        <s:complexType />
+      </s:element>
+      <s:element name="AddMsg">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="msg_from" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="msg_to" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="msg_subject" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="msg_content" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="msg_type" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="AddMsgResponse">
+        <s:complexType />
+      </s:element>
+      <s:element name="GetMsg">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="msg_type" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetMsgResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetMsgResult" type="tns:ArrayOfEntityMsg" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="ArrayOfEntityMsg">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="EntityMsg" nillable="true" type="tns:EntityMsg" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="EntityMsg">
+        <s:sequence>
+          <s:element minOccurs="1" maxOccurs="1" name="local_msg_id" type="s:long" />
+          <s:element minOccurs="0" maxOccurs="1" name="msg_from" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="msg_to" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="msg_subject" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="msg_type" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="msg_content" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="file_path" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="send_status" type="s:int" />
+          <s:element minOccurs="1" maxOccurs="1" name="create_time" type="s:dateTime" />
+          <s:element minOccurs="1" maxOccurs="1" name="update_time" type="s:dateTime" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="UpdateMsgStatus">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="local_msg_id" type="s:long" />
+            <s:element minOccurs="1" maxOccurs="1" name="send_status" type="s:int" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="UpdateMsgStatusResponse">
+        <s:complexType />
+      </s:element>
+      <s:element name="GetItemOnline">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="item_id" type="s:long" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetItemOnlineResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetItemOnlineResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetItemTaskFromJson">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="jsonItem" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetItemTaskFromJsonResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetItemTaskFromJsonResult" type="tns:EntityItemTask" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetItemRankFromJson">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="jsonItem" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetItemRankFromJsonResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetItemRankFromJsonResult" type="tns:EntityItemRank" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="EntityItemRank">
+        <s:sequence>
+          <s:element minOccurs="1" maxOccurs="1" name="local_item_rank_id" type="s1:guid" />
+          <s:element minOccurs="0" maxOccurs="1" name="nick" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="item_id" type="s:long" />
+          <s:element minOccurs="0" maxOccurs="1" name="item_title" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="img_url" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="img_data" type="s:base64Binary" />
+          <s:element minOccurs="1" maxOccurs="1" name="price" type="s:decimal" />
+          <s:element minOccurs="0" maxOccurs="1" name="creative_one_title" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="creative_two_title" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="keyword" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="current_nature_rank" type="s:int" />
+          <s:element minOccurs="1" maxOccurs="1" name="lowest_nature_rank" type="s:int" />
+          <s:element minOccurs="1" maxOccurs="1" name="highest_nature_rank" type="s:int" />
+          <s:element minOccurs="1" maxOccurs="1" name="current_ztc_rank" type="s:int" />
+          <s:element minOccurs="1" maxOccurs="1" name="lowest_ztc_rank" type="s:int" />
+          <s:element minOccurs="1" maxOccurs="1" name="highest_ztc_rank" type="s:int" />
+          <s:element minOccurs="1" maxOccurs="1" name="create_time" type="s:dateTime" />
+          <s:element minOccurs="1" maxOccurs="1" name="update_time" type="s:dateTime" />
+          <s:element minOccurs="0" maxOccurs="1" name="remark" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="is_sms_notify" type="s:boolean" />
+          <s:element minOccurs="1" maxOccurs="1" name="is_mail_notify" type="s:boolean" />
+          <s:element minOccurs="1" maxOccurs="1" name="is_enable" type="s:boolean" />
+          <s:element minOccurs="1" maxOccurs="1" name="is_delete_by_user" type="s:boolean" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="string" nillable="true" type="s:string" />
+      <s:element name="boolean" type="s:boolean" />
+      <s:element name="EntityUser" nillable="true" type="tns:EntityUser" />
+      <s:element name="ArrayOfEntityItemClick" nillable="true" type="tns:ArrayOfEntityItemClick" />
+      <s:element name="ArrayOfEntityMsg" nillable="true" type="tns:ArrayOfEntityMsg" />
+      <s:element name="EntityItemTask" nillable="true" type="tns:EntityItemTask" />
+      <s:element name="EntityItemRank" nillable="true" type="tns:EntityItemRank" />
+    </s:schema>
+    <s:schema elementFormDefault="qualified" targetNamespace="http://microsoft.com/wsdl/types/">
+      <s:simpleType name="guid">
+        <s:restriction base="s:string">
+          <s:pattern value="[0-9a-fA-F]{8}-[0-9a-fA-F]{4}-[0-9a-fA-F]{4}-[0-9a-fA-F]{4}-[0-9a-fA-F]{12}" />
+        </s:restriction>
+      </s:simpleType>
+    </s:schema>
+  </wsdl:types>
+  <wsdl:message name="HelloWorldSoapIn">
+    <wsdl:part name="parameters" element="tns:HelloWorld" />
+  </wsdl:message>
+  <wsdl:message name="HelloWorldSoapOut">
+    <wsdl:part name="parameters" element="tns:HelloWorldResponse" />
+  </wsdl:message>
+  <wsdl:message name="HelloWorldMySoapHeader">
+    <wsdl:part name="MySoapHeader" element="tns:MySoapHeader" />
+  </wsdl:message>
+  <wsdl:message name="IsExistUserSoapIn">
+    <wsdl:part name="parameters" element="tns:IsExistUser" />
+  </wsdl:message>
+  <wsdl:message name="IsExistUserSoapOut">
+    <wsdl:part name="parameters" element="tns:IsExistUserResponse" />
+  </wsdl:message>
+  <wsdl:message name="IsExistMacSoapIn">
+    <wsdl:part name="parameters" element="tns:IsExistMac" />
+  </wsdl:message>
+  <wsdl:message name="IsExistMacSoapOut">
+    <wsdl:part name="parameters" element="tns:IsExistMacResponse" />
+  </wsdl:message>
+  <wsdl:message name="RegUserSoapIn">
+    <wsdl:part name="parameters" element="tns:RegUser" />
+  </wsdl:message>
+  <wsdl:message name="RegUserSoapOut">
+    <wsdl:part name="parameters" element="tns:RegUserResponse" />
+  </wsdl:message>
+  <wsdl:message name="UserLoginSoapIn">
+    <wsdl:part name="parameters" element="tns:UserLogin" />
+  </wsdl:message>
+  <wsdl:message name="UserLoginSoapOut">
+    <wsdl:part name="parameters" element="tns:UserLoginResponse" />
+  </wsdl:message>
+  <wsdl:message name="AddMyItemSoapIn">
+    <wsdl:part name="parameters" element="tns:AddMyItem" />
+  </wsdl:message>
+  <wsdl:message name="AddMyItemSoapOut">
+    <wsdl:part name="parameters" element="tns:AddMyItemResponse" />
+  </wsdl:message>
+  <wsdl:message name="AddMyItemMySoapHeader">
+    <wsdl:part name="MySoapHeader" element="tns:MySoapHeader" />
+  </wsdl:message>
+  <wsdl:message name="DispatchItemClickSoapIn">
+    <wsdl:part name="parameters" element="tns:DispatchItemClick" />
+  </wsdl:message>
+  <wsdl:message name="DispatchItemClickSoapOut">
+    <wsdl:part name="parameters" element="tns:DispatchItemClickResponse" />
+  </wsdl:message>
+  <wsdl:message name="DispatchItemClickMySoapHeader">
+    <wsdl:part name="MySoapHeader" element="tns:MySoapHeader" />
+  </wsdl:message>
+  <wsdl:message name="SaveAliveSoapIn">
+    <wsdl:part name="parameters" element="tns:SaveAlive" />
+  </wsdl:message>
+  <wsdl:message name="SaveAliveSoapOut">
+    <wsdl:part name="parameters" element="tns:SaveAliveResponse" />
+  </wsdl:message>
+  <wsdl:message name="SaveAliveMySoapHeader">
+    <wsdl:part name="MySoapHeader" element="tns:MySoapHeader" />
+  </wsdl:message>
+  <wsdl:message name="AddMsgSoapIn">
+    <wsdl:part name="parameters" element="tns:AddMsg" />
+  </wsdl:message>
+  <wsdl:message name="AddMsgSoapOut">
+    <wsdl:part name="parameters" element="tns:AddMsgResponse" />
+  </wsdl:message>
+  <wsdl:message name="AddMsgMySoapHeader">
+    <wsdl:part name="MySoapHeader" element="tns:MySoapHeader" />
+  </wsdl:message>
+  <wsdl:message name="GetMsgSoapIn">
+    <wsdl:part name="parameters" element="tns:GetMsg" />
+  </wsdl:message>
+  <wsdl:message name="GetMsgSoapOut">
+    <wsdl:part name="parameters" element="tns:GetMsgResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetMsgMySoapHeader">
+    <wsdl:part name="MySoapHeader" element="tns:MySoapHeader" />
+  </wsdl:message>
+  <wsdl:message name="UpdateMsgStatusSoapIn">
+    <wsdl:part name="parameters" element="tns:UpdateMsgStatus" />
+  </wsdl:message>
+  <wsdl:message name="UpdateMsgStatusSoapOut">
+    <wsdl:part name="parameters" element="tns:UpdateMsgStatusResponse" />
+  </wsdl:message>
+  <wsdl:message name="UpdateMsgStatusMySoapHeader">
+    <wsdl:part name="MySoapHeader" element="tns:MySoapHeader" />
+  </wsdl:message>
+  <wsdl:message name="GetItemOnlineSoapIn">
+    <wsdl:part name="parameters" element="tns:GetItemOnline" />
+  </wsdl:message>
+  <wsdl:message name="GetItemOnlineSoapOut">
+    <wsdl:part name="parameters" element="tns:GetItemOnlineResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetItemTaskFromJsonSoapIn">
+    <wsdl:part name="parameters" element="tns:GetItemTaskFromJson" />
+  </wsdl:message>
+  <wsdl:message name="GetItemTaskFromJsonSoapOut">
+    <wsdl:part name="parameters" element="tns:GetItemTaskFromJsonResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetItemRankFromJsonSoapIn">
+    <wsdl:part name="parameters" element="tns:GetItemRankFromJson" />
+  </wsdl:message>
+  <wsdl:message name="GetItemRankFromJsonSoapOut">
+    <wsdl:part name="parameters" element="tns:GetItemRankFromJsonResponse" />
+  </wsdl:message>
+  <wsdl:message name="HelloWorldHttpGetIn" />
+  <wsdl:message name="HelloWorldHttpGetOut">
+    <wsdl:part name="Body" element="tns:string" />
+  </wsdl:message>
+  <wsdl:message name="IsExistUserHttpGetIn">
+    <wsdl:part name="user_name" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="IsExistUserHttpGetOut">
+    <wsdl:part name="Body" element="tns:boolean" />
+  </wsdl:message>
+  <wsdl:message name="IsExistMacHttpGetIn">
+    <wsdl:part name="mac_address" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="IsExistMacHttpGetOut">
+    <wsdl:part name="Body" element="tns:boolean" />
+  </wsdl:message>
+  <wsdl:message name="RegUserHttpGetIn">
+    <wsdl:part name="user_name" type="s:string" />
+    <wsdl:part name="pwd" type="s:string" />
+    <wsdl:part name="phone" type="s:string" />
+    <wsdl:part name="email" type="s:string" />
+    <wsdl:part name="mac_address" type="s:string" />
+    <wsdl:part name="cpu" type="s:string" />
+    <wsdl:part name="mem" type="s:string" />
+    <wsdl:part name="os" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="RegUserHttpGetOut">
+    <wsdl:part name="Body" element="tns:EntityUser" />
+  </wsdl:message>
+  <wsdl:message name="UserLoginHttpGetIn">
+    <wsdl:part name="user_name" type="s:string" />
+    <wsdl:part name="pwd" type="s:string" />
+    <wsdl:part name="cpu" type="s:string" />
+    <wsdl:part name="mem" type="s:string" />
+    <wsdl:part name="os" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="UserLoginHttpGetOut">
+    <wsdl:part name="Body" element="tns:EntityUser" />
+  </wsdl:message>
+  <wsdl:message name="DispatchItemClickHttpGetIn">
+    <wsdl:part name="mac_address" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="DispatchItemClickHttpGetOut">
+    <wsdl:part name="Body" element="tns:ArrayOfEntityItemClick" />
+  </wsdl:message>
+  <wsdl:message name="SaveAliveHttpGetIn">
+    <wsdl:part name="mac_address" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="SaveAliveHttpGetOut" />
+  <wsdl:message name="AddMsgHttpGetIn">
+    <wsdl:part name="msg_from" type="s:string" />
+    <wsdl:part name="msg_to" type="s:string" />
+    <wsdl:part name="msg_subject" type="s:string" />
+    <wsdl:part name="msg_content" type="s:string" />
+    <wsdl:part name="msg_type" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="AddMsgHttpGetOut" />
+  <wsdl:message name="GetMsgHttpGetIn">
+    <wsdl:part name="msg_type" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="GetMsgHttpGetOut">
+    <wsdl:part name="Body" element="tns:ArrayOfEntityMsg" />
+  </wsdl:message>
+  <wsdl:message name="UpdateMsgStatusHttpGetIn">
+    <wsdl:part name="local_msg_id" type="s:string" />
+    <wsdl:part name="send_status" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="UpdateMsgStatusHttpGetOut" />
+  <wsdl:message name="GetItemOnlineHttpGetIn">
+    <wsdl:part name="item_id" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="GetItemOnlineHttpGetOut">
+    <wsdl:part name="Body" element="tns:string" />
+  </wsdl:message>
+  <wsdl:message name="GetItemTaskFromJsonHttpGetIn">
+    <wsdl:part name="jsonItem" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="GetItemTaskFromJsonHttpGetOut">
+    <wsdl:part name="Body" element="tns:EntityItemTask" />
+  </wsdl:message>
+  <wsdl:message name="GetItemRankFromJsonHttpGetIn">
+    <wsdl:part name="jsonItem" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="GetItemRankFromJsonHttpGetOut">
+    <wsdl:part name="Body" element="tns:EntityItemRank" />
+  </wsdl:message>
+  <wsdl:message name="HelloWorldHttpPostIn" />
+  <wsdl:message name="HelloWorldHttpPostOut">
+    <wsdl:part name="Body" element="tns:string" />
+  </wsdl:message>
+  <wsdl:message name="IsExistUserHttpPostIn">
+    <wsdl:part name="user_name" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="IsExistUserHttpPostOut">
+    <wsdl:part name="Body" element="tns:boolean" />
+  </wsdl:message>
+  <wsdl:message name="IsExistMacHttpPostIn">
+    <wsdl:part name="mac_address" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="IsExistMacHttpPostOut">
+    <wsdl:part name="Body" element="tns:boolean" />
+  </wsdl:message>
+  <wsdl:message name="RegUserHttpPostIn">
+    <wsdl:part name="user_name" type="s:string" />
+    <wsdl:part name="pwd" type="s:string" />
+    <wsdl:part name="phone" type="s:string" />
+    <wsdl:part name="email" type="s:string" />
+    <wsdl:part name="mac_address" type="s:string" />
+    <wsdl:part name="cpu" type="s:string" />
+    <wsdl:part name="mem" type="s:string" />
+    <wsdl:part name="os" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="RegUserHttpPostOut">
+    <wsdl:part name="Body" element="tns:EntityUser" />
+  </wsdl:message>
+  <wsdl:message name="UserLoginHttpPostIn">
+    <wsdl:part name="user_name" type="s:string" />
+    <wsdl:part name="pwd" type="s:string" />
+    <wsdl:part name="cpu" type="s:string" />
+    <wsdl:part name="mem" type="s:string" />
+    <wsdl:part name="os" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="UserLoginHttpPostOut">
+    <wsdl:part name="Body" element="tns:EntityUser" />
+  </wsdl:message>
+  <wsdl:message name="DispatchItemClickHttpPostIn">
+    <wsdl:part name="mac_address" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="DispatchItemClickHttpPostOut">
+    <wsdl:part name="Body" element="tns:ArrayOfEntityItemClick" />
+  </wsdl:message>
+  <wsdl:message name="SaveAliveHttpPostIn">
+    <wsdl:part name="mac_address" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="SaveAliveHttpPostOut" />
+  <wsdl:message name="AddMsgHttpPostIn">
+    <wsdl:part name="msg_from" type="s:string" />
+    <wsdl:part name="msg_to" type="s:string" />
+    <wsdl:part name="msg_subject" type="s:string" />
+    <wsdl:part name="msg_content" type="s:string" />
+    <wsdl:part name="msg_type" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="AddMsgHttpPostOut" />
+  <wsdl:message name="GetMsgHttpPostIn">
+    <wsdl:part name="msg_type" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="GetMsgHttpPostOut">
+    <wsdl:part name="Body" element="tns:ArrayOfEntityMsg" />
+  </wsdl:message>
+  <wsdl:message name="UpdateMsgStatusHttpPostIn">
+    <wsdl:part name="local_msg_id" type="s:string" />
+    <wsdl:part name="send_status" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="UpdateMsgStatusHttpPostOut" />
+  <wsdl:message name="GetItemOnlineHttpPostIn">
+    <wsdl:part name="item_id" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="GetItemOnlineHttpPostOut">
+    <wsdl:part name="Body" element="tns:string" />
+  </wsdl:message>
+  <wsdl:message name="GetItemTaskFromJsonHttpPostIn">
+    <wsdl:part name="jsonItem" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="GetItemTaskFromJsonHttpPostOut">
+    <wsdl:part name="Body" element="tns:EntityItemTask" />
+  </wsdl:message>
+  <wsdl:message name="GetItemRankFromJsonHttpPostIn">
+    <wsdl:part name="jsonItem" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="GetItemRankFromJsonHttpPostOut">
+    <wsdl:part name="Body" element="tns:EntityItemRank" />
+  </wsdl:message>
+  <wsdl:portType name="ItemClickServiceSoap">
+    <wsdl:operation name="HelloWorld">
+      <wsdl:input message="tns:HelloWorldSoapIn" />
+      <wsdl:output message="tns:HelloWorldSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="IsExistUser">
+      <wsdl:input message="tns:IsExistUserSoapIn" />
+      <wsdl:output message="tns:IsExistUserSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="IsExistMac">
+      <wsdl:input message="tns:IsExistMacSoapIn" />
+      <wsdl:output message="tns:IsExistMacSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="RegUser">
+      <wsdl:input message="tns:RegUserSoapIn" />
+      <wsdl:output message="tns:RegUserSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="UserLogin">
+      <wsdl:input message="tns:UserLoginSoapIn" />
+      <wsdl:output message="tns:UserLoginSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="AddMyItem">
+      <wsdl:input message="tns:AddMyItemSoapIn" />
+      <wsdl:output message="tns:AddMyItemSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="DispatchItemClick">
+      <wsdl:input message="tns:DispatchItemClickSoapIn" />
+      <wsdl:output message="tns:DispatchItemClickSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="SaveAlive">
+      <wsdl:input message="tns:SaveAliveSoapIn" />
+      <wsdl:output message="tns:SaveAliveSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="AddMsg">
+      <wsdl:input message="tns:AddMsgSoapIn" />
+      <wsdl:output message="tns:AddMsgSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetMsg">
+      <wsdl:input message="tns:GetMsgSoapIn" />
+      <wsdl:output message="tns:GetMsgSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="UpdateMsgStatus">
+      <wsdl:input message="tns:UpdateMsgStatusSoapIn" />
+      <wsdl:output message="tns:UpdateMsgStatusSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetItemOnline">
+      <wsdl:input message="tns:GetItemOnlineSoapIn" />
+      <wsdl:output message="tns:GetItemOnlineSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetItemTaskFromJson">
+      <wsdl:input message="tns:GetItemTaskFromJsonSoapIn" />
+      <wsdl:output message="tns:GetItemTaskFromJsonSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetItemRankFromJson">
+      <wsdl:input message="tns:GetItemRankFromJsonSoapIn" />
+      <wsdl:output message="tns:GetItemRankFromJsonSoapOut" />
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:portType name="ItemClickServiceHttpGet">
+    <wsdl:operation name="HelloWorld">
+      <wsdl:input message="tns:HelloWorldHttpGetIn" />
+      <wsdl:output message="tns:HelloWorldHttpGetOut" />
+    </wsdl:operation>
+    <wsdl:operation name="IsExistUser">
+      <wsdl:input message="tns:IsExistUserHttpGetIn" />
+      <wsdl:output message="tns:IsExistUserHttpGetOut" />
+    </wsdl:operation>
+    <wsdl:operation name="IsExistMac">
+      <wsdl:input message="tns:IsExistMacHttpGetIn" />
+      <wsdl:output message="tns:IsExistMacHttpGetOut" />
+    </wsdl:operation>
+    <wsdl:operation name="RegUser">
+      <wsdl:input message="tns:RegUserHttpGetIn" />
+      <wsdl:output message="tns:RegUserHttpGetOut" />
+    </wsdl:operation>
+    <wsdl:operation name="UserLogin">
+      <wsdl:input message="tns:UserLoginHttpGetIn" />
+      <wsdl:output message="tns:UserLoginHttpGetOut" />
+    </wsdl:operation>
+    <wsdl:operation name="DispatchItemClick">
+      <wsdl:input message="tns:DispatchItemClickHttpGetIn" />
+      <wsdl:output message="tns:DispatchItemClickHttpGetOut" />
+    </wsdl:operation>
+    <wsdl:operation name="SaveAlive">
+      <wsdl:input message="tns:SaveAliveHttpGetIn" />
+      <wsdl:output message="tns:SaveAliveHttpGetOut" />
+    </wsdl:operation>
+    <wsdl:operation name="AddMsg">
+      <wsdl:input message="tns:AddMsgHttpGetIn" />
+      <wsdl:output message="tns:AddMsgHttpGetOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetMsg">
+      <wsdl:input message="tns:GetMsgHttpGetIn" />
+      <wsdl:output message="tns:GetMsgHttpGetOut" />
+    </wsdl:operation>
+    <wsdl:operation name="UpdateMsgStatus">
+      <wsdl:input message="tns:UpdateMsgStatusHttpGetIn" />
+      <wsdl:output message="tns:UpdateMsgStatusHttpGetOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetItemOnline">
+      <wsdl:input message="tns:GetItemOnlineHttpGetIn" />
+      <wsdl:output message="tns:GetItemOnlineHttpGetOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetItemTaskFromJson">
+      <wsdl:input message="tns:GetItemTaskFromJsonHttpGetIn" />
+      <wsdl:output message="tns:GetItemTaskFromJsonHttpGetOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetItemRankFromJson">
+      <wsdl:input message="tns:GetItemRankFromJsonHttpGetIn" />
+      <wsdl:output message="tns:GetItemRankFromJsonHttpGetOut" />
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:portType name="ItemClickServiceHttpPost">
+    <wsdl:operation name="HelloWorld">
+      <wsdl:input message="tns:HelloWorldHttpPostIn" />
+      <wsdl:output message="tns:HelloWorldHttpPostOut" />
+    </wsdl:operation>
+    <wsdl:operation name="IsExistUser">
+      <wsdl:input message="tns:IsExistUserHttpPostIn" />
+      <wsdl:output message="tns:IsExistUserHttpPostOut" />
+    </wsdl:operation>
+    <wsdl:operation name="IsExistMac">
+      <wsdl:input message="tns:IsExistMacHttpPostIn" />
+      <wsdl:output message="tns:IsExistMacHttpPostOut" />
+    </wsdl:operation>
+    <wsdl:operation name="RegUser">
+      <wsdl:input message="tns:RegUserHttpPostIn" />
+      <wsdl:output message="tns:RegUserHttpPostOut" />
+    </wsdl:operation>
+    <wsdl:operation name="UserLogin">
+      <wsdl:input message="tns:UserLoginHttpPostIn" />
+      <wsdl:output message="tns:UserLoginHttpPostOut" />
+    </wsdl:operation>
+    <wsdl:operation name="DispatchItemClick">
+      <wsdl:input message="tns:DispatchItemClickHttpPostIn" />
+      <wsdl:output message="tns:DispatchItemClickHttpPostOut" />
+    </wsdl:operation>
+    <wsdl:operation name="SaveAlive">
+      <wsdl:input message="tns:SaveAliveHttpPostIn" />
+      <wsdl:output message="tns:SaveAliveHttpPostOut" />
+    </wsdl:operation>
+    <wsdl:operation name="AddMsg">
+      <wsdl:input message="tns:AddMsgHttpPostIn" />
+      <wsdl:output message="tns:AddMsgHttpPostOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetMsg">
+      <wsdl:input message="tns:GetMsgHttpPostIn" />
+      <wsdl:output message="tns:GetMsgHttpPostOut" />
+    </wsdl:operation>
+    <wsdl:operation name="UpdateMsgStatus">
+      <wsdl:input message="tns:UpdateMsgStatusHttpPostIn" />
+      <wsdl:output message="tns:UpdateMsgStatusHttpPostOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetItemOnline">
+      <wsdl:input message="tns:GetItemOnlineHttpPostIn" />
+      <wsdl:output message="tns:GetItemOnlineHttpPostOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetItemTaskFromJson">
+      <wsdl:input message="tns:GetItemTaskFromJsonHttpPostIn" />
+      <wsdl:output message="tns:GetItemTaskFromJsonHttpPostOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetItemRankFromJson">
+      <wsdl:input message="tns:GetItemRankFromJsonHttpPostIn" />
+      <wsdl:output message="tns:GetItemRankFromJsonHttpPostOut" />
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:binding name="ItemClickServiceSoap" type="tns:ItemClickServiceSoap">
+    <soap:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="HelloWorld">
+      <soap:operation soapAction="http://tempuri.org/HelloWorld" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+        <soap:header message="tns:HelloWorldMySoapHeader" part="MySoapHeader" use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="IsExistUser">
+      <soap:operation soapAction="http://tempuri.org/IsExistUser" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="IsExistMac">
+      <soap:operation soapAction="http://tempuri.org/IsExistMac" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="RegUser">
+      <soap:operation soapAction="http://tempuri.org/RegUser" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="UserLogin">
+      <soap:operation soapAction="http://tempuri.org/UserLogin" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="AddMyItem">
+      <soap:operation soapAction="http://tempuri.org/AddMyItem" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+        <soap:header message="tns:AddMyItemMySoapHeader" part="MySoapHeader" use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="DispatchItemClick">
+      <soap:operation soapAction="http://tempuri.org/DispatchItemClick" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+        <soap:header message="tns:DispatchItemClickMySoapHeader" part="MySoapHeader" use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="SaveAlive">
+      <soap:operation soapAction="http://tempuri.org/SaveAlive" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+        <soap:header message="tns:SaveAliveMySoapHeader" part="MySoapHeader" use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="AddMsg">
+      <soap:operation soapAction="http://tempuri.org/AddMsg" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+        <soap:header message="tns:AddMsgMySoapHeader" part="MySoapHeader" use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetMsg">
+      <soap:operation soapAction="http://tempuri.org/GetMsg" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+        <soap:header message="tns:GetMsgMySoapHeader" part="MySoapHeader" use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="UpdateMsgStatus">
+      <soap:operation soapAction="http://tempuri.org/UpdateMsgStatus" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+        <soap:header message="tns:UpdateMsgStatusMySoapHeader" part="MySoapHeader" use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetItemOnline">
+      <soap:operation soapAction="http://tempuri.org/GetItemOnline" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetItemTaskFromJson">
+      <soap:operation soapAction="http://tempuri.org/GetItemTaskFromJson" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetItemRankFromJson">
+      <soap:operation soapAction="http://tempuri.org/GetItemRankFromJson" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:binding name="ItemClickServiceSoap12" type="tns:ItemClickServiceSoap">
+    <soap12:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="HelloWorld">
+      <soap12:operation soapAction="http://tempuri.org/HelloWorld" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+        <soap12:header message="tns:HelloWorldMySoapHeader" part="MySoapHeader" use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="IsExistUser">
+      <soap12:operation soapAction="http://tempuri.org/IsExistUser" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="IsExistMac">
+      <soap12:operation soapAction="http://tempuri.org/IsExistMac" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="RegUser">
+      <soap12:operation soapAction="http://tempuri.org/RegUser" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="UserLogin">
+      <soap12:operation soapAction="http://tempuri.org/UserLogin" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="AddMyItem">
+      <soap12:operation soapAction="http://tempuri.org/AddMyItem" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+        <soap12:header message="tns:AddMyItemMySoapHeader" part="MySoapHeader" use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="DispatchItemClick">
+      <soap12:operation soapAction="http://tempuri.org/DispatchItemClick" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+        <soap12:header message="tns:DispatchItemClickMySoapHeader" part="MySoapHeader" use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="SaveAlive">
+      <soap12:operation soapAction="http://tempuri.org/SaveAlive" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+        <soap12:header message="tns:SaveAliveMySoapHeader" part="MySoapHeader" use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="AddMsg">
+      <soap12:operation soapAction="http://tempuri.org/AddMsg" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+        <soap12:header message="tns:AddMsgMySoapHeader" part="MySoapHeader" use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetMsg">
+      <soap12:operation soapAction="http://tempuri.org/GetMsg" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+        <soap12:header message="tns:GetMsgMySoapHeader" part="MySoapHeader" use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="UpdateMsgStatus">
+      <soap12:operation soapAction="http://tempuri.org/UpdateMsgStatus" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+        <soap12:header message="tns:UpdateMsgStatusMySoapHeader" part="MySoapHeader" use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetItemOnline">
+      <soap12:operation soapAction="http://tempuri.org/GetItemOnline" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetItemTaskFromJson">
+      <soap12:operation soapAction="http://tempuri.org/GetItemTaskFromJson" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetItemRankFromJson">
+      <soap12:operation soapAction="http://tempuri.org/GetItemRankFromJson" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:binding name="ItemClickServiceHttpGet" type="tns:ItemClickServiceHttpGet">
+    <http:binding verb="GET" />
+    <wsdl:operation name="HelloWorld">
+      <http:operation location="/HelloWorld" />
+      <wsdl:input>
+        <http:urlEncoded />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="IsExistUser">
+      <http:operation location="/IsExistUser" />
+      <wsdl:input>
+        <http:urlEncoded />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="IsExistMac">
+      <http:operation location="/IsExistMac" />
+      <wsdl:input>
+        <http:urlEncoded />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="RegUser">
+      <http:operation location="/RegUser" />
+      <wsdl:input>
+        <http:urlEncoded />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="UserLogin">
+      <http:operation location="/UserLogin" />
+      <wsdl:input>
+        <http:urlEncoded />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="DispatchItemClick">
+      <http:operation location="/DispatchItemClick" />
+      <wsdl:input>
+        <http:urlEncoded />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="SaveAlive">
+      <http:operation location="/SaveAlive" />
+      <wsdl:input>
+        <http:urlEncoded />
+      </wsdl:input>
+      <wsdl:output />
+    </wsdl:operation>
+    <wsdl:operation name="AddMsg">
+      <http:operation location="/AddMsg" />
+      <wsdl:input>
+        <http:urlEncoded />
+      </wsdl:input>
+      <wsdl:output />
+    </wsdl:operation>
+    <wsdl:operation name="GetMsg">
+      <http:operation location="/GetMsg" />
+      <wsdl:input>
+        <http:urlEncoded />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="UpdateMsgStatus">
+      <http:operation location="/UpdateMsgStatus" />
+      <wsdl:input>
+        <http:urlEncoded />
+      </wsdl:input>
+      <wsdl:output />
+    </wsdl:operation>
+    <wsdl:operation name="GetItemOnline">
+      <http:operation location="/GetItemOnline" />
+      <wsdl:input>
+        <http:urlEncoded />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetItemTaskFromJson">
+      <http:operation location="/GetItemTaskFromJson" />
+      <wsdl:input>
+        <http:urlEncoded />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetItemRankFromJson">
+      <http:operation location="/GetItemRankFromJson" />
+      <wsdl:input>
+        <http:urlEncoded />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:binding name="ItemClickServiceHttpPost" type="tns:ItemClickServiceHttpPost">
+    <http:binding verb="POST" />
+    <wsdl:operation name="HelloWorld">
+      <http:operation location="/HelloWorld" />
+      <wsdl:input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="IsExistUser">
+      <http:operation location="/IsExistUser" />
+      <wsdl:input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="IsExistMac">
+      <http:operation location="/IsExistMac" />
+      <wsdl:input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="RegUser">
+      <http:operation location="/RegUser" />
+      <wsdl:input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="UserLogin">
+      <http:operation location="/UserLogin" />
+      <wsdl:input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="DispatchItemClick">
+      <http:operation location="/DispatchItemClick" />
+      <wsdl:input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="SaveAlive">
+      <http:operation location="/SaveAlive" />
+      <wsdl:input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </wsdl:input>
+      <wsdl:output />
+    </wsdl:operation>
+    <wsdl:operation name="AddMsg">
+      <http:operation location="/AddMsg" />
+      <wsdl:input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </wsdl:input>
+      <wsdl:output />
+    </wsdl:operation>
+    <wsdl:operation name="GetMsg">
+      <http:operation location="/GetMsg" />
+      <wsdl:input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="UpdateMsgStatus">
+      <http:operation location="/UpdateMsgStatus" />
+      <wsdl:input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </wsdl:input>
+      <wsdl:output />
+    </wsdl:operation>
+    <wsdl:operation name="GetItemOnline">
+      <http:operation location="/GetItemOnline" />
+      <wsdl:input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetItemTaskFromJson">
+      <http:operation location="/GetItemTaskFromJson" />
+      <wsdl:input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetItemRankFromJson">
+      <http:operation location="/GetItemRankFromJson" />
+      <wsdl:input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="ItemClickService">
+    <wsdl:port name="ItemClickServiceSoap" binding="tns:ItemClickServiceSoap">
+      <soap:address location="http://localhost:59373/ItemClickService.asmx" />
+    </wsdl:port>
+    <wsdl:port name="ItemClickServiceSoap12" binding="tns:ItemClickServiceSoap12">
+      <soap12:address location="http://localhost:59373/ItemClickService.asmx" />
+    </wsdl:port>
+    <wsdl:port name="ItemClickServiceHttpGet" binding="tns:ItemClickServiceHttpGet">
+      <http:address location="http://localhost:59373/ItemClickService.asmx" />
+    </wsdl:port>
+    <wsdl:port name="ItemClickServiceHttpPost" binding="tns:ItemClickServiceHttpPost">
+      <http:address location="http://localhost:59373/ItemClickService.asmx" />
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>
