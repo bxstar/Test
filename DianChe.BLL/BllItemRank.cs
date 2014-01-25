@@ -108,6 +108,47 @@ namespace DianChe.BLL
         }
 
         /// <summary>
+        /// 根据关键词设置宝贝的查询完成状态
+        /// </summary>
+        public void SetItemCompleteStatus(Boolean is_complete_search, string keyword)
+        {
+            string strSql = string.Format("update t_item_rank set is_complete_search={0} where is_enable=1 and keyword='{1}'"
+    , is_complete_search ? 1 : 0, keyword);
+            DataBase.ExecuteNone(strSql);
+        }
+
+        /// <summary>
+        /// 根据关键词获取宝贝的查询完成状态
+        /// </summary>
+        public Boolean GetItemCompleteStatus(string keyword)
+        {
+            string strSql = string.Format("select local_item_rank_id from t_item_rank where is_enable=1 and keyword='{0}' and is_complete_search=1", keyword);
+            object o = DataBase.ExecuteObject(strSql);
+            if (o != null && o != DBNull.Value)
+            {
+                return true;
+            }
+            else
+            {
+                return false;
+            }
+        }
+
+        /// <summary>
+        /// 设置宝贝的自然排名
+        /// </summary>
+        public void SetItemNatureRank(List<EntityItemRank> lstItemRank)
+        {
+            foreach (var item in lstItemRank)
+            {
+                string strSql = string.Format("update t_item_rank set current_nature_rank={0},is_complete_search=1 where item_id={1} and keyword='{2}'"
+    , item.current_nature_rank, item.item_id, item.keyword);
+                DataBase.ExecuteNone(strSql);
+            }
+
+        }
+
+        /// <summary>
         /// 删除监控的宝贝
         /// </summary>
         public void DeleteItem(EntityItemRank item)

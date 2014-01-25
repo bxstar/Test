@@ -229,6 +229,11 @@ namespace DianChe.Model
         /// </summary>
         public Boolean is_enable { get; set; }
 
+        /// <summary>
+        /// 是否完成排名查询
+        /// </summary>
+        public Boolean is_complete_search { get; set; }
+
         #region
         /// <summary>
         /// 是否被用户删除，true已删除，false未删除，属于扩充字段不存数据库，只在业务逻辑中使用

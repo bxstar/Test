@@ -113,7 +113,7 @@
             this.txtLoginUserName.Name = "txtLoginUserName";
             this.txtLoginUserName.Size = new System.Drawing.Size(147, 21);
             this.txtLoginUserName.TabIndex = 0;
-            this.txtLoginUserName.Text = "yurongsheng";
+            this.txtLoginUserName.Text = "yixiuge";
             // 
             // label1
             // 

@@ -64,9 +64,9 @@ namespace Common.DB
             File.SetAttributes(dbPath, FileAttributes.Hidden | FileAttributes.System);
             bool isExists = true;
             if (username == "")
-                ConnString = string.Format(Config.ConnectionString, System.Windows.Forms.Application.StartupPath) + Config.DBName + ".db3";
+                ConnString = string.Format(Config.ConnectionString, System.Windows.Forms.Application.StartupPath) + Config.DBName + ".db";
             else
-                ConnString = string.Format(Config.ConnectionString, System.Windows.Forms.Application.StartupPath) + username + ".db3";
+                ConnString = string.Format(Config.ConnectionString, System.Windows.Forms.Application.StartupPath) + username + ".db";
             string databasePath = ConnString.Substring(ConnString.IndexOf(@"=") + 1);
             try
             {
@@ -116,7 +116,7 @@ namespace Common.DB
             string errorMsg = "";
             try
             {
-                ConnString = string.Format(Config.ConnectionString, System.Windows.Forms.Application.StartupPath) + Config.DBName + ".db3";
+                ConnString = string.Format(Config.ConnectionString, System.Windows.Forms.Application.StartupPath) + Config.DBName + ".db";
                 //采用边读边写的方式，防止内存溢出
                 int currentIndex = 0;
                 StreamWriter sw = new StreamWriter(filePath, false, Encoding.Default);
@@ -200,7 +200,7 @@ namespace Common.DB
         {
             if (type == "1")
             {
-                ConnString = string.Format(Config.ConnectionString, System.Windows.Forms.Application.StartupPath) + Config.DBName + ".db3";
+                ConnString = string.Format(Config.ConnectionString, System.Windows.Forms.Application.StartupPath) + Config.DBName + ".db";
             }
             else
             {
@@ -283,7 +283,7 @@ namespace Common.DB
         {
             if (type == "1")
             {
-                ConnString = string.Format(Config.ConnectionString, System.Windows.Forms.Application.StartupPath) + Config.DBName + ".db3";
+                ConnString = string.Format(Config.ConnectionString, System.Windows.Forms.Application.StartupPath) + Config.DBName + ".db";
             }
             else
             {
@@ -306,7 +306,7 @@ namespace Common.DB
         {
             if (type == "1")
             {
-                ConnString = string.Format(Config.ConnectionString, System.Windows.Forms.Application.StartupPath) + Config.DBName + ".db3";
+                ConnString = string.Format(Config.ConnectionString, System.Windows.Forms.Application.StartupPath) + Config.DBName + ".db";
             }
             else
             {
@@ -353,7 +353,7 @@ namespace Common.DB
         {
             if (type == "1")
             {
-                ConnString = string.Format(Config.ConnectionString, System.Windows.Forms.Application.StartupPath) + Config.DBName + ".db3";
+                ConnString = string.Format(Config.ConnectionString, System.Windows.Forms.Application.StartupPath) + Config.DBName + ".db";
             }
             else
             {
@@ -371,11 +371,16 @@ namespace Common.DB
         #endregion
 
         #region Execute object
+        public static Object ExecuteObject(string SQL)
+        {
+            return ExecuteObject(SQL, "1");
+        }
+
         public static Object ExecuteObject(string SQL, string type)
         {
             if (type == "1")
             {
-                ConnString = string.Format(Config.ConnectionString, System.Windows.Forms.Application.StartupPath) + Config.DBName + ".db3";
+                ConnString = string.Format(Config.ConnectionString, System.Windows.Forms.Application.StartupPath) + Config.DBName + ".db";
             }
             else if (type == "2")
             {
@@ -409,7 +414,7 @@ namespace Common.DB
         {
             if (type == "1")
             {
-                ConnString = string.Format(Config.ConnectionString, System.Windows.Forms.Application.StartupPath) + Config.DBName + ".db3";
+                ConnString = string.Format(Config.ConnectionString, System.Windows.Forms.Application.StartupPath) + Config.DBName + ".db";
             }
             else
             {
@@ -435,7 +440,7 @@ namespace Common.DB
         {
             if (type == "1")
             {
-                ConnString = string.Format(Config.ConnectionString, Application.StartupPath) + Config.DBName + ".db3";
+                ConnString = string.Format(Config.ConnectionString, Application.StartupPath) + Config.DBName + ".db";
             }
             else
             {
@@ -529,7 +534,7 @@ namespace Common.DB
             {
                 if (type == "1")
                 {
-                    ConnString = string.Format(Config.ConnectionString, System.Windows.Forms.Application.StartupPath) + Config.DBName + ".db3";
+                    ConnString = string.Format(Config.ConnectionString, System.Windows.Forms.Application.StartupPath) + Config.DBName + ".db";
                 }
                 else
                 {
@@ -628,7 +633,7 @@ namespace Common.DB
         {
             if (type == "1")
             {
-                ConnString = string.Format(Config.ConnectionString, System.Windows.Forms.Application.StartupPath) + Config.DBName + ".db3";
+                ConnString = string.Format(Config.ConnectionString, System.Windows.Forms.Application.StartupPath) + Config.DBName + ".db";
             }
             else if (type == "2")
             {
@@ -669,7 +674,7 @@ namespace Common.DB
         {
             if (type == "1")
             {
-                ConnString = string.Format(Config.ConnectionString, System.Windows.Forms.Application.StartupPath) + Config.DBName + ".db3";
+                ConnString = string.Format(Config.ConnectionString, System.Windows.Forms.Application.StartupPath) + Config.DBName + ".db";
             }
             else if (type == "2")
             {
@@ -716,7 +721,7 @@ namespace Common.DB
         {
             if (type == "1")
             {
-                ConnString = string.Format(Config.ConnectionString, System.Windows.Forms.Application.StartupPath) + Config.DBName + ".db3"; ;
+                ConnString = string.Format(Config.ConnectionString, System.Windows.Forms.Application.StartupPath) + Config.DBName + ".db"; ;
             }
             else if (type == "2")
             {
@@ -784,7 +789,7 @@ namespace Common.DB
             {
                 if (type == "1")
                 {
-                    ConnString = string.Format(Config.ConnectionString, System.Windows.Forms.Application.StartupPath) + Config.DBName + ".db3";
+                    ConnString = string.Format(Config.ConnectionString, System.Windows.Forms.Application.StartupPath) + Config.DBName + ".db";
                 }
                 else
                 {
@@ -842,7 +847,7 @@ namespace Common.DB
         {
             if (type == "1")
             {
-                ConnString = string.Format(Config.ConnectionString, System.Windows.Forms.Application.StartupPath) + Config.DBName + ".db3";
+                ConnString = string.Format(Config.ConnectionString, System.Windows.Forms.Application.StartupPath) + Config.DBName + ".db";
             }
             else
             {
@@ -871,7 +876,7 @@ namespace Common.DB
         {
             if (type == "1")
             {
-                ConnString = string.Format(Config.ConnectionString, System.Windows.Forms.Application.StartupPath) + Config.DBName + ".db3";
+                ConnString = string.Format(Config.ConnectionString, System.Windows.Forms.Application.StartupPath) + Config.DBName + ".db";
             }
             else if (type == "2")
             {
@@ -904,7 +909,7 @@ namespace Common.DB
         {
             if (type == "1")
             {
-                ConnString = string.Format(Config.ConnectionString, System.Windows.Forms.Application.StartupPath) + Config.DBName + ".db3";
+                ConnString = string.Format(Config.ConnectionString, System.Windows.Forms.Application.StartupPath) + Config.DBName + ".db";
             }
             else
             {
@@ -949,7 +954,7 @@ namespace Common.DB
         {
             if (type == "1")
             {
-                ConnString = string.Format(Config.ConnectionString, System.Windows.Forms.Application.StartupPath) + Config.DBName + ".db3";
+                ConnString = string.Format(Config.ConnectionString, System.Windows.Forms.Application.StartupPath) + Config.DBName + ".db";
             }
             else
             {

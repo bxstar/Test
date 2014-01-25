@@ -14,12 +14,16 @@ using System.Threading;
 using System.Linq;
 using System.IO;
 using Common;
+using log4net;
 
 namespace DianChe
 {
     //[ComVisible(true)]        //去掉注释后，会出现安全警告，是否只查看安全传送的网页内容
     public partial class FrmItemRank : DockContent
     {
+        //日志类
+        ILog logger = LogManager.GetLogger("Logger");
+
         BLL.BllItemRank bllItemRank = new BLL.BllItemRank();
 
         /// <summary>
@@ -167,7 +171,7 @@ namespace DianChe
         private void GetItemRank(object sender, DoWorkEventArgs e)
         {
             Thread.Sleep(5000);
-            List<string> lstKeyword = lstMyItem.Where(o => !o.is_delete_by_user && o.is_enable ).Select(o => o.keyword).Distinct().ToList();
+            List<string> lstKeyword = lstMyItem.Where(o => !o.is_delete_by_user && o.is_enable).Select(o => o.keyword).Distinct().ToList();
             foreach (string keyword in lstKeyword)
             {
                 if (lstMyItem.Where(o => !o.is_delete_by_user && o.is_enable && o.keyword == keyword && o.update_time.AddMinutes(itemMonitorInterval) < DateTime.Now).Count() > 0)
@@ -184,7 +188,15 @@ namespace DianChe
                         IsCompleteKeyWordSearch_Ztc = true;
                     //有需要监控自然排名
                     if (lstMyItem.Where(o => !o.is_delete_by_user && o.is_enable && o.keyword == keyword && o.lowest_nature_rank != 0).Count() > 0)
-                        GetNatureRank(keyword);
+                    {
+                        //将宝贝关键词查询状态设为未完成
+                        bllItemRank.SetItemCompleteStatus(false, keyword);
+                        //调用外部进程完成查询
+                        string itemIds = string.Join(",", lstMyItem.Where(o => !o.is_delete_by_user && o.is_enable && o.keyword == keyword && o.lowest_nature_rank != 0)
+                                    .Select(x => x.item_id.ToString()).ToArray());
+                        System.Diagnostics.Process.Start("DianChe.Search.exe", string.Format("{0} {1}", keyword, itemIds));
+                        //GetNatureRank(keyword);
+                    }
                     else
                         IsCompleteKeyWordSearch_Nature = true;
                 }
@@ -197,6 +209,13 @@ namespace DianChe
                 while (!IsCompleteKeyWordSearch_Nature || !IsCompleteKeyWordSearch_Ztc)
                 {//由于WebBrowser的Completed异步，导致必须等待前面的词查完，后面才能继续
                     Thread.Sleep(10000);
+                    logger.InfoFormat("关键词：{0}，查询未完成，等待中...", keyword);
+                    //从数据库中获取关键词是否完成了自然排名的查询
+                    IsCompleteKeyWordSearch_Nature = bllItemRank.GetItemCompleteStatus(keyword);
+                    if (IsCompleteKeyWordSearch_Nature)
+                    { 
+                        //TODO 将排名更新到dgv中
+                    }
                 }
                 //每查一个关键词间隔一段时间
                 Thread.Sleep(60000);
@@ -305,7 +324,7 @@ namespace DianChe
                 o.update_time = DateTime.Now;
             });
             this.Invoke(new Action(() => { dgvMyItem.Refresh(); }));
-            
+
             IsCompleteKeyWordSearch_Ztc = true;
         }
 
@@ -421,7 +440,7 @@ namespace DianChe
 
         private void 删除宝贝监控ToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            if (MessageBox.Show(string.Format("是否要删除宝贝“{0}”的监控",currSelectedItem.item_title), "确认", MessageBoxButtons.OKCancel, MessageBoxIcon.Question,MessageBoxDefaultButton.Button2) == DialogResult.OK)
+            if (MessageBox.Show(string.Format("是否要删除宝贝“{0}”的监控", currSelectedItem.item_title), "确认", MessageBoxButtons.OKCancel, MessageBoxIcon.Question, MessageBoxDefaultButton.Button2) == DialogResult.OK)
             {
                 bllItemRank.DeleteItem(currSelectedItem);
                 currSelectedItem.is_delete_by_user = true;
