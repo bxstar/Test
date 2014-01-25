@@ -194,8 +194,8 @@ namespace DianChe
                         //调用外部进程完成查询
                         string itemIds = string.Join(",", lstMyItem.Where(o => !o.is_delete_by_user && o.is_enable && o.keyword == keyword && o.lowest_nature_rank != 0)
                                     .Select(x => x.item_id.ToString()).ToArray());
+                        //使用外部进程代替GetNatureRank(keyword)，防止WebBrowser内存泄漏
                         System.Diagnostics.Process.Start("DianChe.Search.exe", string.Format("{0} {1}", keyword, itemIds));
-                        //GetNatureRank(keyword);
                     }
                     else
                         IsCompleteKeyWordSearch_Nature = true;
@@ -434,7 +434,6 @@ namespace DianChe
         /// </summary>
         private void GetItemRank_Completed(object sender, RunWorkerCompletedEventArgs e)
         {
-            FrmMain.SetWorkingSet();
             GetRankBackground();
         }
 

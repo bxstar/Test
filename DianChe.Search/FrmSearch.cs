@@ -66,8 +66,8 @@ namespace DianChe.Search
         private void Form1_Load(object sender, EventArgs e)
         {
             //隐藏窗体
-            //this.ShowInTaskbar = false;
-            //this.Hide();
+            this.ShowInTaskbar = false;
+            this.Hide();
             string[] arrItemIds = findItemIds.Split(',');
             foreach (var itemId in arrItemIds)
             {
