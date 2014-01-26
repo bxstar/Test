@@ -88,6 +88,51 @@ namespace DianChe.BLL
         }
 
         /// <summary>
+        /// 通过本地主键获取宝贝
+        /// </summary>
+        public EntityItemRank GetItem(Guid local_item_rank_id)
+        {
+            EntityItemRank model = new EntityItemRank();
+            string strSql = string.Format("select * from t_item_rank where local_item_rank_id='{0}'", local_item_rank_id.ToString());
+            DataTable dt = DataBase.ExecuteTable(strSql);
+            if (dt != null && dt.Rows.Count != 0)
+            {
+                DataRow dr = dt.Rows[0];
+                model.local_item_rank_id = new Guid(dr["local_item_rank_id"].ToString());
+                model.item_id = Convert.ToInt64(dr["item_id"]);
+                model.nick = dr["nick"].ToString();
+                model.item_title = dr["item_title"].ToString();
+                model.img_url = dr["img_url"].ToString();
+                model.img_data = dr["img_data"] as byte[];
+                if (dr["price"] != DBNull.Value)
+                    model.price = Convert.ToDecimal(dr["price"]);
+                if (dr["current_nature_rank"] != DBNull.Value)
+                    model.current_nature_rank = Convert.ToInt32(dr["current_nature_rank"]);
+                if (dr["lowest_nature_rank"] != DBNull.Value)
+                    model.lowest_nature_rank = Convert.ToInt32(dr["lowest_nature_rank"]);
+                if (dr["highest_nature_rank"] != DBNull.Value)
+                    model.highest_nature_rank = Convert.ToInt32(dr["highest_nature_rank"]);
+                if (dr["current_ztc_rank"] != DBNull.Value)
+                    model.current_ztc_rank = Convert.ToInt32(dr["current_ztc_rank"]);
+                if (dr["lowest_ztc_rank"] != DBNull.Value)
+                    model.lowest_ztc_rank = Convert.ToInt32(dr["lowest_ztc_rank"]);
+                if (dr["highest_ztc_rank"] != DBNull.Value)
+                    model.highest_ztc_rank = Convert.ToInt32(dr["highest_ztc_rank"]);
+                model.keyword = dr["keyword"].ToString();
+                model.create_time = Convert.ToDateTime(dr["create_time"]);
+                model.update_time = Convert.ToDateTime(dr["update_time"]);
+                model.remark = dr["remark"].ToString();
+                model.is_sms_notify = Convert.ToBoolean(dr["is_sms_notify"]);
+                model.is_mail_notify = Convert.ToBoolean(dr["is_mail_notify"]);
+                if (dr["is_enable"] != DBNull.Value)
+                    model.is_enable = Convert.ToBoolean(dr["is_enable"]);
+                model.is_delete_by_user = false;
+            }
+
+            return model;
+        }
+
+        /// <summary>
         /// 更新监控的宝贝
         /// </summary>
         public void UpdateItem(EntityItemRank item)
@@ -141,11 +186,23 @@ namespace DianChe.BLL
         {
             foreach (var item in lstItemRank)
             {
-                string strSql = string.Format("update t_item_rank set current_nature_rank={0},is_complete_search=1 where item_id={1} and keyword='{2}'"
-    , item.current_nature_rank, item.item_id, item.keyword);
+                string strSql = string.Format("update t_item_rank set current_nature_rank={0},is_complete_search=1,update_time='{1}' where item_id={2} and keyword='{3}'"
+    , item.current_nature_rank, DateTime.Now.ToString("s"), item.item_id, item.keyword);
                 DataBase.ExecuteNone(strSql);
             }
+        }
 
+        /// <summary>
+        /// 设置宝贝的直通车排名
+        /// </summary>
+        public void SetItemZtcRank(List<EntityItemRank> lstItemRank)
+        {
+            foreach (var item in lstItemRank)
+            {
+                string strSql = string.Format("update t_item_rank set current_ztc_rank={0},update_time='{1}' where item_id={2} and keyword='{3}'"
+    , item.current_ztc_rank, DateTime.Now.ToString("s"), item.item_id, item.keyword);
+                DataBase.ExecuteNone(strSql);
+            }
         }
 
         /// <summary>

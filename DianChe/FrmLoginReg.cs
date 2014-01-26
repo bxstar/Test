@@ -74,6 +74,9 @@ namespace DianChe
 
         private void btnLogin_Click(object sender, EventArgs e)
         {
+            btnLogin.Enabled = false;
+            btnLogin.Text = "登录中...";
+
             string user_name = txtLoginUserName.Text.Trim();
             string pwd = txtLoginPwd.Text.Trim();
             CPUInfo cpuInfo = new CPUInfo();
@@ -93,6 +96,7 @@ namespace DianChe
             else
             {
                 MessageBox.Show("登录失败，请检查用户名密码！");
+                btnLogin.Enabled = true;
             }
         }
 

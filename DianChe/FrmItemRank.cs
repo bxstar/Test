@@ -189,6 +189,7 @@ namespace DianChe
                     //有需要监控自然排名
                     if (lstMyItem.Where(o => !o.is_delete_by_user && o.is_enable && o.keyword == keyword && o.lowest_nature_rank != 0).Count() > 0)
                     {
+                        IsCompleteKeyWordSearch_Nature = false;
                         //将宝贝关键词查询状态设为未完成
                         bllItemRank.SetItemCompleteStatus(false, keyword);
                         //调用外部进程完成查询
@@ -214,11 +215,16 @@ namespace DianChe
                     IsCompleteKeyWordSearch_Nature = bllItemRank.GetItemCompleteStatus(keyword);
                     if (IsCompleteKeyWordSearch_Nature)
                     { 
-                        //TODO 将排名更新到dgv中
+                        //将自然排名更新到dgv中
+                        foreach (var item in lstMyItem.Where(o => !o.is_delete_by_user && o.is_enable && o.keyword == keyword && o.lowest_nature_rank != 0))
+                        {
+                            item.current_nature_rank = bllItemRank.GetItem(item.local_item_rank_id).current_nature_rank;
+                        }
                     }
                 }
+                RefreshDgv();
                 //每查一个关键词间隔一段时间
-                Thread.Sleep(60000);
+                Thread.Sleep(1000);
             }
 
             //将超出范围的排名信息发送
@@ -309,7 +315,6 @@ namespace DianChe
                             {
                                 item.current_ztc_rank = currentRank;
                                 item.update_time = DateTime.Now;
-                                dgvMyItem.Refresh();
                             }
                         }
                     }
@@ -323,8 +328,7 @@ namespace DianChe
                 o.current_ztc_rank = -1;
                 o.update_time = DateTime.Now;
             });
-            this.Invoke(new Action(() => { dgvMyItem.Refresh(); }));
-
+            bllItemRank.SetItemZtcRank(lstItem);
             IsCompleteKeyWordSearch_Ztc = true;
         }
 
@@ -464,14 +468,21 @@ namespace DianChe
             frm.Show();
         }
 
+        private void toolStripMenuItem1_Click(object sender, DataGridViewCellEventArgs e)
+        {
+            FrmEditItemRank frm = new FrmEditItemRank();
+            frm.frmItemRank = this;
+            frm.currentItem = currSelectedItem;
+            frm.Show();
+        }
+
         /// <summary>
         /// 刷新宝贝列表
         /// </summary>
         public void RefreshDgv()
         {
-            dgvMyItem.Refresh();
+            this.Invoke(new Action(() => { dgvMyItem.Refresh(); }));
         }
-
 
     }
 }
