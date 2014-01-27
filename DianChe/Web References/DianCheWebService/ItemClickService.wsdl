@@ -143,6 +143,34 @@
           </s:sequence>
         </s:complexType>
       </s:element>
+      <s:element name="EditMyItem">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="model" type="tns:EntityItemTask" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="EditMyItemResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="EditMyItemResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="DeleteMyItem">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="local_item_task_id" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="DeleteMyItemResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="DeleteMyItemResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
       <s:element name="DispatchItemClick">
         <s:complexType>
           <s:sequence>
@@ -374,6 +402,24 @@
   <wsdl:message name="AddMyItemMySoapHeader">
     <wsdl:part name="MySoapHeader" element="tns:MySoapHeader" />
   </wsdl:message>
+  <wsdl:message name="EditMyItemSoapIn">
+    <wsdl:part name="parameters" element="tns:EditMyItem" />
+  </wsdl:message>
+  <wsdl:message name="EditMyItemSoapOut">
+    <wsdl:part name="parameters" element="tns:EditMyItemResponse" />
+  </wsdl:message>
+  <wsdl:message name="EditMyItemMySoapHeader">
+    <wsdl:part name="MySoapHeader" element="tns:MySoapHeader" />
+  </wsdl:message>
+  <wsdl:message name="DeleteMyItemSoapIn">
+    <wsdl:part name="parameters" element="tns:DeleteMyItem" />
+  </wsdl:message>
+  <wsdl:message name="DeleteMyItemSoapOut">
+    <wsdl:part name="parameters" element="tns:DeleteMyItemResponse" />
+  </wsdl:message>
+  <wsdl:message name="DeleteMyItemMySoapHeader">
+    <wsdl:part name="MySoapHeader" element="tns:MySoapHeader" />
+  </wsdl:message>
   <wsdl:message name="DispatchItemClickSoapIn">
     <wsdl:part name="parameters" element="tns:DispatchItemClick" />
   </wsdl:message>
@@ -476,6 +522,12 @@
   <wsdl:message name="UserLoginHttpGetOut">
     <wsdl:part name="Body" element="tns:EntityUser" />
   </wsdl:message>
+  <wsdl:message name="DeleteMyItemHttpGetIn">
+    <wsdl:part name="local_item_task_id" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="DeleteMyItemHttpGetOut">
+    <wsdl:part name="Body" element="tns:string" />
+  </wsdl:message>
   <wsdl:message name="DispatchItemClickHttpGetIn">
     <wsdl:part name="mac_address" type="s:string" />
   </wsdl:message>
@@ -562,6 +614,12 @@
   <wsdl:message name="UserLoginHttpPostOut">
     <wsdl:part name="Body" element="tns:EntityUser" />
   </wsdl:message>
+  <wsdl:message name="DeleteMyItemHttpPostIn">
+    <wsdl:part name="local_item_task_id" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="DeleteMyItemHttpPostOut">
+    <wsdl:part name="Body" element="tns:string" />
+  </wsdl:message>
   <wsdl:message name="DispatchItemClickHttpPostIn">
     <wsdl:part name="mac_address" type="s:string" />
   </wsdl:message>
@@ -634,6 +692,14 @@
       <wsdl:input message="tns:AddMyItemSoapIn" />
       <wsdl:output message="tns:AddMyItemSoapOut" />
     </wsdl:operation>
+    <wsdl:operation name="EditMyItem">
+      <wsdl:input message="tns:EditMyItemSoapIn" />
+      <wsdl:output message="tns:EditMyItemSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="DeleteMyItem">
+      <wsdl:input message="tns:DeleteMyItemSoapIn" />
+      <wsdl:output message="tns:DeleteMyItemSoapOut" />
+    </wsdl:operation>
     <wsdl:operation name="DispatchItemClick">
       <wsdl:input message="tns:DispatchItemClickSoapIn" />
       <wsdl:output message="tns:DispatchItemClickSoapOut" />
@@ -688,6 +754,10 @@
       <wsdl:input message="tns:UserLoginHttpGetIn" />
       <wsdl:output message="tns:UserLoginHttpGetOut" />
     </wsdl:operation>
+    <wsdl:operation name="DeleteMyItem">
+      <wsdl:input message="tns:DeleteMyItemHttpGetIn" />
+      <wsdl:output message="tns:DeleteMyItemHttpGetOut" />
+    </wsdl:operation>
     <wsdl:operation name="DispatchItemClick">
       <wsdl:input message="tns:DispatchItemClickHttpGetIn" />
       <wsdl:output message="tns:DispatchItemClickHttpGetOut" />
@@ -741,6 +811,10 @@
     <wsdl:operation name="UserLogin">
       <wsdl:input message="tns:UserLoginHttpPostIn" />
       <wsdl:output message="tns:UserLoginHttpPostOut" />
+    </wsdl:operation>
+    <wsdl:operation name="DeleteMyItem">
+      <wsdl:input message="tns:DeleteMyItemHttpPostIn" />
+      <wsdl:output message="tns:DeleteMyItemHttpPostOut" />
     </wsdl:operation>
     <wsdl:operation name="DispatchItemClick">
       <wsdl:input message="tns:DispatchItemClickHttpPostIn" />
@@ -828,6 +902,26 @@
       <wsdl:input>
         <soap:body use="literal" />
         <soap:header message="tns:AddMyItemMySoapHeader" part="MySoapHeader" use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="EditMyItem">
+      <soap:operation soapAction="http://tempuri.org/EditMyItem" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+        <soap:header message="tns:EditMyItemMySoapHeader" part="MySoapHeader" use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="DeleteMyItem">
+      <soap:operation soapAction="http://tempuri.org/DeleteMyItem" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+        <soap:header message="tns:DeleteMyItemMySoapHeader" part="MySoapHeader" use="literal" />
       </wsdl:input>
       <wsdl:output>
         <soap:body use="literal" />
@@ -969,6 +1063,26 @@
         <soap12:body use="literal" />
       </wsdl:output>
     </wsdl:operation>
+    <wsdl:operation name="EditMyItem">
+      <soap12:operation soapAction="http://tempuri.org/EditMyItem" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+        <soap12:header message="tns:EditMyItemMySoapHeader" part="MySoapHeader" use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="DeleteMyItem">
+      <soap12:operation soapAction="http://tempuri.org/DeleteMyItem" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+        <soap12:header message="tns:DeleteMyItemMySoapHeader" part="MySoapHeader" use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
     <wsdl:operation name="DispatchItemClick">
       <soap12:operation soapAction="http://tempuri.org/DispatchItemClick" style="document" />
       <wsdl:input>
@@ -1094,6 +1208,15 @@
         <mime:mimeXml part="Body" />
       </wsdl:output>
     </wsdl:operation>
+    <wsdl:operation name="DeleteMyItem">
+      <http:operation location="/DeleteMyItem" />
+      <wsdl:input>
+        <http:urlEncoded />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
     <wsdl:operation name="DispatchItemClick">
       <http:operation location="/DispatchItemClick" />
       <wsdl:input>
@@ -1201,6 +1324,15 @@
     </wsdl:operation>
     <wsdl:operation name="UserLogin">
       <http:operation location="/UserLogin" />
+      <wsdl:input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="DeleteMyItem">
+      <http:operation location="/DeleteMyItem" />
       <wsdl:input>
         <mime:content type="application/x-www-form-urlencoded" />
       </wsdl:input>

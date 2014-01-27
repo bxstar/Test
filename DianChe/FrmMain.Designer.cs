@@ -47,6 +47,7 @@
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FrmMain));
             this.dockPanel1 = new WeifenLuo.WinFormsUI.Docking.DockPanel();
             this.timer1 = new System.Windows.Forms.Timer(this.components);
+            this.panelButtom = new System.Windows.Forms.Panel();
             this.SuspendLayout();
             // 
             // dockPanel1
@@ -111,11 +112,21 @@
             this.timer1.Interval = 1200000;
             this.timer1.Tick += new System.EventHandler(this.timer1_Tick);
             // 
+            // panelButtom
+            // 
+            this.panelButtom.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.panelButtom.Dock = System.Windows.Forms.DockStyle.Bottom;
+            this.panelButtom.Location = new System.Drawing.Point(0, 476);
+            this.panelButtom.Name = "panelButtom";
+            this.panelButtom.Size = new System.Drawing.Size(873, 30);
+            this.panelButtom.TabIndex = 12;
+            // 
             // FrmMain
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(873, 506);
+            this.Controls.Add(this.panelButtom);
             this.Controls.Add(this.dockPanel1);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.IsMdiContainer = true;
@@ -132,5 +143,6 @@
 
         private WeifenLuo.WinFormsUI.Docking.DockPanel dockPanel1;
         private System.Windows.Forms.Timer timer1;
+        private System.Windows.Forms.Panel panelButtom;
     }
 }

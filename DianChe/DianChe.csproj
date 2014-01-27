@@ -75,6 +75,12 @@
     <Compile Include="FrmAddItemRank.Designer.cs">
       <DependentUpon>FrmAddItemRank.cs</DependentUpon>
     </Compile>
+    <Compile Include="FrmEditItem.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FrmEditItem.Designer.cs">
+      <DependentUpon>FrmEditItem.cs</DependentUpon>
+    </Compile>
     <Compile Include="FrmEditItemRank.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -130,6 +136,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="FrmAddItemRank.resx">
       <DependentUpon>FrmAddItemRank.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FrmEditItem.resx">
+      <DependentUpon>FrmEditItem.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="FrmEditItemRank.resx">
       <DependentUpon>FrmEditItemRank.cs</DependentUpon>

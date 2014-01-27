@@ -91,7 +91,7 @@ namespace DianChe
                 if (result.Length == 0)
                 {
                     bllMyItem.AddMyItem(currentItem);
-                    frmItemMag.InitData();
+                    frmItemMag.LoadData();
                     this.Close();
                 }
                 else
@@ -101,8 +101,7 @@ namespace DianChe
             }
             catch (Exception se)
             {
-                logAX.Error("添加宝贝失败！", se);
-                MessageBox.Show("添加宝贝失败，请联系管理员！");
+                MessageBox.Show("添加宝贝失败，请联系管理员！\r\n" + se.Message);
                 return;
             }
 

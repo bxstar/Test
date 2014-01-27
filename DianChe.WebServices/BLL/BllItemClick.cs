@@ -65,6 +65,59 @@ namespace DianChe.WebServices.BLL
             return result;
         }
 
+
+        public string EditItemTask(EntityItemTask model)
+        {
+            string result = string.Empty;
+            try
+            {
+                string strSql = "update t_item_task set update_time=getdate(),remark=@remark,item_title=@item_title,price=@price where local_item_task_id=@local_item_task_id ";
+
+                SqlParameter[] parameters = {
+                        new SqlParameter("@remark", SqlDbType.VarChar,1000) ,
+                        new SqlParameter("@item_title", SqlDbType.VarChar,100) ,
+                        new SqlParameter("@price", SqlDbType.Decimal,9) ,
+                        new SqlParameter("@local_item_task_id", SqlDbType.UniqueIdentifier,16) 
+                };
+
+                parameters[0].Value = model.remark;
+                parameters[1].Value = model.item_title;
+                parameters[2].Value = model.price;
+                parameters[3].Value = model.local_item_task_id;
+
+                DataBase.ExecuteNone(strSql, parameters);
+            }
+            catch (Exception se)
+            {
+                result = se.Message;
+            }
+
+            return result;
+        }
+
+        public string DeleteItemTask(Guid local_item_task_id)
+        {
+            string result = string.Empty;
+            try
+            {
+                string strSql = "update t_item_task set is_delete=1 where local_item_task_id=@local_item_task_id ";
+
+                SqlParameter[] parameters = {
+                        new SqlParameter("@local_item_task_id", SqlDbType.UniqueIdentifier,16) 
+                };
+
+                parameters[0].Value = local_item_task_id;
+
+                DataBase.ExecuteNone(strSql, parameters);
+            }
+            catch (Exception se)
+            {
+                result = se.Message;
+            }
+
+            return result;
+        }
+
         /// <summary>
         /// 分配点击任务
         /// </summary>

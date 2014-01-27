@@ -112,6 +112,28 @@ namespace DianChe.WebServices
 
         [System.Web.Services.Protocols.SoapHeader("myHeader")]
         [WebMethod]
+        public string EditMyItem(EntityItemTask model)
+        {
+            if (bllUser.Get(myHeader.UserName, myHeader.PassWord) == null)
+            {
+                return "对不起，您没有权限调用此服务！";
+            }
+            return bllItemClick.EditItemTask(model);
+        }
+
+        [System.Web.Services.Protocols.SoapHeader("myHeader")]
+        [WebMethod]
+        public string DeleteMyItem(string local_item_task_id)
+        {
+            if (bllUser.Get(myHeader.UserName, myHeader.PassWord) == null)
+            {
+                return "对不起，您没有权限调用此服务！";
+            }
+            return bllItemClick.DeleteItemTask(new Guid(local_item_task_id));
+        }
+
+        [System.Web.Services.Protocols.SoapHeader("myHeader")]
+        [WebMethod]
         public List<EntityItemClick> DispatchItemClick(string mac_address)
         {
             if (bllUser.Get(myHeader.UserName, myHeader.PassWord) == null)

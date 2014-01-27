@@ -33,7 +33,6 @@
             this.宝贝管理ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.新增宝贝点击ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.panel1 = new System.Windows.Forms.Panel();
-            this.panelButtom = new System.Windows.Forms.Panel();
             this.dgvMyItem = new System.Windows.Forms.DataGridView();
             this.timer1 = new System.Windows.Forms.Timer(this.components);
             this.colItemTitle = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -50,6 +49,8 @@
             this.colCreateTime = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.colUpdateTime = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.colEnable = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.编辑宝贝点击ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.删除宝贝点击ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.menuStrip1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvMyItem)).BeginInit();
             this.SuspendLayout();
@@ -67,7 +68,9 @@
             // 宝贝管理ToolStripMenuItem
             // 
             this.宝贝管理ToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.新增宝贝点击ToolStripMenuItem});
+            this.新增宝贝点击ToolStripMenuItem,
+            this.编辑宝贝点击ToolStripMenuItem,
+            this.删除宝贝点击ToolStripMenuItem});
             this.宝贝管理ToolStripMenuItem.Name = "宝贝管理ToolStripMenuItem";
             this.宝贝管理ToolStripMenuItem.Size = new System.Drawing.Size(68, 21);
             this.宝贝管理ToolStripMenuItem.Text = "宝贝管理";
@@ -86,15 +89,6 @@
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(943, 46);
             this.panel1.TabIndex = 1;
-            // 
-            // panelButtom
-            // 
-            this.panelButtom.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.panelButtom.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.panelButtom.Location = new System.Drawing.Point(0, 432);
-            this.panelButtom.Name = "panelButtom";
-            this.panelButtom.Size = new System.Drawing.Size(943, 30);
-            this.panelButtom.TabIndex = 11;
             // 
             // dgvMyItem
             // 
@@ -123,8 +117,10 @@
             this.dgvMyItem.ReadOnly = true;
             this.dgvMyItem.RowTemplate.Height = 23;
             this.dgvMyItem.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dgvMyItem.Size = new System.Drawing.Size(943, 361);
+            this.dgvMyItem.Size = new System.Drawing.Size(943, 391);
             this.dgvMyItem.TabIndex = 12;
+            this.dgvMyItem.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvMyItem_CellClick);
+            this.dgvMyItem.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvMyItem_CellDoubleClick);
             // 
             // timer1
             // 
@@ -241,13 +237,26 @@
             this.colEnable.ReadOnly = true;
             this.colEnable.Width = 60;
             // 
+            // 编辑宝贝点击ToolStripMenuItem
+            // 
+            this.编辑宝贝点击ToolStripMenuItem.Name = "编辑宝贝点击ToolStripMenuItem";
+            this.编辑宝贝点击ToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.编辑宝贝点击ToolStripMenuItem.Text = "编辑宝贝点击";
+            this.编辑宝贝点击ToolStripMenuItem.Click += new System.EventHandler(this.编辑宝贝点击ToolStripMenuItem_Click);
+            // 
+            // 删除宝贝点击ToolStripMenuItem
+            // 
+            this.删除宝贝点击ToolStripMenuItem.Name = "删除宝贝点击ToolStripMenuItem";
+            this.删除宝贝点击ToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.删除宝贝点击ToolStripMenuItem.Text = "删除宝贝点击";
+            this.删除宝贝点击ToolStripMenuItem.Click += new System.EventHandler(this.删除宝贝点击ToolStripMenuItem_Click);
+            // 
             // FrmItemMag
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(943, 462);
             this.Controls.Add(this.dgvMyItem);
-            this.Controls.Add(this.panelButtom);
             this.Controls.Add(this.panel1);
             this.Controls.Add(this.menuStrip1);
             this.Font = new System.Drawing.Font("宋体", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
@@ -271,7 +280,6 @@
         private System.Windows.Forms.ToolStripMenuItem 宝贝管理ToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem 新增宝贝点击ToolStripMenuItem;
         private System.Windows.Forms.Panel panel1;
-        private System.Windows.Forms.Panel panelButtom;
         private System.Windows.Forms.DataGridView dgvMyItem;
         private System.Windows.Forms.Timer timer1;
         private System.Windows.Forms.DataGridViewTextBoxColumn colItemTitle;
@@ -288,6 +296,8 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn colCreateTime;
         private System.Windows.Forms.DataGridViewTextBoxColumn colUpdateTime;
         private System.Windows.Forms.DataGridViewTextBoxColumn colEnable;
+        private System.Windows.Forms.ToolStripMenuItem 编辑宝贝点击ToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem 删除宝贝点击ToolStripMenuItem;
     }
 }
 
