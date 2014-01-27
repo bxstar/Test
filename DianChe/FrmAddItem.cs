@@ -33,6 +33,11 @@ namespace DianChe
             InitializeComponent();
         }
 
+        private void FrmAddItem_Load(object sender, EventArgs e)
+        {
+            lblEndTime.Enabled = lblStartTime.Enabled = dtEndTime.Enabled = dtStartTime.Enabled = false;
+        }
+
         private void btnGetItem_Click(object sender, EventArgs e)
         {
             if (txtInputUrl.Text.ToLower().Contains("&id") || txtInputUrl.Text.ToLower().Contains("?id"))
@@ -72,6 +77,11 @@ namespace DianChe
             currentItem.creative_one_title = txtCreativeOne.Text.Trim();
             currentItem.creative_two_title = txtCreativeTwo.Text.Trim();
             currentItem.keyword = txtKeyword.Text.Trim();
+            if (cbkEffectTime.Checked)
+            {
+                currentItem.effect_start_time = dtStartTime.Value.ToString("HHss");
+                currentItem.effect_end_time = dtEndTime.Value.ToString("HHss");
+            }
             currentItem.remark = txtRemark.Text.Trim();
             currentItem.create_time = currentItem.update_time = DateTime.Now;
             currentItem.is_enable = true;
@@ -102,6 +112,13 @@ namespace DianChe
         {
             this.Close();
         }
+
+        private void cbkEffectTime_CheckedChanged(object sender, EventArgs e)
+        {
+            lblEndTime.Enabled = lblStartTime.Enabled = dtEndTime.Enabled = dtStartTime.Enabled = cbkEffectTime.Checked;
+        }
+
+
 
 
     }

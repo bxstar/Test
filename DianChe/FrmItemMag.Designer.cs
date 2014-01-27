@@ -58,7 +58,7 @@
             this.宝贝管理ToolStripMenuItem});
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
             this.menuStrip1.Name = "menuStrip1";
-            this.menuStrip1.Size = new System.Drawing.Size(943, 24);
+            this.menuStrip1.Size = new System.Drawing.Size(943, 25);
             this.menuStrip1.TabIndex = 0;
             this.menuStrip1.Text = "menuStrip1";
             // 
@@ -67,7 +67,7 @@
             this.宝贝管理ToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.新增宝贝点击ToolStripMenuItem});
             this.宝贝管理ToolStripMenuItem.Name = "宝贝管理ToolStripMenuItem";
-            this.宝贝管理ToolStripMenuItem.Size = new System.Drawing.Size(67, 20);
+            this.宝贝管理ToolStripMenuItem.Size = new System.Drawing.Size(68, 21);
             this.宝贝管理ToolStripMenuItem.Text = "宝贝管理";
             // 
             // 新增宝贝点击ToolStripMenuItem
@@ -80,7 +80,7 @@
             // panel1
             // 
             this.panel1.Dock = System.Windows.Forms.DockStyle.Top;
-            this.panel1.Location = new System.Drawing.Point(0, 24);
+            this.panel1.Location = new System.Drawing.Point(0, 25);
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(943, 46);
             this.panel1.TabIndex = 1;
@@ -114,11 +114,11 @@
             this.colUpdateTime,
             this.colEnable});
             this.dgvMyItem.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.dgvMyItem.Location = new System.Drawing.Point(0, 70);
+            this.dgvMyItem.Location = new System.Drawing.Point(0, 71);
             this.dgvMyItem.Name = "dgvMyItem";
             this.dgvMyItem.ReadOnly = true;
             this.dgvMyItem.RowTemplate.Height = 23;
-            this.dgvMyItem.Size = new System.Drawing.Size(943, 362);
+            this.dgvMyItem.Size = new System.Drawing.Size(943, 361);
             this.dgvMyItem.TabIndex = 12;
             // 
             // colItemTitle

@@ -39,6 +39,8 @@ namespace DianChe.BLL
                     model.creative_one_title = dr["creative_one_title"].ToString();
                     model.creative_two_title = dr["creative_two_title"].ToString();
                     model.keyword = dr["keyword"].ToString();
+                    model.effect_start_time = dr["effect_start_time"].ToString();
+                    model.effect_end_time = dr["effect_end_time"].ToString();
                     model.create_time = Convert.ToDateTime(dr["create_time"]);
                     model.update_time = Convert.ToDateTime(dr["update_time"]);
                     model.remark = dr["remark"].ToString();
@@ -58,12 +60,12 @@ namespace DianChe.BLL
         {
 			StringBuilder sbSql=new StringBuilder();
 			sbSql.Append("insert into t_item_task(");
-            sbSql.Append("local_item_task_id,item_id,creative_two_title,keyword,create_time,update_time,is_enable,nick,item_title,img_url,img_data,price,max_click,run_days,creative_one_title,remark");
+            sbSql.Append("local_item_task_id,item_id,creative_two_title,keyword,effect_start_time,effect_end_time,create_time,update_time,is_enable,nick,item_title,img_url,img_data,price,max_click,run_days,creative_one_title,remark");
 			sbSql.Append(") values (");
-            sbSql.Append("'{0}',{1},'{2}','{3}','{4}','{5}',{6},'{7}','{8}','{9}',@img_data,{10},{11},{12},'{13}','{14}'");
+            sbSql.Append("'{0}',{1},'{2}','{3}','{4}','{5}','{6}','{7}',{8},'{9}','{10}','{11}',@img_data,{12},{13},{14},'{15}','{16}'");
             sbSql.Append(") ");
 
-            string strSql = string.Format(sbSql.ToString(), model.local_item_task_id.ToString(), model.item_id, model.creative_two_title, model.keyword, model.create_time.ToString("s"), model.update_time.ToString("s"),
+            string strSql = string.Format(sbSql.ToString(), model.local_item_task_id.ToString(), model.item_id, model.creative_two_title, model.keyword, model.effect_start_time, model.effect_end_time, model.create_time.ToString("s"), model.update_time.ToString("s"),
                 model.is_enable ? 1 : 0, model.nick, model.item_title, model.img_url, model.price, model.max_click, model.run_days, model.creative_one_title, model.remark);
 
             SQLiteParameter[] ps = new SQLiteParameter[1];

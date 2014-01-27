@@ -81,6 +81,16 @@ namespace DianChe.Model
         public int run_days { get; set; }
 
         /// <summary>
+        /// 点击有效开始时间，比如：0100
+        /// </summary>
+        public string effect_start_time { get; set; }
+
+        /// <summary>
+        /// 点击有效截至时间，比如：0800
+        /// </summary>
+        public string effect_end_time { get; set; }
+
+        /// <summary>
         /// 创建时间
         /// </summary>		
         public DateTime create_time { get; set; }

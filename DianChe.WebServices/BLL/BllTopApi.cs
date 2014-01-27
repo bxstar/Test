@@ -15,8 +15,10 @@ namespace DianChe.WebServices.BLL
     public class BllTopApi
     {
         public static string url = "http://gw.api.taobao.com/router/rest";
-        public static string appkey = "12275855";
-        public static string appSecret = "7403d27fac0286727a4976ab18610b13";
+        //public static string appkey = "12275855";
+        //public static string appSecret = "7403d27fac0286727a4976ab18610b13";
+        public static string appkey = "21729771";
+        public static string appSecret = "41782652756f189f5543d9a6112aa0c8";
 
         static ITopClient client = new DefaultTopClient(url, appkey, appSecret, "json");
 
