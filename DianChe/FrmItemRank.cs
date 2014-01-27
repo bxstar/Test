@@ -96,6 +96,7 @@ namespace DianChe
 
         private void FrmItemRank_Load(object sender, EventArgs e)
         {
+            dgvMyItem.DefaultCellStyle.WrapMode = DataGridViewTriState.True;
             dgvMyItem.AutoSizeRowsMode = DataGridViewAutoSizeRowsMode.None;
             dgvMyItem.RowTemplate.Height = 90;
             dgvMyItem.AutoGenerateColumns = false;

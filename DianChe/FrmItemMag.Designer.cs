@@ -35,11 +35,14 @@
             this.panel1 = new System.Windows.Forms.Panel();
             this.panelButtom = new System.Windows.Forms.Panel();
             this.dgvMyItem = new System.Windows.Forms.DataGridView();
+            this.timer1 = new System.Windows.Forms.Timer(this.components);
             this.colItemTitle = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.colImg = new System.Windows.Forms.DataGridViewImageColumn();
             this.colPrice = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.colMaxClick = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.colRunDays = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.colLastRunDate = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.colEffectTime = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.colCreativeOne = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.colCreativeTwo = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.colKeyword = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -47,7 +50,6 @@
             this.colCreateTime = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.colUpdateTime = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.colEnable = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.timer1 = new System.Windows.Forms.Timer(this.components);
             this.menuStrip1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvMyItem)).BeginInit();
             this.SuspendLayout();
@@ -106,6 +108,8 @@
             this.colPrice,
             this.colMaxClick,
             this.colRunDays,
+            this.colLastRunDate,
+            this.colEffectTime,
             this.colCreativeOne,
             this.colCreativeTwo,
             this.colKeyword,
@@ -118,8 +122,15 @@
             this.dgvMyItem.Name = "dgvMyItem";
             this.dgvMyItem.ReadOnly = true;
             this.dgvMyItem.RowTemplate.Height = 23;
+            this.dgvMyItem.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dgvMyItem.Size = new System.Drawing.Size(943, 361);
             this.dgvMyItem.TabIndex = 12;
+            // 
+            // timer1
+            // 
+            this.timer1.Enabled = true;
+            this.timer1.Interval = 10000;
+            this.timer1.Tick += new System.EventHandler(this.timer1_Tick);
             // 
             // colItemTitle
             // 
@@ -127,6 +138,7 @@
             this.colItemTitle.HeaderText = "标题";
             this.colItemTitle.Name = "colItemTitle";
             this.colItemTitle.ReadOnly = true;
+            this.colItemTitle.Width = 200;
             // 
             // colImg
             // 
@@ -143,6 +155,7 @@
             this.colPrice.HeaderText = "价格";
             this.colPrice.Name = "colPrice";
             this.colPrice.ReadOnly = true;
+            this.colPrice.Width = 60;
             // 
             // colMaxClick
             // 
@@ -150,6 +163,7 @@
             this.colMaxClick.HeaderText = "每日点击";
             this.colMaxClick.Name = "colMaxClick";
             this.colMaxClick.ReadOnly = true;
+            this.colMaxClick.Width = 60;
             // 
             // colRunDays
             // 
@@ -157,6 +171,23 @@
             this.colRunDays.HeaderText = "执行天数";
             this.colRunDays.Name = "colRunDays";
             this.colRunDays.ReadOnly = true;
+            this.colRunDays.Width = 60;
+            // 
+            // colLastRunDate
+            // 
+            this.colLastRunDate.DataPropertyName = "last_run_date";
+            this.colLastRunDate.HeaderText = "截止日期";
+            this.colLastRunDate.Name = "colLastRunDate";
+            this.colLastRunDate.ReadOnly = true;
+            this.colLastRunDate.Width = 80;
+            // 
+            // colEffectTime
+            // 
+            this.colEffectTime.DataPropertyName = "effect_time_span";
+            this.colEffectTime.HeaderText = "有效时间段";
+            this.colEffectTime.Name = "colEffectTime";
+            this.colEffectTime.ReadOnly = true;
+            this.colEffectTime.Width = 80;
             // 
             // colCreativeOne
             // 
@@ -178,6 +209,7 @@
             this.colKeyword.HeaderText = "关键词";
             this.colKeyword.Name = "colKeyword";
             this.colKeyword.ReadOnly = true;
+            this.colKeyword.Width = 120;
             // 
             // colRemark
             // 
@@ -185,6 +217,7 @@
             this.colRemark.HeaderText = "备注";
             this.colRemark.Name = "colRemark";
             this.colRemark.ReadOnly = true;
+            this.colRemark.Width = 120;
             // 
             // colCreateTime
             // 
@@ -202,16 +235,11 @@
             // 
             // colEnable
             // 
-            this.colEnable.DataPropertyName = "is_enable";
+            this.colEnable.DataPropertyName = "is_enable_display";
             this.colEnable.HeaderText = "状态";
             this.colEnable.Name = "colEnable";
             this.colEnable.ReadOnly = true;
-            // 
-            // timer1
-            // 
-            this.timer1.Enabled = true;
-            this.timer1.Interval = 10000;
-            this.timer1.Tick += new System.EventHandler(this.timer1_Tick);
+            this.colEnable.Width = 60;
             // 
             // FrmItemMag
             // 
@@ -245,11 +273,14 @@
         private System.Windows.Forms.Panel panel1;
         private System.Windows.Forms.Panel panelButtom;
         private System.Windows.Forms.DataGridView dgvMyItem;
+        private System.Windows.Forms.Timer timer1;
         private System.Windows.Forms.DataGridViewTextBoxColumn colItemTitle;
         private System.Windows.Forms.DataGridViewImageColumn colImg;
         private System.Windows.Forms.DataGridViewTextBoxColumn colPrice;
         private System.Windows.Forms.DataGridViewTextBoxColumn colMaxClick;
         private System.Windows.Forms.DataGridViewTextBoxColumn colRunDays;
+        private System.Windows.Forms.DataGridViewTextBoxColumn colLastRunDate;
+        private System.Windows.Forms.DataGridViewTextBoxColumn colEffectTime;
         private System.Windows.Forms.DataGridViewTextBoxColumn colCreativeOne;
         private System.Windows.Forms.DataGridViewTextBoxColumn colCreativeTwo;
         private System.Windows.Forms.DataGridViewTextBoxColumn colKeyword;
@@ -257,7 +288,6 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn colCreateTime;
         private System.Windows.Forms.DataGridViewTextBoxColumn colUpdateTime;
         private System.Windows.Forms.DataGridViewTextBoxColumn colEnable;
-        private System.Windows.Forms.Timer timer1;
     }
 }
 

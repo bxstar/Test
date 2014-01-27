@@ -17,6 +17,15 @@ namespace DianChe
     public partial class FrmItemMag : DockContent
     {
 
+        /// <summary>
+        /// 表格中当前选中的宝贝
+        /// </summary>
+        public EntityItemTask currSelectedItem
+        {
+            get;
+            set;
+        }
+
         private static ILog logger = log4net.LogManager.GetLogger("Logger");
 
         BllItemClick bllItemClick = new BllItemClick();
@@ -30,10 +39,16 @@ namespace DianChe
         private void Form1_Load(object sender, EventArgs e)
         {
             InitData();
+
+            if (dgvMyItem.Rows.Count > 0)
+            {
+                currSelectedItem = dgvMyItem.Rows[0].DataBoundItem as EntityItemTask;
+            }
         }
 
         public void InitData()
         {
+            dgvMyItem.DefaultCellStyle.WrapMode = DataGridViewTriState.True;
             dgvMyItem.AutoSizeRowsMode = DataGridViewAutoSizeRowsMode.None;
             dgvMyItem.RowTemplate.Height = 90;
             dgvMyItem.AutoGenerateColumns = false;

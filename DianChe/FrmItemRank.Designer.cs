@@ -35,6 +35,20 @@
             this.删除宝贝监控ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.panel1 = new System.Windows.Forms.Panel();
             this.dgvMyItem = new System.Windows.Forms.DataGridView();
+            this.contextMenuStrip1 = new System.Windows.Forms.ContextMenuStrip(this.components);
+            this.新增宝贝监控ToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
+            this.编辑宝贝监控ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.删除宝贝监控ToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
+            this.webBrowser1 = new System.Windows.Forms.WebBrowser();
+            this.宝贝管理ToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
+            this.新增宝贝监控ToolStripMenuItem2 = new System.Windows.Forms.ToolStripMenuItem();
+            this.编辑宝贝监控ToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
+            this.删除宝贝监控ToolStripMenuItem2 = new System.Windows.Forms.ToolStripMenuItem();
+            this.menuStrip1 = new System.Windows.Forms.MenuStrip();
+            this.宝贝管理ToolStripMenuItem2 = new System.Windows.Forms.ToolStripMenuItem();
+            this.新增宝贝监控ToolStripMenuItem3 = new System.Windows.Forms.ToolStripMenuItem();
+            this.编辑宝贝监控ToolStripMenuItem2 = new System.Windows.Forms.ToolStripMenuItem();
+            this.删除宝贝监控ToolStripMenuItem3 = new System.Windows.Forms.ToolStripMenuItem();
             this.colItemTitle = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.colImg = new System.Windows.Forms.DataGridViewImageColumn();
             this.colPrice = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -50,20 +64,6 @@
             this.colCreateTime = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.colUpdateTime = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.colEnable = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.contextMenuStrip1 = new System.Windows.Forms.ContextMenuStrip(this.components);
-            this.新增宝贝监控ToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
-            this.编辑宝贝监控ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.删除宝贝监控ToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
-            this.webBrowser1 = new System.Windows.Forms.WebBrowser();
-            this.宝贝管理ToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
-            this.新增宝贝监控ToolStripMenuItem2 = new System.Windows.Forms.ToolStripMenuItem();
-            this.编辑宝贝监控ToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
-            this.删除宝贝监控ToolStripMenuItem2 = new System.Windows.Forms.ToolStripMenuItem();
-            this.menuStrip1 = new System.Windows.Forms.MenuStrip();
-            this.宝贝管理ToolStripMenuItem2 = new System.Windows.Forms.ToolStripMenuItem();
-            this.新增宝贝监控ToolStripMenuItem3 = new System.Windows.Forms.ToolStripMenuItem();
-            this.编辑宝贝监控ToolStripMenuItem2 = new System.Windows.Forms.ToolStripMenuItem();
-            this.删除宝贝监控ToolStripMenuItem3 = new System.Windows.Forms.ToolStripMenuItem();
             ((System.ComponentModel.ISupportInitialize)(this.dgvMyItem)).BeginInit();
             this.contextMenuStrip1.SuspendLayout();
             this.menuStrip1.SuspendLayout();
@@ -142,13 +142,120 @@
             this.dgvMyItem.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvMyItem_CellClick);
             this.dgvMyItem.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.toolStripMenuItem1_Click);
             // 
+            // contextMenuStrip1
+            // 
+            this.contextMenuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.新增宝贝监控ToolStripMenuItem1,
+            this.编辑宝贝监控ToolStripMenuItem,
+            this.删除宝贝监控ToolStripMenuItem1});
+            this.contextMenuStrip1.Name = "contextMenuStrip1";
+            this.contextMenuStrip1.Size = new System.Drawing.Size(147, 70);
+            // 
+            // 新增宝贝监控ToolStripMenuItem1
+            // 
+            this.新增宝贝监控ToolStripMenuItem1.Name = "新增宝贝监控ToolStripMenuItem1";
+            this.新增宝贝监控ToolStripMenuItem1.Size = new System.Drawing.Size(146, 22);
+            this.新增宝贝监控ToolStripMenuItem1.Text = "新增宝贝监控";
+            this.新增宝贝监控ToolStripMenuItem1.Click += new System.EventHandler(this.新增宝贝监控ToolStripMenuItem_Click);
+            // 
+            // 编辑宝贝监控ToolStripMenuItem
+            // 
+            this.编辑宝贝监控ToolStripMenuItem.Name = "编辑宝贝监控ToolStripMenuItem";
+            this.编辑宝贝监控ToolStripMenuItem.Size = new System.Drawing.Size(146, 22);
+            this.编辑宝贝监控ToolStripMenuItem.Text = "编辑宝贝监控";
+            this.编辑宝贝监控ToolStripMenuItem.Click += new System.EventHandler(this.toolStripMenuItem1_Click);
+            // 
+            // 删除宝贝监控ToolStripMenuItem1
+            // 
+            this.删除宝贝监控ToolStripMenuItem1.Name = "删除宝贝监控ToolStripMenuItem1";
+            this.删除宝贝监控ToolStripMenuItem1.Size = new System.Drawing.Size(146, 22);
+            this.删除宝贝监控ToolStripMenuItem1.Text = "删除宝贝监控";
+            this.删除宝贝监控ToolStripMenuItem1.Click += new System.EventHandler(this.删除宝贝监控ToolStripMenuItem_Click);
+            // 
+            // webBrowser1
+            // 
+            this.webBrowser1.Dock = System.Windows.Forms.DockStyle.Bottom;
+            this.webBrowser1.Location = new System.Drawing.Point(0, 234);
+            this.webBrowser1.MinimumSize = new System.Drawing.Size(20, 20);
+            this.webBrowser1.Name = "webBrowser1";
+            this.webBrowser1.Size = new System.Drawing.Size(781, 169);
+            this.webBrowser1.TabIndex = 14;
+            this.webBrowser1.Visible = false;
+            // 
+            // 宝贝管理ToolStripMenuItem1
+            // 
+            this.宝贝管理ToolStripMenuItem1.Name = "宝贝管理ToolStripMenuItem1";
+            this.宝贝管理ToolStripMenuItem1.Size = new System.Drawing.Size(67, 20);
+            this.宝贝管理ToolStripMenuItem1.Text = "宝贝管理";
+            // 
+            // 新增宝贝监控ToolStripMenuItem2
+            // 
+            this.新增宝贝监控ToolStripMenuItem2.Name = "新增宝贝监控ToolStripMenuItem2";
+            this.新增宝贝监控ToolStripMenuItem2.Size = new System.Drawing.Size(152, 22);
+            this.新增宝贝监控ToolStripMenuItem2.Text = "新增宝贝监控";
+            this.新增宝贝监控ToolStripMenuItem2.Click += new System.EventHandler(this.新增宝贝监控ToolStripMenuItem_Click);
+            // 
+            // 编辑宝贝监控ToolStripMenuItem1
+            // 
+            this.编辑宝贝监控ToolStripMenuItem1.Name = "编辑宝贝监控ToolStripMenuItem1";
+            this.编辑宝贝监控ToolStripMenuItem1.Size = new System.Drawing.Size(152, 22);
+            this.编辑宝贝监控ToolStripMenuItem1.Text = "编辑宝贝监控";
+            this.编辑宝贝监控ToolStripMenuItem1.Click += new System.EventHandler(this.toolStripMenuItem1_Click);
+            // 
+            // 删除宝贝监控ToolStripMenuItem2
+            // 
+            this.删除宝贝监控ToolStripMenuItem2.Name = "删除宝贝监控ToolStripMenuItem2";
+            this.删除宝贝监控ToolStripMenuItem2.Size = new System.Drawing.Size(152, 22);
+            this.删除宝贝监控ToolStripMenuItem2.Text = "删除宝贝监控";
+            // 
+            // menuStrip1
+            // 
+            this.menuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.宝贝管理ToolStripMenuItem2});
+            this.menuStrip1.Location = new System.Drawing.Point(0, 0);
+            this.menuStrip1.Name = "menuStrip1";
+            this.menuStrip1.Size = new System.Drawing.Size(781, 25);
+            this.menuStrip1.TabIndex = 15;
+            this.menuStrip1.Text = "menuStrip1";
+            // 
+            // 宝贝管理ToolStripMenuItem2
+            // 
+            this.宝贝管理ToolStripMenuItem2.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.新增宝贝监控ToolStripMenuItem3,
+            this.编辑宝贝监控ToolStripMenuItem2,
+            this.删除宝贝监控ToolStripMenuItem3});
+            this.宝贝管理ToolStripMenuItem2.Name = "宝贝管理ToolStripMenuItem2";
+            this.宝贝管理ToolStripMenuItem2.Size = new System.Drawing.Size(68, 21);
+            this.宝贝管理ToolStripMenuItem2.Text = "宝贝管理";
+            // 
+            // 新增宝贝监控ToolStripMenuItem3
+            // 
+            this.新增宝贝监控ToolStripMenuItem3.Name = "新增宝贝监控ToolStripMenuItem3";
+            this.新增宝贝监控ToolStripMenuItem3.Size = new System.Drawing.Size(152, 22);
+            this.新增宝贝监控ToolStripMenuItem3.Text = "新增宝贝监控";
+            this.新增宝贝监控ToolStripMenuItem3.Click += new System.EventHandler(this.新增宝贝监控ToolStripMenuItem_Click);
+            // 
+            // 编辑宝贝监控ToolStripMenuItem2
+            // 
+            this.编辑宝贝监控ToolStripMenuItem2.Name = "编辑宝贝监控ToolStripMenuItem2";
+            this.编辑宝贝监控ToolStripMenuItem2.Size = new System.Drawing.Size(152, 22);
+            this.编辑宝贝监控ToolStripMenuItem2.Text = "编辑宝贝监控";
+            this.编辑宝贝监控ToolStripMenuItem2.Click += new System.EventHandler(this.toolStripMenuItem1_Click);
+            // 
+            // 删除宝贝监控ToolStripMenuItem3
+            // 
+            this.删除宝贝监控ToolStripMenuItem3.Name = "删除宝贝监控ToolStripMenuItem3";
+            this.删除宝贝监控ToolStripMenuItem3.Size = new System.Drawing.Size(152, 22);
+            this.删除宝贝监控ToolStripMenuItem3.Text = "删除宝贝监控";
+            this.删除宝贝监控ToolStripMenuItem3.Click += new System.EventHandler(this.删除宝贝监控ToolStripMenuItem_Click);
+            // 
             // colItemTitle
             // 
             this.colItemTitle.DataPropertyName = "item_title";
             this.colItemTitle.HeaderText = "标题";
             this.colItemTitle.Name = "colItemTitle";
             this.colItemTitle.ReadOnly = true;
-            this.colItemTitle.Width = 300;
+            this.colItemTitle.Width = 200;
             // 
             // colImg
             // 
@@ -260,113 +367,6 @@
             this.colEnable.ReadOnly = true;
             this.colEnable.Visible = false;
             // 
-            // contextMenuStrip1
-            // 
-            this.contextMenuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.新增宝贝监控ToolStripMenuItem1,
-            this.编辑宝贝监控ToolStripMenuItem,
-            this.删除宝贝监控ToolStripMenuItem1});
-            this.contextMenuStrip1.Name = "contextMenuStrip1";
-            this.contextMenuStrip1.Size = new System.Drawing.Size(147, 70);
-            // 
-            // 新增宝贝监控ToolStripMenuItem1
-            // 
-            this.新增宝贝监控ToolStripMenuItem1.Name = "新增宝贝监控ToolStripMenuItem1";
-            this.新增宝贝监控ToolStripMenuItem1.Size = new System.Drawing.Size(146, 22);
-            this.新增宝贝监控ToolStripMenuItem1.Text = "新增宝贝监控";
-            this.新增宝贝监控ToolStripMenuItem1.Click += new System.EventHandler(this.新增宝贝监控ToolStripMenuItem_Click);
-            // 
-            // 编辑宝贝监控ToolStripMenuItem
-            // 
-            this.编辑宝贝监控ToolStripMenuItem.Name = "编辑宝贝监控ToolStripMenuItem";
-            this.编辑宝贝监控ToolStripMenuItem.Size = new System.Drawing.Size(146, 22);
-            this.编辑宝贝监控ToolStripMenuItem.Text = "编辑宝贝监控";
-            this.编辑宝贝监控ToolStripMenuItem.Click += new System.EventHandler(this.toolStripMenuItem1_Click);
-            // 
-            // 删除宝贝监控ToolStripMenuItem1
-            // 
-            this.删除宝贝监控ToolStripMenuItem1.Name = "删除宝贝监控ToolStripMenuItem1";
-            this.删除宝贝监控ToolStripMenuItem1.Size = new System.Drawing.Size(146, 22);
-            this.删除宝贝监控ToolStripMenuItem1.Text = "删除宝贝监控";
-            this.删除宝贝监控ToolStripMenuItem1.Click += new System.EventHandler(this.删除宝贝监控ToolStripMenuItem_Click);
-            // 
-            // webBrowser1
-            // 
-            this.webBrowser1.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.webBrowser1.Location = new System.Drawing.Point(0, 234);
-            this.webBrowser1.MinimumSize = new System.Drawing.Size(20, 20);
-            this.webBrowser1.Name = "webBrowser1";
-            this.webBrowser1.Size = new System.Drawing.Size(781, 169);
-            this.webBrowser1.TabIndex = 14;
-            this.webBrowser1.Visible = false;
-            // 
-            // 宝贝管理ToolStripMenuItem1
-            // 
-            this.宝贝管理ToolStripMenuItem1.Name = "宝贝管理ToolStripMenuItem1";
-            this.宝贝管理ToolStripMenuItem1.Size = new System.Drawing.Size(67, 20);
-            this.宝贝管理ToolStripMenuItem1.Text = "宝贝管理";
-            // 
-            // 新增宝贝监控ToolStripMenuItem2
-            // 
-            this.新增宝贝监控ToolStripMenuItem2.Name = "新增宝贝监控ToolStripMenuItem2";
-            this.新增宝贝监控ToolStripMenuItem2.Size = new System.Drawing.Size(152, 22);
-            this.新增宝贝监控ToolStripMenuItem2.Text = "新增宝贝监控";
-            this.新增宝贝监控ToolStripMenuItem2.Click += new System.EventHandler(this.新增宝贝监控ToolStripMenuItem_Click);
-            // 
-            // 编辑宝贝监控ToolStripMenuItem1
-            // 
-            this.编辑宝贝监控ToolStripMenuItem1.Name = "编辑宝贝监控ToolStripMenuItem1";
-            this.编辑宝贝监控ToolStripMenuItem1.Size = new System.Drawing.Size(152, 22);
-            this.编辑宝贝监控ToolStripMenuItem1.Text = "编辑宝贝监控";
-            this.编辑宝贝监控ToolStripMenuItem1.Click += new System.EventHandler(this.toolStripMenuItem1_Click);
-            // 
-            // 删除宝贝监控ToolStripMenuItem2
-            // 
-            this.删除宝贝监控ToolStripMenuItem2.Name = "删除宝贝监控ToolStripMenuItem2";
-            this.删除宝贝监控ToolStripMenuItem2.Size = new System.Drawing.Size(152, 22);
-            this.删除宝贝监控ToolStripMenuItem2.Text = "删除宝贝监控";
-            // 
-            // menuStrip1
-            // 
-            this.menuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.宝贝管理ToolStripMenuItem2});
-            this.menuStrip1.Location = new System.Drawing.Point(0, 0);
-            this.menuStrip1.Name = "menuStrip1";
-            this.menuStrip1.Size = new System.Drawing.Size(781, 25);
-            this.menuStrip1.TabIndex = 15;
-            this.menuStrip1.Text = "menuStrip1";
-            // 
-            // 宝贝管理ToolStripMenuItem2
-            // 
-            this.宝贝管理ToolStripMenuItem2.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.新增宝贝监控ToolStripMenuItem3,
-            this.编辑宝贝监控ToolStripMenuItem2,
-            this.删除宝贝监控ToolStripMenuItem3});
-            this.宝贝管理ToolStripMenuItem2.Name = "宝贝管理ToolStripMenuItem2";
-            this.宝贝管理ToolStripMenuItem2.Size = new System.Drawing.Size(68, 21);
-            this.宝贝管理ToolStripMenuItem2.Text = "宝贝管理";
-            // 
-            // 新增宝贝监控ToolStripMenuItem3
-            // 
-            this.新增宝贝监控ToolStripMenuItem3.Name = "新增宝贝监控ToolStripMenuItem3";
-            this.新增宝贝监控ToolStripMenuItem3.Size = new System.Drawing.Size(152, 22);
-            this.新增宝贝监控ToolStripMenuItem3.Text = "新增宝贝监控";
-            this.新增宝贝监控ToolStripMenuItem3.Click += new System.EventHandler(this.新增宝贝监控ToolStripMenuItem_Click);
-            // 
-            // 编辑宝贝监控ToolStripMenuItem2
-            // 
-            this.编辑宝贝监控ToolStripMenuItem2.Name = "编辑宝贝监控ToolStripMenuItem2";
-            this.编辑宝贝监控ToolStripMenuItem2.Size = new System.Drawing.Size(152, 22);
-            this.编辑宝贝监控ToolStripMenuItem2.Text = "编辑宝贝监控";
-            this.编辑宝贝监控ToolStripMenuItem2.Click += new System.EventHandler(this.toolStripMenuItem1_Click);
-            // 
-            // 删除宝贝监控ToolStripMenuItem3
-            // 
-            this.删除宝贝监控ToolStripMenuItem3.Name = "删除宝贝监控ToolStripMenuItem3";
-            this.删除宝贝监控ToolStripMenuItem3.Size = new System.Drawing.Size(152, 22);
-            this.删除宝贝监控ToolStripMenuItem3.Text = "删除宝贝监控";
-            this.删除宝贝监控ToolStripMenuItem3.Click += new System.EventHandler(this.删除宝贝监控ToolStripMenuItem_Click);
-            // 
             // FrmItemRank
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
@@ -403,6 +403,15 @@
         private System.Windows.Forms.ToolStripMenuItem 新增宝贝监控ToolStripMenuItem1;
         private System.Windows.Forms.ToolStripMenuItem 编辑宝贝监控ToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem 删除宝贝监控ToolStripMenuItem1;
+        private System.Windows.Forms.ToolStripMenuItem 宝贝管理ToolStripMenuItem1;
+        private System.Windows.Forms.ToolStripMenuItem 新增宝贝监控ToolStripMenuItem2;
+        private System.Windows.Forms.ToolStripMenuItem 编辑宝贝监控ToolStripMenuItem1;
+        private System.Windows.Forms.ToolStripMenuItem 删除宝贝监控ToolStripMenuItem2;
+        private System.Windows.Forms.MenuStrip menuStrip1;
+        private System.Windows.Forms.ToolStripMenuItem 宝贝管理ToolStripMenuItem2;
+        private System.Windows.Forms.ToolStripMenuItem 新增宝贝监控ToolStripMenuItem3;
+        private System.Windows.Forms.ToolStripMenuItem 编辑宝贝监控ToolStripMenuItem2;
+        private System.Windows.Forms.ToolStripMenuItem 删除宝贝监控ToolStripMenuItem3;
         private System.Windows.Forms.DataGridViewTextBoxColumn colItemTitle;
         private System.Windows.Forms.DataGridViewImageColumn colImg;
         private System.Windows.Forms.DataGridViewTextBoxColumn colPrice;
@@ -418,14 +427,5 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn colCreateTime;
         private System.Windows.Forms.DataGridViewTextBoxColumn colUpdateTime;
         private System.Windows.Forms.DataGridViewTextBoxColumn colEnable;
-        private System.Windows.Forms.ToolStripMenuItem 宝贝管理ToolStripMenuItem1;
-        private System.Windows.Forms.ToolStripMenuItem 新增宝贝监控ToolStripMenuItem2;
-        private System.Windows.Forms.ToolStripMenuItem 编辑宝贝监控ToolStripMenuItem1;
-        private System.Windows.Forms.ToolStripMenuItem 删除宝贝监控ToolStripMenuItem2;
-        private System.Windows.Forms.MenuStrip menuStrip1;
-        private System.Windows.Forms.ToolStripMenuItem 宝贝管理ToolStripMenuItem2;
-        private System.Windows.Forms.ToolStripMenuItem 新增宝贝监控ToolStripMenuItem3;
-        private System.Windows.Forms.ToolStripMenuItem 编辑宝贝监控ToolStripMenuItem2;
-        private System.Windows.Forms.ToolStripMenuItem 删除宝贝监控ToolStripMenuItem3;
     }
 }
