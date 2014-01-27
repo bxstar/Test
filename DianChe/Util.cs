@@ -22,6 +22,8 @@ namespace DianChe
             wsModel.creative_one_title = localModel.creative_one_title;
             wsModel.creative_two_title = localModel.creative_two_title;
             wsModel.keyword = localModel.keyword;
+            wsModel.effect_start_time = localModel.effect_start_time;
+            wsModel.effect_end_time = localModel.effect_end_time;
             wsModel.max_click = localModel.max_click;
             wsModel.run_days = localModel.run_days;
             wsModel.create_time = localModel.create_time;

@@ -128,6 +128,8 @@
           <s:element minOccurs="0" maxOccurs="1" name="keyword" type="s:string" />
           <s:element minOccurs="1" maxOccurs="1" name="max_click" type="s:int" />
           <s:element minOccurs="1" maxOccurs="1" name="run_days" type="s:int" />
+          <s:element minOccurs="0" maxOccurs="1" name="effect_start_time" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="effect_end_time" type="s:string" />
           <s:element minOccurs="1" maxOccurs="1" name="create_time" type="s:dateTime" />
           <s:element minOccurs="1" maxOccurs="1" name="update_time" type="s:dateTime" />
           <s:element minOccurs="0" maxOccurs="1" name="remark" type="s:string" />
@@ -310,6 +312,7 @@
           <s:element minOccurs="1" maxOccurs="1" name="is_sms_notify" type="s:boolean" />
           <s:element minOccurs="1" maxOccurs="1" name="is_mail_notify" type="s:boolean" />
           <s:element minOccurs="1" maxOccurs="1" name="is_enable" type="s:boolean" />
+          <s:element minOccurs="1" maxOccurs="1" name="is_complete_search" type="s:boolean" />
           <s:element minOccurs="1" maxOccurs="1" name="is_delete_by_user" type="s:boolean" />
         </s:sequence>
       </s:complexType>

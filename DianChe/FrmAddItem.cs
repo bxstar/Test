@@ -79,8 +79,8 @@ namespace DianChe
             currentItem.keyword = txtKeyword.Text.Trim();
             if (cbkEffectTime.Checked)
             {
-                currentItem.effect_start_time = dtStartTime.Value.ToString("HHss");
-                currentItem.effect_end_time = dtEndTime.Value.ToString("HHss");
+                currentItem.effect_start_time = dtStartTime.Value.ToString("HHmm");
+                currentItem.effect_end_time = dtEndTime.Value.ToString("HHmm");
             }
             currentItem.remark = txtRemark.Text.Trim();
             currentItem.create_time = currentItem.update_time = DateTime.Now;
