@@ -51,8 +51,13 @@
             this.colEnable = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.编辑宝贝点击ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.删除宝贝点击ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.contextMenuStrip1 = new System.Windows.Forms.ContextMenuStrip(this.components);
+            this.新增宝贝点击ToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
+            this.编辑宝贝点击ToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
+            this.删除宝贝点击ToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
             this.menuStrip1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvMyItem)).BeginInit();
+            this.contextMenuStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
             // menuStrip1
@@ -111,6 +116,7 @@
             this.colCreateTime,
             this.colUpdateTime,
             this.colEnable});
+            this.dgvMyItem.ContextMenuStrip = this.contextMenuStrip1;
             this.dgvMyItem.Dock = System.Windows.Forms.DockStyle.Fill;
             this.dgvMyItem.Location = new System.Drawing.Point(0, 71);
             this.dgvMyItem.Name = "dgvMyItem";
@@ -251,6 +257,36 @@
             this.删除宝贝点击ToolStripMenuItem.Text = "删除宝贝点击";
             this.删除宝贝点击ToolStripMenuItem.Click += new System.EventHandler(this.删除宝贝点击ToolStripMenuItem_Click);
             // 
+            // contextMenuStrip1
+            // 
+            this.contextMenuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.新增宝贝点击ToolStripMenuItem1,
+            this.编辑宝贝点击ToolStripMenuItem1,
+            this.删除宝贝点击ToolStripMenuItem1});
+            this.contextMenuStrip1.Name = "contextMenuStrip1";
+            this.contextMenuStrip1.Size = new System.Drawing.Size(149, 70);
+            // 
+            // 新增宝贝点击ToolStripMenuItem1
+            // 
+            this.新增宝贝点击ToolStripMenuItem1.Name = "新增宝贝点击ToolStripMenuItem1";
+            this.新增宝贝点击ToolStripMenuItem1.Size = new System.Drawing.Size(152, 22);
+            this.新增宝贝点击ToolStripMenuItem1.Text = "新增宝贝点击";
+            this.新增宝贝点击ToolStripMenuItem1.Click += new System.EventHandler(this.新增宝贝点击ToolStripMenuItem_Click);
+            // 
+            // 编辑宝贝点击ToolStripMenuItem1
+            // 
+            this.编辑宝贝点击ToolStripMenuItem1.Name = "编辑宝贝点击ToolStripMenuItem1";
+            this.编辑宝贝点击ToolStripMenuItem1.Size = new System.Drawing.Size(152, 22);
+            this.编辑宝贝点击ToolStripMenuItem1.Text = "编辑宝贝点击";
+            this.编辑宝贝点击ToolStripMenuItem1.Click += new System.EventHandler(this.编辑宝贝点击ToolStripMenuItem_Click);
+            // 
+            // 删除宝贝点击ToolStripMenuItem1
+            // 
+            this.删除宝贝点击ToolStripMenuItem1.Name = "删除宝贝点击ToolStripMenuItem1";
+            this.删除宝贝点击ToolStripMenuItem1.Size = new System.Drawing.Size(152, 22);
+            this.删除宝贝点击ToolStripMenuItem1.Text = "删除宝贝点击";
+            this.删除宝贝点击ToolStripMenuItem1.Click += new System.EventHandler(this.删除宝贝点击ToolStripMenuItem_Click);
+            // 
             // FrmItemMag
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
@@ -269,6 +305,7 @@
             this.menuStrip1.ResumeLayout(false);
             this.menuStrip1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvMyItem)).EndInit();
+            this.contextMenuStrip1.ResumeLayout(false);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -298,6 +335,10 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn colEnable;
         private System.Windows.Forms.ToolStripMenuItem 编辑宝贝点击ToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem 删除宝贝点击ToolStripMenuItem;
+        private System.Windows.Forms.ContextMenuStrip contextMenuStrip1;
+        private System.Windows.Forms.ToolStripMenuItem 新增宝贝点击ToolStripMenuItem1;
+        private System.Windows.Forms.ToolStripMenuItem 编辑宝贝点击ToolStripMenuItem1;
+        private System.Windows.Forms.ToolStripMenuItem 删除宝贝点击ToolStripMenuItem1;
     }
 }
 

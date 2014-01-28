@@ -71,19 +71,28 @@ namespace DianChe.WebServices.BLL
             string result = string.Empty;
             try
             {
-                string strSql = "update t_item_task set update_time=getdate(),remark=@remark,item_title=@item_title,price=@price where local_item_task_id=@local_item_task_id ";
+                string strSql = @"update t_item_task set update_time=getdate(),creative_one_title=@creative_one_title,creative_two_title=@creative_two_title,
+effect_start_time=@effect_start_time,effect_end_time=@effect_end_time,remark=@remark,item_title=@item_title,price=@price where local_item_task_id=@local_item_task_id ";
 
                 SqlParameter[] parameters = {
+                        new SqlParameter("@creative_one_title", SqlDbType.VarChar,100) ,
+                        new SqlParameter("@creative_two_title", SqlDbType.VarChar,100) ,
+                        new SqlParameter("@effect_start_time", SqlDbType.Char,4) ,
+                        new SqlParameter("@effect_end_time", SqlDbType.Char,4) ,
                         new SqlParameter("@remark", SqlDbType.VarChar,1000) ,
                         new SqlParameter("@item_title", SqlDbType.VarChar,100) ,
                         new SqlParameter("@price", SqlDbType.Decimal,9) ,
                         new SqlParameter("@local_item_task_id", SqlDbType.UniqueIdentifier,16) 
                 };
 
-                parameters[0].Value = model.remark;
-                parameters[1].Value = model.item_title;
-                parameters[2].Value = model.price;
-                parameters[3].Value = model.local_item_task_id;
+                parameters[0].Value = model.creative_one_title;
+                parameters[1].Value = model.creative_two_title;
+                parameters[2].Value = model.effect_start_time;
+                parameters[3].Value = model.effect_end_time;
+                parameters[4].Value = model.remark;
+                parameters[5].Value = model.item_title;
+                parameters[6].Value = model.price;
+                parameters[7].Value = model.local_item_task_id;
 
                 DataBase.ExecuteNone(strSql, parameters);
             }

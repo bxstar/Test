@@ -46,6 +46,10 @@ namespace DianChe
                 dtStartTime.Text = currentItem.effect_start_time.Insert(2, ":");
                 dtEndTime.Text = currentItem.effect_end_time.Insert(2, ":");
             }
+            else
+            {
+                cbkEffectTime.Checked = false;
+            }
 
             if (currentItem.is_enable)
             {
@@ -62,7 +66,10 @@ namespace DianChe
             currentItem.remark = txtRemark.Text.Trim();
             currentItem.item_title = txtItemTitle.Text.Trim();
             currentItem.price = Convert.ToDecimal(txtPrice.Text);
-
+            currentItem.creative_one_title = txtCreativeOne.Text.Trim();
+            currentItem.creative_two_title = txtCreativeTwo.Text.Trim();
+            currentItem.effect_start_time = dtStartTime.Value.ToString("HHmm");
+            currentItem.effect_end_time = dtEndTime.Value.ToString("HHmm");
             try
             {
                 string result = FrmMain.ws.EditMyItem(ModelUtil.ConvertLocalToWs(currentItem));
@@ -81,6 +88,11 @@ namespace DianChe
                 MessageBox.Show("添加宝贝失败，请联系管理员！\r\n" + se.Message);
                 return;
             }
+        }
+
+        private void cbkEffectTime_CheckedChanged(object sender, EventArgs e)
+        {
+            lblEndTime.Enabled = lblStartTime.Enabled = dtEndTime.Enabled = dtStartTime.Enabled = cbkEffectTime.Checked;
         }
     }
 }

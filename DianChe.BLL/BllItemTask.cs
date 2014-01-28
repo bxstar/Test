@@ -85,5 +85,10 @@ namespace DianChe.BLL
             string strSql = string.Format("delete from t_item_task where local_item_task_id='{0}'", local_item_task_id.ToString());
             DataBase.ExecuteNone(strSql);
         }
+
+        public void EditMyItem(EntityItemTask model)
+        { 
+            
+        }
     }
 }

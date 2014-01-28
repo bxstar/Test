@@ -56,7 +56,6 @@
             this.txtItemTitle = new System.Windows.Forms.TextBox();
             this.label2 = new System.Windows.Forms.Label();
             this.picItem = new System.Windows.Forms.PictureBox();
-            this.btnGetItem = new System.Windows.Forms.Button();
             this.label1 = new System.Windows.Forms.Label();
             this.btnSave = new System.Windows.Forms.Button();
             this.btnStop = new System.Windows.Forms.Button();
@@ -129,6 +128,7 @@
             this.cbkEffectTime.TabIndex = 27;
             this.cbkEffectTime.Text = "设置时间段";
             this.cbkEffectTime.UseVisualStyleBackColor = true;
+            this.cbkEffectTime.CheckedChanged += new System.EventHandler(this.cbkEffectTime_CheckedChanged);
             // 
             // label13
             // 
@@ -215,6 +215,7 @@
             // 
             // numRunDays
             // 
+            this.numRunDays.Enabled = false;
             this.numRunDays.Location = new System.Drawing.Point(709, 167);
             this.numRunDays.Name = "numRunDays";
             this.numRunDays.Size = new System.Drawing.Size(74, 21);
@@ -227,6 +228,7 @@
             // 
             // numMaxClick
             // 
+            this.numMaxClick.Enabled = false;
             this.numMaxClick.Location = new System.Drawing.Point(432, 167);
             this.numMaxClick.Name = "numMaxClick";
             this.numMaxClick.Size = new System.Drawing.Size(75, 21);
@@ -257,6 +259,7 @@
             // 
             // txtKeyword
             // 
+            this.txtKeyword.Enabled = false;
             this.txtKeyword.Location = new System.Drawing.Point(432, 133);
             this.txtKeyword.Name = "txtKeyword";
             this.txtKeyword.Size = new System.Drawing.Size(352, 21);
@@ -350,15 +353,6 @@
             this.picItem.TabIndex = 7;
             this.picItem.TabStop = false;
             // 
-            // btnGetItem
-            // 
-            this.btnGetItem.Location = new System.Drawing.Point(737, 22);
-            this.btnGetItem.Name = "btnGetItem";
-            this.btnGetItem.Size = new System.Drawing.Size(75, 23);
-            this.btnGetItem.TabIndex = 16;
-            this.btnGetItem.Text = "获取";
-            this.btnGetItem.UseVisualStyleBackColor = true;
-            // 
             // label1
             // 
             this.label1.AutoSize = true;
@@ -406,10 +400,10 @@
             this.Controls.Add(this.txtInputUrl);
             this.Controls.Add(this.btnClose);
             this.Controls.Add(this.groupBox1);
-            this.Controls.Add(this.btnGetItem);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.btnSave);
             this.Name = "FrmEditItem";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "编辑宝贝点击";
             this.Load += new System.EventHandler(this.FrmEditItem_Load);
             this.groupBox1.ResumeLayout(false);
@@ -452,7 +446,6 @@
         private System.Windows.Forms.TextBox txtItemTitle;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.PictureBox picItem;
-        private System.Windows.Forms.Button btnGetItem;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Button btnSave;
         private System.Windows.Forms.Button btnStop;
