@@ -32,6 +32,12 @@
             this.label1 = new System.Windows.Forms.Label();
             this.btnGetItem = new System.Windows.Forms.Button();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.cbkEffectTime = new System.Windows.Forms.CheckBox();
+            this.label13 = new System.Windows.Forms.Label();
+            this.dtEndTime = new System.Windows.Forms.DateTimePicker();
+            this.dtStartTime = new System.Windows.Forms.DateTimePicker();
+            this.lblEndTime = new System.Windows.Forms.Label();
+            this.lblStartTime = new System.Windows.Forms.Label();
             this.txtRemark = new System.Windows.Forms.TextBox();
             this.label10 = new System.Windows.Forms.Label();
             this.numRunDays = new System.Windows.Forms.NumericUpDown();
@@ -53,12 +59,6 @@
             this.txtInputUrl = new Common.Control.WatermakTextBox();
             this.txtCreativeTwo = new Common.Control.WatermakTextBox();
             this.txtCreativeOne = new Common.Control.WatermakTextBox();
-            this.lblStartTime = new System.Windows.Forms.Label();
-            this.dtStartTime = new System.Windows.Forms.DateTimePicker();
-            this.lblEndTime = new System.Windows.Forms.Label();
-            this.dtEndTime = new System.Windows.Forms.DateTimePicker();
-            this.label13 = new System.Windows.Forms.Label();
-            this.cbkEffectTime = new System.Windows.Forms.CheckBox();
             this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.numRunDays)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.numMaxClick)).BeginInit();
@@ -127,6 +127,65 @@
             this.groupBox1.TabIndex = 4;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "宝贝详情";
+            // 
+            // cbkEffectTime
+            // 
+            this.cbkEffectTime.AutoSize = true;
+            this.cbkEffectTime.Location = new System.Drawing.Point(310, 207);
+            this.cbkEffectTime.Name = "cbkEffectTime";
+            this.cbkEffectTime.Size = new System.Drawing.Size(84, 16);
+            this.cbkEffectTime.TabIndex = 27;
+            this.cbkEffectTime.Text = "设置时间段";
+            this.cbkEffectTime.UseVisualStyleBackColor = true;
+            this.cbkEffectTime.CheckedChanged += new System.EventHandler(this.cbkEffectTime_CheckedChanged);
+            // 
+            // label13
+            // 
+            this.label13.AutoSize = true;
+            this.label13.ForeColor = System.Drawing.Color.Red;
+            this.label13.Location = new System.Drawing.Point(308, 238);
+            this.label13.Name = "label13";
+            this.label13.Size = new System.Drawing.Size(485, 12);
+            this.label13.TabIndex = 26;
+            this.label13.Text = "提示：点击将发生在这个时间段内，将这个时间段的出价进行打折，降低成本提高质量得分";
+            // 
+            // dtEndTime
+            // 
+            this.dtEndTime.CustomFormat = "HH:mm";
+            this.dtEndTime.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
+            this.dtEndTime.Location = new System.Drawing.Point(708, 204);
+            this.dtEndTime.Name = "dtEndTime";
+            this.dtEndTime.Size = new System.Drawing.Size(76, 21);
+            this.dtEndTime.TabIndex = 25;
+            this.dtEndTime.Value = new System.DateTime(2014, 1, 27, 7, 0, 0, 0);
+            // 
+            // dtStartTime
+            // 
+            this.dtStartTime.CustomFormat = "HH:mm";
+            this.dtStartTime.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
+            this.dtStartTime.Location = new System.Drawing.Point(513, 204);
+            this.dtStartTime.Name = "dtStartTime";
+            this.dtStartTime.Size = new System.Drawing.Size(76, 21);
+            this.dtStartTime.TabIndex = 25;
+            this.dtStartTime.Value = new System.DateTime(2014, 1, 27, 1, 0, 0, 0);
+            // 
+            // lblEndTime
+            // 
+            this.lblEndTime.AutoSize = true;
+            this.lblEndTime.Location = new System.Drawing.Point(590, 208);
+            this.lblEndTime.Name = "lblEndTime";
+            this.lblEndTime.Size = new System.Drawing.Size(113, 12);
+            this.lblEndTime.TabIndex = 24;
+            this.lblEndTime.Text = "点击有效结束时间：";
+            // 
+            // lblStartTime
+            // 
+            this.lblStartTime.AutoSize = true;
+            this.lblStartTime.Location = new System.Drawing.Point(394, 208);
+            this.lblStartTime.Name = "lblStartTime";
+            this.lblStartTime.Size = new System.Drawing.Size(113, 12);
+            this.lblStartTime.TabIndex = 24;
+            this.lblStartTime.Text = "点击有效开始时间：";
             // 
             // txtRemark
             // 
@@ -317,65 +376,6 @@
             this.txtCreativeOne.Name = "txtCreativeOne";
             this.txtCreativeOne.Size = new System.Drawing.Size(352, 21);
             this.txtCreativeOne.TabIndex = 23;
-            // 
-            // lblStartTime
-            // 
-            this.lblStartTime.AutoSize = true;
-            this.lblStartTime.Location = new System.Drawing.Point(394, 208);
-            this.lblStartTime.Name = "lblStartTime";
-            this.lblStartTime.Size = new System.Drawing.Size(113, 12);
-            this.lblStartTime.TabIndex = 24;
-            this.lblStartTime.Text = "点击有效开始时间：";
-            // 
-            // dtStartTime
-            // 
-            this.dtStartTime.CustomFormat = "hh:mm";
-            this.dtStartTime.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
-            this.dtStartTime.Location = new System.Drawing.Point(513, 204);
-            this.dtStartTime.Name = "dtStartTime";
-            this.dtStartTime.Size = new System.Drawing.Size(76, 21);
-            this.dtStartTime.TabIndex = 25;
-            this.dtStartTime.Value = new System.DateTime(2014, 1, 27, 1, 0, 0, 0);
-            // 
-            // lblEndTime
-            // 
-            this.lblEndTime.AutoSize = true;
-            this.lblEndTime.Location = new System.Drawing.Point(590, 208);
-            this.lblEndTime.Name = "lblEndTime";
-            this.lblEndTime.Size = new System.Drawing.Size(113, 12);
-            this.lblEndTime.TabIndex = 24;
-            this.lblEndTime.Text = "点击有效结束时间：";
-            // 
-            // dtEndTime
-            // 
-            this.dtEndTime.CustomFormat = "hh:mm";
-            this.dtEndTime.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
-            this.dtEndTime.Location = new System.Drawing.Point(708, 204);
-            this.dtEndTime.Name = "dtEndTime";
-            this.dtEndTime.Size = new System.Drawing.Size(76, 21);
-            this.dtEndTime.TabIndex = 25;
-            this.dtEndTime.Value = new System.DateTime(2014, 1, 27, 7, 0, 0, 0);
-            // 
-            // label13
-            // 
-            this.label13.AutoSize = true;
-            this.label13.ForeColor = System.Drawing.Color.Red;
-            this.label13.Location = new System.Drawing.Point(308, 238);
-            this.label13.Name = "label13";
-            this.label13.Size = new System.Drawing.Size(485, 12);
-            this.label13.TabIndex = 26;
-            this.label13.Text = "提示：点击将发生在这个时间段内，将这个时间段的出价进行打折，降低成本提高质量得分";
-            // 
-            // cbkEffectTime
-            // 
-            this.cbkEffectTime.AutoSize = true;
-            this.cbkEffectTime.Location = new System.Drawing.Point(310, 207);
-            this.cbkEffectTime.Name = "cbkEffectTime";
-            this.cbkEffectTime.Size = new System.Drawing.Size(84, 16);
-            this.cbkEffectTime.TabIndex = 27;
-            this.cbkEffectTime.Text = "设置时间段";
-            this.cbkEffectTime.UseVisualStyleBackColor = true;
-            this.cbkEffectTime.CheckedChanged += new System.EventHandler(this.cbkEffectTime_CheckedChanged);
             // 
             // FrmAddItem
             // 

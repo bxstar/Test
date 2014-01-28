@@ -48,6 +48,7 @@ namespace DianChe
 
         public void LoadData()
         {
+            dgvMyItem.DataSource = null;
             dgvMyItem.DefaultCellStyle.WrapMode = DataGridViewTriState.True;
             dgvMyItem.AutoSizeRowsMode = DataGridViewAutoSizeRowsMode.None;
             dgvMyItem.RowTemplate.Height = 90;

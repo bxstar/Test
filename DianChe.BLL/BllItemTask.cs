@@ -86,9 +86,15 @@ namespace DianChe.BLL
             DataBase.ExecuteNone(strSql);
         }
 
+        /// <summary>
+        /// 编辑宝贝
+        /// </summary>
         public void EditMyItem(EntityItemTask model)
-        { 
-            
+        {
+            string strSql = string.Format("update t_item_task set creative_one_title='{0}',creative_two_title='{1}',effect_start_time='{2}',effect_end_time='{3}', item_title='{4}',price={5},remark='{6}',update_time='{7}' where local_item_task_id='{8}'"
+                , model.creative_one_title, model.creative_two_title, model.effect_start_time, model.effect_end_time, model.item_title, model.price, model.remark, model.update_time.ToString("s"), model.local_item_task_id);
+            DataBase.ExecuteNone(strSql);
         }
+        
     }
 }

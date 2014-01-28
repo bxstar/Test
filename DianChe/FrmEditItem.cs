@@ -6,6 +6,7 @@ using System.Drawing;
 using System.Text;
 using System.Windows.Forms;
 using DianChe.Model;
+using DianChe.BLL;
 
 namespace DianChe
 {
@@ -16,7 +17,7 @@ namespace DianChe
         /// </summary>
         public FrmItemMag frmItemMag = null;
 
-
+        BllItemTask bllItemTask = new BllItemTask();
         /// <summary>
         /// 当前选中的宝贝
         /// </summary>
@@ -68,13 +69,21 @@ namespace DianChe
             currentItem.price = Convert.ToDecimal(txtPrice.Text);
             currentItem.creative_one_title = txtCreativeOne.Text.Trim();
             currentItem.creative_two_title = txtCreativeTwo.Text.Trim();
-            currentItem.effect_start_time = dtStartTime.Value.ToString("HHmm");
-            currentItem.effect_end_time = dtEndTime.Value.ToString("HHmm");
+            if (cbkEffectTime.Checked)
+            {
+                currentItem.effect_start_time = dtStartTime.Value.ToString("HHmm");
+                currentItem.effect_end_time = dtEndTime.Value.ToString("HHmm");
+            }
+            else
+            {
+                currentItem.effect_start_time = currentItem.effect_end_time = string.Empty;
+            }
             try
             {
                 string result = FrmMain.ws.EditMyItem(ModelUtil.ConvertLocalToWs(currentItem));
                 if (result.Length == 0)
                 {
+                    bllItemTask.EditMyItem(currentItem);
                     frmItemMag.RefreshDgv();
                     this.Close();
                 }

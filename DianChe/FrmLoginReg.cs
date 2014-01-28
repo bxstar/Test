@@ -26,15 +26,22 @@ namespace DianChe
 
         private void btnReg_Click(object sender, EventArgs e)
         {
+            btnReg.Enabled = false;
+            btnReg.Text = "注册中...";
+
             if (txtRegPwd.Text.Trim() != txtRegPwdConfirm.Text.Trim())
             {
                 MessageBox.Show("两次输入的密码不一致，请重新输入密码，并且两次的密码一致！");
+                btnReg.Enabled = true;
+                btnReg.Text = "注册";
                 return;
             }
             string mac_address = Common.Helper.GetMacAddress();
             if (ws.IsExistMac(mac_address))
             {
                 MessageBox.Show("该机器已经被注册过，请直接登录！");
+                btnReg.Enabled = true;
+                btnReg.Text = "注册";
                 return;
             }
 
@@ -43,6 +50,8 @@ namespace DianChe
             if (ws.IsExistUser(user_name))
             {
                 MessageBox.Show("该用户名已经被使用过，请换一个！");
+                btnReg.Enabled = true;
+                btnReg.Text = "注册";
                 return;
             }
 
@@ -68,6 +77,8 @@ namespace DianChe
             else
             {
                 MessageBox.Show("注册失败！");
+                btnReg.Enabled = true;
+                btnReg.Text = "注册";
             }
 
         }
@@ -97,6 +108,7 @@ namespace DianChe
             {
                 MessageBox.Show("登录失败，请检查用户名密码！");
                 btnLogin.Enabled = true;
+                btnLogin.Text = "登录";
             }
         }
 
