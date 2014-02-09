@@ -49,6 +49,12 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="FrmItemClick.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FrmItemClick.Designer.cs">
+      <DependentUpon>FrmItemClick.cs</DependentUpon>
+    </Compile>
     <Compile Include="FrmSearch.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -57,6 +63,9 @@
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <EmbeddedResource Include="FrmItemClick.resx">
+      <DependentUpon>FrmItemClick.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="FrmSearch.resx">
       <DependentUpon>FrmSearch.cs</DependentUpon>
     </EmbeddedResource>
@@ -82,6 +91,10 @@
     </Compile>
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\Common\Common.csproj">
+      <Project>{9222938E-C0FF-44A7-AEE7-74BC92E93403}</Project>
+      <Name>Common</Name>
+    </ProjectReference>
     <ProjectReference Include="..\DianChe.BLL\DianChe.BLL.csproj">
       <Project>{7D267EFA-B718-4466-936B-C268F256A6ED}</Project>
       <Name>DianChe.BLL</Name>

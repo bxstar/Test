@@ -24,6 +24,11 @@ namespace DianChe
         /// </summary>
         private EntityItemClick CurrentItemClick = null;
 
+        /// <summary>
+        /// 开始点击时间
+        /// </summary>
+        private DateTime dtStartClick;
+
         private BLL.BllItemClick bllItemClick = new BLL.BllItemClick();
 
         public FrmWeb frmWeb = null;
@@ -64,11 +69,6 @@ namespace DianChe
             frmItemRank.Show(dockPanel1);
         }
 
-        private void FindItemByWeb()
-        {
-            frmWeb.Navigate();
-        }
-
         private void timer1_Tick(object sender, EventArgs e)
         {
             SaveAlive();
@@ -82,8 +82,8 @@ namespace DianChe
             else
             {
                 EntityItemClick ec = bllItemClick.GetItemClickById(CurrentItemClick.local_id);
-                if (ec.is_succeed.HasValue)
-                {//任务完成，可以开始下一个任务
+                if (ec.is_succeed.HasValue || dtStartClick.AddMinutes(3) < DateTime.Now)
+                {//任务完成或超过3分钟还没有完成，则可以开始下一个任务
                     isCanDo = true;
                     CurrentItemClick = null;
                 }
@@ -94,10 +94,10 @@ namespace DianChe
                 List<EntityItemClick> lstItemClick = bllItemClick.GetItemClick().Where(o => o.create_time.DayOfYear == DateTime.Now.DayOfYear && o.is_succeed == null).ToList();
                 if (lstItemClick.Count > 0)
                 {
-                    CurrentItemClick = lstItemClick[0];
-                    frmWeb.FindItem = CurrentItemClick;
-                    System.Threading.Thread t1 = new System.Threading.Thread(FindItemByWeb);
-                    t1.Start();
+                    Random r = new Random();        //随机选择一个宝贝点击任务，以防每次都卡在第一个宝贝的点击上
+                    CurrentItemClick = lstItemClick[r.Next(lstItemClick.Count)];
+                    dtStartClick = DateTime.Now;
+                    System.Diagnostics.Process.Start("DianChe.Search.exe", CurrentItemClick.local_id.ToString());
                 }
             }
         }

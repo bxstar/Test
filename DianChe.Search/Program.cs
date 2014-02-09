@@ -20,7 +20,12 @@ namespace DianChe.Search
             //logger.InfoFormat("args length ：" + args.Length);
             string keyword = string.Empty;
             string itemIds = string.Empty;
-            if (args.Length != 0)
+            string itemclick_local_id = string.Empty;
+            if (args.Length == 1)
+            {
+                itemclick_local_id = args[0];
+            }
+            else if (args.Length == 2)
             {
                 keyword = args[0];
                 itemIds = args[1];
@@ -31,16 +36,26 @@ namespace DianChe.Search
                 itemIds = "22369723353";
             }
 
+            //logger.InfoFormat(itemclick_local_id);
             //logger.InfoFormat("{0} {1}", keyword, itemIds);
 
 
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
 
-            FrmSearch frm = new FrmSearch();
-            frm.currMonitorKeyword = keyword;
-            frm.findItemIds = itemIds;
-            Application.Run(frm);
+            if (args.Length == 1)
+            {
+                FrmItemClick frm = new FrmItemClick();
+                frm.FindItem = new BLL.BllItemClick().GetItemClickById(Convert.ToInt64(itemclick_local_id));
+                Application.Run(frm);
+            }
+            else if (args.Length == 2)
+            {
+                FrmSearch frm = new FrmSearch();
+                frm.currMonitorKeyword = keyword;
+                frm.findItemIds = itemIds;
+                Application.Run(frm);
+            }
         }
     }
 }

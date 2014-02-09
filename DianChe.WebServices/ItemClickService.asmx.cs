@@ -132,6 +132,9 @@ namespace DianChe.WebServices
             return bllItemClick.DeleteItemTask(new Guid(local_item_task_id));
         }
 
+        /// <summary>
+        /// 分配点击任务
+        /// </summary>
         [System.Web.Services.Protocols.SoapHeader("myHeader")]
         [WebMethod]
         public List<EntityItemClick> DispatchItemClick(string mac_address)
@@ -143,6 +146,15 @@ namespace DianChe.WebServices
             string ip_address = GetRequestIP();
 
             return bllItemClick.DispatchItemClick(mac_address, ip_address);
+        }
+
+        /// <summary>
+        /// 设置点击任务的完成状态
+        /// </summary>
+        [WebMethod]
+        public void SetItemClickSucceed(long item_id, string mac_address, Boolean is_succeed)
+        {
+            bllItemClick.SetItemClickSucceed(item_id, mac_address, is_succeed);
         }
 
         [System.Web.Services.Protocols.SoapHeader("myHeader")]

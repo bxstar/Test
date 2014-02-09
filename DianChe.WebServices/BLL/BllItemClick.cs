@@ -162,5 +162,20 @@ effect_start_time=@effect_start_time,effect_end_time=@effect_end_time,remark=@re
             return lst;
         }
 
+        /// <summary>
+        /// 设置点击任务的完成状态
+        /// </summary>
+        public void SetItemClickSucceed(long item_id, string mac_address, Boolean is_succeed)
+        {
+            string strSql = string.Format(@"UPDATE t_item_click
+SET is_succeed = {0} WHERE item_id={1} AND mac_address=@mac_address", is_succeed ? 1 : 0, item_id);
+
+            SqlParameter[] parameters = {
+                        new SqlParameter("@mac_address", SqlDbType.VarChar,50)};
+
+            parameters[0].Value = mac_address;
+            DataBase.ExecuteNone(strSql, parameters);
+
+        }
     }
 }
