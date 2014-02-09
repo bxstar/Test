@@ -22,5 +22,15 @@ namespace DianChe.Search.Properties {
                 return defaultInstance;
             }
         }
+        
+        [global::System.Configuration.ApplicationScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.SpecialSettingAttribute(global::System.Configuration.SpecialSetting.WebServiceUrl)]
+        [global::System.Configuration.DefaultSettingValueAttribute("http://211.149.190.121:8080/ItemClickService.asmx")]
+        public string DianChe_Search_DianCheWebService_ItemClickService {
+            get {
+                return ((string)(this["DianChe_Search_DianCheWebService_ItemClickService"]));
+            }
+        }
     }
 }

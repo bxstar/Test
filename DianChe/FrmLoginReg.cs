@@ -56,7 +56,7 @@ namespace DianChe
             }
 
 
-            string pwd = txtRegPwd.Text.Trim();
+            string pwd = EncryptUtils.EncryptString(txtRegPwd.Text.Trim());
             string phone = txtRegPhone.Text.Trim();
             string email = txtRegEmail.Text.Trim();
             CPUInfo cpuInfo = new CPUInfo();
@@ -89,14 +89,14 @@ namespace DianChe
             btnLogin.Text = "登录中...";
 
             string user_name = txtLoginUserName.Text.Trim();
-            string pwd = txtLoginPwd.Text.Trim();
+            string pwd = EncryptUtils.EncryptString(txtLoginPwd.Text.Trim());
             CPUInfo cpuInfo = new CPUInfo();
             cpuInfo.GetCPUInfo();
             string cpu = cpuInfo.CPUName;
             string osname = OSVersionInfo.SystemName;
             Computer cp = Computer.Instance();
             string mem = cp.TotalPhysicalMemory;
-            DianCheWebService.EntityUser user = ws.UserLogin(user_name, pwd,cpu,mem,osname);
+            DianCheWebService.EntityUser user = ws.UserLogin(user_name, pwd, cpu, mem, osname);
             if (user != null)
             {
                 this.Hide();

@@ -151,9 +151,14 @@ namespace DianChe.WebServices
         /// <summary>
         /// 设置点击任务的完成状态
         /// </summary>
+        [System.Web.Services.Protocols.SoapHeader("myHeader")]
         [WebMethod]
         public void SetItemClickSucceed(long item_id, string mac_address, Boolean is_succeed)
         {
+            if (bllUser.Get(myHeader.UserName, myHeader.PassWord) == null)
+            {
+                throw new Exception("对不起，您没有权限调用此服务！");
+            }
             bllItemClick.SetItemClickSucceed(item_id, mac_address, is_succeed);
         }
 

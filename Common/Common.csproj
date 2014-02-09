@@ -60,6 +60,7 @@
     <Compile Include="DB\BaseTable.cs" />
     <Compile Include="DB\DataBase.cs" />
     <Compile Include="DB\DataUtil.cs" />
+    <Compile Include="EncryptUtils.cs" />
     <Compile Include="OSVersionInfo.cs" />
     <Compile Include="ResourceOperate.cs" />
     <Compile Include="SortableBindingList.cs" />

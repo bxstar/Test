@@ -18,17 +18,24 @@ namespace DianChe.Search
         static void Main(string[] args)
         {
             //logger.InfoFormat("args length ：" + args.Length);
+            string user_name = string.Empty;
+            string pwd_encry = string.Empty;
             string keyword = string.Empty;
             string itemIds = string.Empty;
             string itemclick_local_id = string.Empty;
-            if (args.Length == 1)
+
+            if (args.Length == 3)
             {
-                itemclick_local_id = args[0];
+                user_name = args[0];
+                pwd_encry = args[1];
+                itemclick_local_id = args[2];
             }
-            else if (args.Length == 2)
+            else if (args.Length == 4)
             {
-                keyword = args[0];
-                itemIds = args[1];
+                user_name = args[0];
+                pwd_encry = args[1];
+                keyword = args[2];
+                itemIds = args[3];
             }
             else
             {
@@ -43,13 +50,15 @@ namespace DianChe.Search
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
 
-            if (args.Length == 1)
+            if (args.Length == 3)
             {
                 FrmItemClick frm = new FrmItemClick();
+                frm.CurrentUser = new DianCheWebService.EntityUser() { user_name = user_name, pwd = pwd_encry };
                 frm.FindItem = new BLL.BllItemClick().GetItemClickById(Convert.ToInt64(itemclick_local_id));
+                frm.FindItem.mac_address = Common.Helper.GetMacAddress();
                 Application.Run(frm);
             }
-            else if (args.Length == 2)
+            else if (args.Length == 4)
             {
                 FrmSearch frm = new FrmSearch();
                 frm.currMonitorKeyword = keyword;

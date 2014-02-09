@@ -97,7 +97,7 @@ namespace DianChe
                     Random r = new Random();        //随机选择一个宝贝点击任务，以防每次都卡在第一个宝贝的点击上
                     CurrentItemClick = lstItemClick[r.Next(lstItemClick.Count)];
                     dtStartClick = DateTime.Now;
-                    System.Diagnostics.Process.Start("DianChe.Search.exe", CurrentItemClick.local_id.ToString());
+                    System.Diagnostics.Process.Start("DianChe.Search.exe", string.Format("{0} {1} {2}", CurrentUser.user_name, CurrentUser.pwd, CurrentItemClick.local_id.ToString()));
                 }
             }
         }

@@ -14,6 +14,11 @@ namespace DianChe.Search
 {
     public partial class FrmItemClick : Form
     {
+        /// <summary>
+        /// web代理类，除登录页面静态全局使用
+        /// </summary>
+        public DianCheWebService.ItemClickService ws;
+        public DianCheWebService.EntityUser CurrentUser = null;
         private BLL.BllItemClick bllItemClick = new BLL.BllItemClick();
         private static ILog logger = log4net.LogManager.GetLogger("Logger");
 
@@ -43,6 +48,22 @@ namespace DianChe.Search
         public FrmItemClick()
         {
             InitializeComponent();
+            InitWebServiceProxy();
+        }
+
+        /// <summary>
+        /// 初始化WebSerivce代理类，完成身份认证
+        /// </summary>
+        public void InitWebServiceProxy()
+        {
+            ws = new DianCheWebService.ItemClickService();
+            if (CurrentUser != null)
+            {
+                DianCheWebService.MySoapHeader header = new DianCheWebService.MySoapHeader();
+                header.UserName = CurrentUser.user_name;
+                header.PassWord = CurrentUser.pwd;
+                ws.MySoapHeaderValue = header;
+            }
         }
 
         private void FrmItemClick_Load(object sender, EventArgs e)
@@ -69,12 +90,13 @@ namespace DianChe.Search
                     FindItem.is_succeed = true;
                     bllItemClick.SetItemClickSucceed(FindItem);
                     try
-                    {//TODO 更新线上的成功状态
-                        //Frm
+                    {//更新线上的成功状态
+                        ws.SetItemClickSucceed(FindItem.item_id, FindItem.mac_address, true);
                     }
                     catch (Exception se)
                     {
-
+                        MessageBox.Show(se.Message);
+                        //logger.Error("更新宝贝点击任务完成状态出错", se);
                     }
                     finally
                     {
