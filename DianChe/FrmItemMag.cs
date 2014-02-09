@@ -67,6 +67,7 @@ namespace DianChe
 
         private void timer1_Tick(object sender, EventArgs e)
         {
+            //logger.InfoFormat("获取点击任务");
             string mac_address = Helper.GetMacAddress();
             try
             {
@@ -86,6 +87,11 @@ namespace DianChe
 
         private void 编辑宝贝点击ToolStripMenuItem_Click(object sender, EventArgs e)
         {
+            if (currSelectedItem == null)
+            {
+                MessageBox.Show("没有需要编辑的宝贝");
+                return;
+            }
             FrmEditItem frm = new FrmEditItem();
             frm.frmItemMag = this;
             frm.currentItem = currSelectedItem;
@@ -94,6 +100,12 @@ namespace DianChe
 
         private void 删除宝贝点击ToolStripMenuItem_Click(object sender, EventArgs e)
         {
+            if (currSelectedItem == null)
+            {
+                MessageBox.Show("没有需要删除的宝贝");
+                return;
+            }
+
             if (MessageBox.Show(string.Format("是否要删除宝贝“{0}”的点击任务", currSelectedItem.item_title), "确认", MessageBoxButtons.OKCancel, MessageBoxIcon.Question, MessageBoxDefaultButton.Button2) == DialogResult.OK)
             {
                 try

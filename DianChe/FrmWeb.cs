@@ -95,7 +95,7 @@ namespace DianChe
                 if (he.GetAttribute("classname") == "summary")
                 {
                     string title = he.GetAttribute("title");
-                    logger.InfoFormat("第{0}页，标题：{1}", pageIndex, title);
+                    //logger.InfoFormat("第{0}页，标题：{1}", pageIndex, title);
                     if (title == item.creative_one_title || title == item.creative_two_title)
                     {
                         timer1.Enabled = false;

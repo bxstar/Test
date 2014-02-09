@@ -32,9 +32,10 @@
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
             this.宝贝管理ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.新增宝贝点击ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.编辑宝贝点击ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.删除宝贝点击ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.panel1 = new System.Windows.Forms.Panel();
             this.dgvMyItem = new System.Windows.Forms.DataGridView();
-            this.timer1 = new System.Windows.Forms.Timer(this.components);
             this.colItemTitle = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.colImg = new System.Windows.Forms.DataGridViewImageColumn();
             this.colPrice = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -49,12 +50,11 @@
             this.colCreateTime = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.colUpdateTime = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.colEnable = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.编辑宝贝点击ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.删除宝贝点击ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.contextMenuStrip1 = new System.Windows.Forms.ContextMenuStrip(this.components);
             this.新增宝贝点击ToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
             this.编辑宝贝点击ToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
             this.删除宝贝点击ToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
+            this.timer1 = new System.Windows.Forms.Timer(this.components);
             this.menuStrip1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvMyItem)).BeginInit();
             this.contextMenuStrip1.SuspendLayout();
@@ -83,9 +83,23 @@
             // 新增宝贝点击ToolStripMenuItem
             // 
             this.新增宝贝点击ToolStripMenuItem.Name = "新增宝贝点击ToolStripMenuItem";
-            this.新增宝贝点击ToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.新增宝贝点击ToolStripMenuItem.Size = new System.Drawing.Size(148, 22);
             this.新增宝贝点击ToolStripMenuItem.Text = "新增宝贝点击";
             this.新增宝贝点击ToolStripMenuItem.Click += new System.EventHandler(this.新增宝贝点击ToolStripMenuItem_Click);
+            // 
+            // 编辑宝贝点击ToolStripMenuItem
+            // 
+            this.编辑宝贝点击ToolStripMenuItem.Name = "编辑宝贝点击ToolStripMenuItem";
+            this.编辑宝贝点击ToolStripMenuItem.Size = new System.Drawing.Size(148, 22);
+            this.编辑宝贝点击ToolStripMenuItem.Text = "编辑宝贝点击";
+            this.编辑宝贝点击ToolStripMenuItem.Click += new System.EventHandler(this.编辑宝贝点击ToolStripMenuItem_Click);
+            // 
+            // 删除宝贝点击ToolStripMenuItem
+            // 
+            this.删除宝贝点击ToolStripMenuItem.Name = "删除宝贝点击ToolStripMenuItem";
+            this.删除宝贝点击ToolStripMenuItem.Size = new System.Drawing.Size(148, 22);
+            this.删除宝贝点击ToolStripMenuItem.Text = "删除宝贝点击";
+            this.删除宝贝点击ToolStripMenuItem.Click += new System.EventHandler(this.删除宝贝点击ToolStripMenuItem_Click);
             // 
             // panel1
             // 
@@ -127,12 +141,6 @@
             this.dgvMyItem.TabIndex = 12;
             this.dgvMyItem.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvMyItem_CellClick);
             this.dgvMyItem.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvMyItem_CellDoubleClick);
-            // 
-            // timer1
-            // 
-            this.timer1.Enabled = true;
-            this.timer1.Interval = 10000;
-            this.timer1.Tick += new System.EventHandler(this.timer1_Tick);
             // 
             // colItemTitle
             // 
@@ -243,20 +251,6 @@
             this.colEnable.ReadOnly = true;
             this.colEnable.Width = 60;
             // 
-            // 编辑宝贝点击ToolStripMenuItem
-            // 
-            this.编辑宝贝点击ToolStripMenuItem.Name = "编辑宝贝点击ToolStripMenuItem";
-            this.编辑宝贝点击ToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
-            this.编辑宝贝点击ToolStripMenuItem.Text = "编辑宝贝点击";
-            this.编辑宝贝点击ToolStripMenuItem.Click += new System.EventHandler(this.编辑宝贝点击ToolStripMenuItem_Click);
-            // 
-            // 删除宝贝点击ToolStripMenuItem
-            // 
-            this.删除宝贝点击ToolStripMenuItem.Name = "删除宝贝点击ToolStripMenuItem";
-            this.删除宝贝点击ToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
-            this.删除宝贝点击ToolStripMenuItem.Text = "删除宝贝点击";
-            this.删除宝贝点击ToolStripMenuItem.Click += new System.EventHandler(this.删除宝贝点击ToolStripMenuItem_Click);
-            // 
             // contextMenuStrip1
             // 
             this.contextMenuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
@@ -286,6 +280,12 @@
             this.删除宝贝点击ToolStripMenuItem1.Size = new System.Drawing.Size(152, 22);
             this.删除宝贝点击ToolStripMenuItem1.Text = "删除宝贝点击";
             this.删除宝贝点击ToolStripMenuItem1.Click += new System.EventHandler(this.删除宝贝点击ToolStripMenuItem_Click);
+            // 
+            // timer1
+            // 
+            this.timer1.Enabled = true;
+            this.timer1.Interval = 30000;
+            this.timer1.Tick += new System.EventHandler(this.timer1_Tick);
             // 
             // FrmItemMag
             // 
