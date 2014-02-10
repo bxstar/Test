@@ -26,16 +26,33 @@ namespace DianChe
 
         private void btnReg_Click(object sender, EventArgs e)
         {
-            btnReg.Enabled = false;
-            btnReg.Text = "注册中...";
+            if (txtRegUserName.Text.Trim().Length == 0)
+            {
+                MessageBox.Show("请输入用户名！");
+                return;
+            }
+
+            if (txtRegPwd.Text.Trim().Length == 0)
+            {
+                MessageBox.Show("请输入密码！");
+                return;
+            }
+
+            if (txtRegPwd.Text.Trim().Length <6)
+            {
+                MessageBox.Show("密码长度不能小于6位！");
+                return;
+            }
 
             if (txtRegPwd.Text.Trim() != txtRegPwdConfirm.Text.Trim())
             {
                 MessageBox.Show("两次输入的密码不一致，请重新输入密码，并且两次的密码一致！");
-                btnReg.Enabled = true;
-                btnReg.Text = "注册";
                 return;
             }
+
+            btnReg.Enabled = false;
+            btnReg.Text = "注册中...";
+
             string mac_address = Common.Helper.GetMacAddress();
             if (ws.IsExistMac(mac_address))
             {
