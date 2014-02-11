@@ -8,11 +8,14 @@ using System.Windows.Forms;
 using DianChe.Model;
 using System.Linq;
 using Common;
+using WeifenLuo.WinFormsUI.Docking;
 
 namespace DianChe
 {
     public partial class FrmMain : Form
     {
+        //private DeserializeDockContent m_deserializeDockContent = new DeserializeDockContent(GetContentFromPersistString);
+
         /// <summary>
         /// web代理类，除登录页面静态全局使用
         /// </summary>
@@ -32,6 +35,8 @@ namespace DianChe
         private BLL.BllItemClick bllItemClick = new BLL.BllItemClick();
 
         public FrmWeb frmWeb = null;
+        public FrmItemMag frmItemMag = null;
+        public FrmItemRank frmItemRank = null;
 
         public FrmMain()
         {
@@ -56,17 +61,49 @@ namespace DianChe
 
         private void FrmMain_Load(object sender, EventArgs e)
         {
+            frmItemMag = new FrmItemMag();
+            frmItemRank = new FrmItemRank();
+            frmWeb = new FrmWeb();
+
+            string uiFile = System.Windows.Forms.Application.StartupPath + "\\Configs\\CustomUI.xml";
+            if (System.IO.File.Exists(uiFile))
+            {
+                DeserializeDockContent ddContent = new DeserializeDockContent(GetContentFromPersistString);
+                dockPanel1.LoadFromXml(uiFile, ddContent);
+            }
+            else
+            {
+                frmItemMag.Show(dockPanel1);
+                frmWeb.Show(dockPanel1);
+                frmItemRank.Show(dockPanel1);                
+            }
+
             SaveAlive();
             if (CurrentUser != null)
                 this.Text = string.Format("欢迎{0}使用{1}", "（" + CurrentUser.user_name + "）", this.Text);
+        }
 
-            FrmItemMag frmItemMag = new FrmItemMag();
-            FrmItemRank frmItemRank = new FrmItemRank();
-            frmWeb = new FrmWeb();
-
-            frmItemMag.Show(dockPanel1);
-            frmWeb.Show(dockPanel1);
-            frmItemRank.Show(dockPanel1);
+        /// <summary>
+        /// 配置委托函数
+        /// </summary>
+        private IDockContent GetContentFromPersistString(string persistString)
+        {
+            if (persistString == typeof(FrmItemMag).ToString())
+            {
+                return new FrmItemMag();
+            }
+            else if (persistString == typeof(FrmItemRank).ToString())
+            {
+                return new FrmItemRank();
+            }
+            else if (persistString == typeof(FrmWeb).ToString())
+            {
+                return new FrmWeb();
+            }
+            else
+            {
+                return null;
+            }
         }
 
         private void timer1_Tick(object sender, EventArgs e)
@@ -104,6 +141,7 @@ namespace DianChe
 
         private void FrmMain_FormClosed(object sender, FormClosedEventArgs e)
         {
+            dockPanel1.SaveAsXml(System.Windows.Forms.Application.StartupPath + "\\Configs\\CustomUI.xml");
             Application.Exit();
         }
 
