@@ -14,8 +14,6 @@ namespace DianChe
 {
     public partial class FrmMain : Form
     {
-        //private DeserializeDockContent m_deserializeDockContent = new DeserializeDockContent(GetContentFromPersistString);
-
         /// <summary>
         /// web代理类，除登录页面静态全局使用
         /// </summary>
@@ -37,6 +35,7 @@ namespace DianChe
         public FrmWeb frmWeb = null;
         public FrmItemMag frmItemMag = null;
         public FrmItemRank frmItemRank = null;
+        public FrmLeftMenu frmLeftMenu = null;
 
         public FrmMain()
         {
@@ -64,6 +63,7 @@ namespace DianChe
             frmItemMag = new FrmItemMag();
             frmItemRank = new FrmItemRank();
             frmWeb = new FrmWeb();
+            frmLeftMenu = new FrmLeftMenu();
 
             string uiFile = System.Windows.Forms.Application.StartupPath + "\\Configs\\CustomUI.xml";
             if (System.IO.File.Exists(uiFile))
@@ -74,8 +74,10 @@ namespace DianChe
             else
             {
                 frmItemMag.Show(dockPanel1);
+                frmItemRank.Show(dockPanel1);
+                frmLeftMenu.Show(dockPanel1);
+                frmLeftMenu.DockTo(dockPanel1, DockStyle.Left);
                 frmWeb.Show(dockPanel1);
-                frmItemRank.Show(dockPanel1);                
             }
 
             SaveAlive();
@@ -95,6 +97,10 @@ namespace DianChe
             else if (persistString == typeof(FrmItemRank).ToString())
             {
                 return new FrmItemRank();
+            }
+            else if (persistString == typeof(FrmLeftMenu).ToString())
+            {
+                return new FrmLeftMenu();
             }
             else if (persistString == typeof(FrmWeb).ToString())
             {
