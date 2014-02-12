@@ -39,6 +39,10 @@ namespace DianChe.DianCheWebService {
         
         private System.Threading.SendOrPostCallback RegUserOperationCompleted;
         
+        private System.Threading.SendOrPostCallback UserInfoEditOperationCompleted;
+        
+        private System.Threading.SendOrPostCallback UserPwdEditOperationCompleted;
+        
         private System.Threading.SendOrPostCallback UserLoginOperationCompleted;
         
         private System.Threading.SendOrPostCallback AddMyItemOperationCompleted;
@@ -48,6 +52,8 @@ namespace DianChe.DianCheWebService {
         private System.Threading.SendOrPostCallback DeleteMyItemOperationCompleted;
         
         private System.Threading.SendOrPostCallback DispatchItemClickOperationCompleted;
+        
+        private System.Threading.SendOrPostCallback SetItemClickSucceedOperationCompleted;
         
         private System.Threading.SendOrPostCallback SaveAliveOperationCompleted;
         
@@ -123,6 +129,12 @@ namespace DianChe.DianCheWebService {
         public event RegUserCompletedEventHandler RegUserCompleted;
         
         /// <remarks/>
+        public event UserInfoEditCompletedEventHandler UserInfoEditCompleted;
+        
+        /// <remarks/>
+        public event UserPwdEditCompletedEventHandler UserPwdEditCompleted;
+        
+        /// <remarks/>
         public event UserLoginCompletedEventHandler UserLoginCompleted;
         
         /// <remarks/>
@@ -136,6 +148,9 @@ namespace DianChe.DianCheWebService {
         
         /// <remarks/>
         public event DispatchItemClickCompletedEventHandler DispatchItemClickCompleted;
+        
+        /// <remarks/>
+        public event SetItemClickSucceedCompletedEventHandler SetItemClickSucceedCompleted;
         
         /// <remarks/>
         public event SaveAliveCompletedEventHandler SaveAliveCompleted;
@@ -284,6 +299,73 @@ namespace DianChe.DianCheWebService {
             if ((this.RegUserCompleted != null)) {
                 System.Web.Services.Protocols.InvokeCompletedEventArgs invokeArgs = ((System.Web.Services.Protocols.InvokeCompletedEventArgs)(arg));
                 this.RegUserCompleted(this, new RegUserCompletedEventArgs(invokeArgs.Results, invokeArgs.Error, invokeArgs.Cancelled, invokeArgs.UserState));
+            }
+        }
+        
+        /// <remarks/>
+        [System.Web.Services.Protocols.SoapHeaderAttribute("MySoapHeaderValue")]
+        [System.Web.Services.Protocols.SoapDocumentMethodAttribute("http://tempuri.org/UserInfoEdit", RequestNamespace="http://tempuri.org/", ResponseNamespace="http://tempuri.org/", Use=System.Web.Services.Description.SoapBindingUse.Literal, ParameterStyle=System.Web.Services.Protocols.SoapParameterStyle.Wrapped)]
+        public EntityUser UserInfoEdit(int user_id, string user_name, string phone, string email) {
+            object[] results = this.Invoke("UserInfoEdit", new object[] {
+                        user_id,
+                        user_name,
+                        phone,
+                        email});
+            return ((EntityUser)(results[0]));
+        }
+        
+        /// <remarks/>
+        public void UserInfoEditAsync(int user_id, string user_name, string phone, string email) {
+            this.UserInfoEditAsync(user_id, user_name, phone, email, null);
+        }
+        
+        /// <remarks/>
+        public void UserInfoEditAsync(int user_id, string user_name, string phone, string email, object userState) {
+            if ((this.UserInfoEditOperationCompleted == null)) {
+                this.UserInfoEditOperationCompleted = new System.Threading.SendOrPostCallback(this.OnUserInfoEditOperationCompleted);
+            }
+            this.InvokeAsync("UserInfoEdit", new object[] {
+                        user_id,
+                        user_name,
+                        phone,
+                        email}, this.UserInfoEditOperationCompleted, userState);
+        }
+        
+        private void OnUserInfoEditOperationCompleted(object arg) {
+            if ((this.UserInfoEditCompleted != null)) {
+                System.Web.Services.Protocols.InvokeCompletedEventArgs invokeArgs = ((System.Web.Services.Protocols.InvokeCompletedEventArgs)(arg));
+                this.UserInfoEditCompleted(this, new UserInfoEditCompletedEventArgs(invokeArgs.Results, invokeArgs.Error, invokeArgs.Cancelled, invokeArgs.UserState));
+            }
+        }
+        
+        /// <remarks/>
+        [System.Web.Services.Protocols.SoapHeaderAttribute("MySoapHeaderValue")]
+        [System.Web.Services.Protocols.SoapDocumentMethodAttribute("http://tempuri.org/UserPwdEdit", RequestNamespace="http://tempuri.org/", ResponseNamespace="http://tempuri.org/", Use=System.Web.Services.Description.SoapBindingUse.Literal, ParameterStyle=System.Web.Services.Protocols.SoapParameterStyle.Wrapped)]
+        public void UserPwdEdit(int user_id, string pwd) {
+            this.Invoke("UserPwdEdit", new object[] {
+                        user_id,
+                        pwd});
+        }
+        
+        /// <remarks/>
+        public void UserPwdEditAsync(int user_id, string pwd) {
+            this.UserPwdEditAsync(user_id, pwd, null);
+        }
+        
+        /// <remarks/>
+        public void UserPwdEditAsync(int user_id, string pwd, object userState) {
+            if ((this.UserPwdEditOperationCompleted == null)) {
+                this.UserPwdEditOperationCompleted = new System.Threading.SendOrPostCallback(this.OnUserPwdEditOperationCompleted);
+            }
+            this.InvokeAsync("UserPwdEdit", new object[] {
+                        user_id,
+                        pwd}, this.UserPwdEditOperationCompleted, userState);
+        }
+        
+        private void OnUserPwdEditOperationCompleted(object arg) {
+            if ((this.UserPwdEditCompleted != null)) {
+                System.Web.Services.Protocols.InvokeCompletedEventArgs invokeArgs = ((System.Web.Services.Protocols.InvokeCompletedEventArgs)(arg));
+                this.UserPwdEditCompleted(this, new System.ComponentModel.AsyncCompletedEventArgs(invokeArgs.Error, invokeArgs.Cancelled, invokeArgs.UserState));
             }
         }
         
@@ -441,6 +523,39 @@ namespace DianChe.DianCheWebService {
             if ((this.DispatchItemClickCompleted != null)) {
                 System.Web.Services.Protocols.InvokeCompletedEventArgs invokeArgs = ((System.Web.Services.Protocols.InvokeCompletedEventArgs)(arg));
                 this.DispatchItemClickCompleted(this, new DispatchItemClickCompletedEventArgs(invokeArgs.Results, invokeArgs.Error, invokeArgs.Cancelled, invokeArgs.UserState));
+            }
+        }
+        
+        /// <remarks/>
+        [System.Web.Services.Protocols.SoapHeaderAttribute("MySoapHeaderValue")]
+        [System.Web.Services.Protocols.SoapDocumentMethodAttribute("http://tempuri.org/SetItemClickSucceed", RequestNamespace="http://tempuri.org/", ResponseNamespace="http://tempuri.org/", Use=System.Web.Services.Description.SoapBindingUse.Literal, ParameterStyle=System.Web.Services.Protocols.SoapParameterStyle.Wrapped)]
+        public void SetItemClickSucceed(long item_id, string mac_address, bool is_succeed) {
+            this.Invoke("SetItemClickSucceed", new object[] {
+                        item_id,
+                        mac_address,
+                        is_succeed});
+        }
+        
+        /// <remarks/>
+        public void SetItemClickSucceedAsync(long item_id, string mac_address, bool is_succeed) {
+            this.SetItemClickSucceedAsync(item_id, mac_address, is_succeed, null);
+        }
+        
+        /// <remarks/>
+        public void SetItemClickSucceedAsync(long item_id, string mac_address, bool is_succeed, object userState) {
+            if ((this.SetItemClickSucceedOperationCompleted == null)) {
+                this.SetItemClickSucceedOperationCompleted = new System.Threading.SendOrPostCallback(this.OnSetItemClickSucceedOperationCompleted);
+            }
+            this.InvokeAsync("SetItemClickSucceed", new object[] {
+                        item_id,
+                        mac_address,
+                        is_succeed}, this.SetItemClickSucceedOperationCompleted, userState);
+        }
+        
+        private void OnSetItemClickSucceedOperationCompleted(object arg) {
+            if ((this.SetItemClickSucceedCompleted != null)) {
+                System.Web.Services.Protocols.InvokeCompletedEventArgs invokeArgs = ((System.Web.Services.Protocols.InvokeCompletedEventArgs)(arg));
+                this.SetItemClickSucceedCompleted(this, new System.ComponentModel.AsyncCompletedEventArgs(invokeArgs.Error, invokeArgs.Cancelled, invokeArgs.UserState));
             }
         }
         
@@ -1826,6 +1941,36 @@ namespace DianChe.DianCheWebService {
     
     /// <remarks/>
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.0.30319.1")]
+    public delegate void UserInfoEditCompletedEventHandler(object sender, UserInfoEditCompletedEventArgs e);
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.0.30319.1")]
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.ComponentModel.DesignerCategoryAttribute("code")]
+    public partial class UserInfoEditCompletedEventArgs : System.ComponentModel.AsyncCompletedEventArgs {
+        
+        private object[] results;
+        
+        internal UserInfoEditCompletedEventArgs(object[] results, System.Exception exception, bool cancelled, object userState) : 
+                base(exception, cancelled, userState) {
+            this.results = results;
+        }
+        
+        /// <remarks/>
+        public EntityUser Result {
+            get {
+                this.RaiseExceptionIfNecessary();
+                return ((EntityUser)(this.results[0]));
+            }
+        }
+    }
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.0.30319.1")]
+    public delegate void UserPwdEditCompletedEventHandler(object sender, System.ComponentModel.AsyncCompletedEventArgs e);
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.0.30319.1")]
     public delegate void UserLoginCompletedEventHandler(object sender, UserLoginCompletedEventArgs e);
     
     /// <remarks/>
@@ -1953,6 +2098,10 @@ namespace DianChe.DianCheWebService {
             }
         }
     }
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.0.30319.1")]
+    public delegate void SetItemClickSucceedCompletedEventHandler(object sender, System.ComponentModel.AsyncCompletedEventArgs e);
     
     /// <remarks/>
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.0.30319.1")]

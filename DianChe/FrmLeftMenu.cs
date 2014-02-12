@@ -11,6 +11,8 @@ namespace DianChe
 {
     public partial class FrmLeftMenu : DockContent
     {
+        //public FrmMain frmMain;
+
         public FrmLeftMenu()
         {
             InitializeComponent();
@@ -19,6 +21,12 @@ namespace DianChe
         private void FrmLeftMenu_FormClosing(object sender, FormClosingEventArgs e)
         {
             
+        }
+
+        private void gbtnUserEdit_Click(object sender, EventArgs e)
+        {
+            FrmUserEdit frm = new FrmUserEdit();
+            frm.Show();
         }
     }
 }

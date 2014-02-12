@@ -334,5 +334,45 @@ namespace DianChe.WebServices.BLL
 
             DataBase.ExecuteNone(strSql.ToString(), parameters);
         }
+
+        /// <summary>
+        /// 更新用户基本信息
+        /// </summary>
+        public void UpdateUserInfo(int user_id, string user_name, string phone, string email)
+        {
+            string strSql = "update t_user set user_name=@user_name,phone=@phone,email=@email where user_id=@user_id";
+
+            SqlParameter[] parameters = {
+                        new SqlParameter("@user_name", SqlDbType.VarChar,50) ,
+                        new SqlParameter("@phone", SqlDbType.VarChar,50) ,
+                        new SqlParameter("@email", SqlDbType.VarChar,50) ,
+                        new SqlParameter("@user_id", SqlDbType.Int,4) 
+            };
+
+            parameters[0].Value = user_name;
+            parameters[1].Value = phone;
+            parameters[2].Value = email;
+            parameters[3].Value = user_id;
+
+            DataBase.ExecuteNone(strSql.ToString(), parameters);
+        }
+
+        /// <summary>
+        /// 更新用户密码
+        /// </summary>
+        public void UpdateUserPwd(int user_id, string pwd)
+        {
+            string strSql = "update t_user set pwd=@pwd where user_id=@user_id";
+
+            SqlParameter[] parameters = {
+                        new SqlParameter("@pwd", SqlDbType.VarChar,50) ,
+                        new SqlParameter("@user_id", SqlDbType.Int,4) 
+            };
+
+            parameters[0].Value = pwd;
+            parameters[1].Value = user_id;
+
+            DataBase.ExecuteNone(strSql.ToString(), parameters);
+        }
     }
 }

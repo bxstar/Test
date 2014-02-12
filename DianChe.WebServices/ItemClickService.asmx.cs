@@ -88,6 +88,30 @@ namespace DianChe.WebServices
             return user;
         }
 
+        [System.Web.Services.Protocols.SoapHeader("myHeader")]
+        [WebMethod]
+        public EntityUser UserInfoEdit(int user_id, string user_name, string phone, string email)
+        {
+            if (bllUser.Get(myHeader.UserName, myHeader.PassWord) == null)
+            {
+                throw new Exception( "对不起，您没有权限调用此服务！");
+            }
+            bllUser.UpdateUserInfo(user_id, user_name, phone, email);
+            EntityUser user = bllUser.Get(user_id);
+            return user;
+        }
+
+        [System.Web.Services.Protocols.SoapHeader("myHeader")]
+        [WebMethod]
+        public void UserPwdEdit(int user_id, string pwd)
+        {
+            if (bllUser.Get(myHeader.UserName, myHeader.PassWord) == null)
+            {
+                throw new Exception( "对不起，您没有权限调用此服务！");
+            }
+            bllUser.UpdateUserPwd(user_id, pwd);
+        }
+
         [WebMethod]
         public EntityUser UserLogin(string user_name, string pwd, string cpu, string mem, string os)
         {
