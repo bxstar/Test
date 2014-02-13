@@ -452,6 +452,11 @@ namespace DianChe
             }
         }
 
+        private void 浏览宝贝详情ToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            System.Diagnostics.Process.Start("iexplore.exe", string.Format("http://item.taobao.com/item.htm?id={0}", currSelectedItem.item_id));
+        }
+
         private void dgvMyItem_CellClick(object sender, DataGridViewCellEventArgs e)
         {
             if (e.RowIndex != -1)

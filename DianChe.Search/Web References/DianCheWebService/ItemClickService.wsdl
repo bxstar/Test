@@ -89,6 +89,34 @@
           <s:element minOccurs="1" maxOccurs="1" name="update_time" type="s:dateTime" />
         </s:sequence>
       </s:complexType>
+      <s:element name="UserInfoEdit">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="user_id" type="s:int" />
+            <s:element minOccurs="0" maxOccurs="1" name="user_name" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="phone" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="email" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="UserInfoEditResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="UserInfoEditResult" type="tns:EntityUser" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="UserPwdEdit">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="user_id" type="s:int" />
+            <s:element minOccurs="0" maxOccurs="1" name="pwd" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="UserPwdEditResponse">
+        <s:complexType />
+      </s:element>
       <s:element name="UserLogin">
         <s:complexType>
           <s:sequence>
@@ -399,6 +427,24 @@
   <wsdl:message name="RegUserSoapOut">
     <wsdl:part name="parameters" element="tns:RegUserResponse" />
   </wsdl:message>
+  <wsdl:message name="UserInfoEditSoapIn">
+    <wsdl:part name="parameters" element="tns:UserInfoEdit" />
+  </wsdl:message>
+  <wsdl:message name="UserInfoEditSoapOut">
+    <wsdl:part name="parameters" element="tns:UserInfoEditResponse" />
+  </wsdl:message>
+  <wsdl:message name="UserInfoEditMySoapHeader">
+    <wsdl:part name="MySoapHeader" element="tns:MySoapHeader" />
+  </wsdl:message>
+  <wsdl:message name="UserPwdEditSoapIn">
+    <wsdl:part name="parameters" element="tns:UserPwdEdit" />
+  </wsdl:message>
+  <wsdl:message name="UserPwdEditSoapOut">
+    <wsdl:part name="parameters" element="tns:UserPwdEditResponse" />
+  </wsdl:message>
+  <wsdl:message name="UserPwdEditMySoapHeader">
+    <wsdl:part name="MySoapHeader" element="tns:MySoapHeader" />
+  </wsdl:message>
   <wsdl:message name="UserLoginSoapIn">
     <wsdl:part name="parameters" element="tns:UserLogin" />
   </wsdl:message>
@@ -446,6 +492,9 @@
   </wsdl:message>
   <wsdl:message name="SetItemClickSucceedSoapOut">
     <wsdl:part name="parameters" element="tns:SetItemClickSucceedResponse" />
+  </wsdl:message>
+  <wsdl:message name="SetItemClickSucceedMySoapHeader">
+    <wsdl:part name="MySoapHeader" element="tns:MySoapHeader" />
   </wsdl:message>
   <wsdl:message name="SaveAliveSoapIn">
     <wsdl:part name="parameters" element="tns:SaveAlive" />
@@ -530,6 +579,20 @@
   <wsdl:message name="RegUserHttpGetOut">
     <wsdl:part name="Body" element="tns:EntityUser" />
   </wsdl:message>
+  <wsdl:message name="UserInfoEditHttpGetIn">
+    <wsdl:part name="user_id" type="s:string" />
+    <wsdl:part name="user_name" type="s:string" />
+    <wsdl:part name="phone" type="s:string" />
+    <wsdl:part name="email" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="UserInfoEditHttpGetOut">
+    <wsdl:part name="Body" element="tns:EntityUser" />
+  </wsdl:message>
+  <wsdl:message name="UserPwdEditHttpGetIn">
+    <wsdl:part name="user_id" type="s:string" />
+    <wsdl:part name="pwd" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="UserPwdEditHttpGetOut" />
   <wsdl:message name="UserLoginHttpGetIn">
     <wsdl:part name="user_name" type="s:string" />
     <wsdl:part name="pwd" type="s:string" />
@@ -628,6 +691,20 @@
   <wsdl:message name="RegUserHttpPostOut">
     <wsdl:part name="Body" element="tns:EntityUser" />
   </wsdl:message>
+  <wsdl:message name="UserInfoEditHttpPostIn">
+    <wsdl:part name="user_id" type="s:string" />
+    <wsdl:part name="user_name" type="s:string" />
+    <wsdl:part name="phone" type="s:string" />
+    <wsdl:part name="email" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="UserInfoEditHttpPostOut">
+    <wsdl:part name="Body" element="tns:EntityUser" />
+  </wsdl:message>
+  <wsdl:message name="UserPwdEditHttpPostIn">
+    <wsdl:part name="user_id" type="s:string" />
+    <wsdl:part name="pwd" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="UserPwdEditHttpPostOut" />
   <wsdl:message name="UserLoginHttpPostIn">
     <wsdl:part name="user_name" type="s:string" />
     <wsdl:part name="pwd" type="s:string" />
@@ -714,6 +791,14 @@
       <wsdl:input message="tns:RegUserSoapIn" />
       <wsdl:output message="tns:RegUserSoapOut" />
     </wsdl:operation>
+    <wsdl:operation name="UserInfoEdit">
+      <wsdl:input message="tns:UserInfoEditSoapIn" />
+      <wsdl:output message="tns:UserInfoEditSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="UserPwdEdit">
+      <wsdl:input message="tns:UserPwdEditSoapIn" />
+      <wsdl:output message="tns:UserPwdEditSoapOut" />
+    </wsdl:operation>
     <wsdl:operation name="UserLogin">
       <wsdl:input message="tns:UserLoginSoapIn" />
       <wsdl:output message="tns:UserLoginSoapOut" />
@@ -784,6 +869,14 @@
       <wsdl:input message="tns:RegUserHttpGetIn" />
       <wsdl:output message="tns:RegUserHttpGetOut" />
     </wsdl:operation>
+    <wsdl:operation name="UserInfoEdit">
+      <wsdl:input message="tns:UserInfoEditHttpGetIn" />
+      <wsdl:output message="tns:UserInfoEditHttpGetOut" />
+    </wsdl:operation>
+    <wsdl:operation name="UserPwdEdit">
+      <wsdl:input message="tns:UserPwdEditHttpGetIn" />
+      <wsdl:output message="tns:UserPwdEditHttpGetOut" />
+    </wsdl:operation>
     <wsdl:operation name="UserLogin">
       <wsdl:input message="tns:UserLoginHttpGetIn" />
       <wsdl:output message="tns:UserLoginHttpGetOut" />
@@ -845,6 +938,14 @@
     <wsdl:operation name="RegUser">
       <wsdl:input message="tns:RegUserHttpPostIn" />
       <wsdl:output message="tns:RegUserHttpPostOut" />
+    </wsdl:operation>
+    <wsdl:operation name="UserInfoEdit">
+      <wsdl:input message="tns:UserInfoEditHttpPostIn" />
+      <wsdl:output message="tns:UserInfoEditHttpPostOut" />
+    </wsdl:operation>
+    <wsdl:operation name="UserPwdEdit">
+      <wsdl:input message="tns:UserPwdEditHttpPostIn" />
+      <wsdl:output message="tns:UserPwdEditHttpPostOut" />
     </wsdl:operation>
     <wsdl:operation name="UserLogin">
       <wsdl:input message="tns:UserLoginHttpPostIn" />
@@ -930,6 +1031,26 @@
         <soap:body use="literal" />
       </wsdl:output>
     </wsdl:operation>
+    <wsdl:operation name="UserInfoEdit">
+      <soap:operation soapAction="http://tempuri.org/UserInfoEdit" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+        <soap:header message="tns:UserInfoEditMySoapHeader" part="MySoapHeader" use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="UserPwdEdit">
+      <soap:operation soapAction="http://tempuri.org/UserPwdEdit" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+        <soap:header message="tns:UserPwdEditMySoapHeader" part="MySoapHeader" use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
     <wsdl:operation name="UserLogin">
       <soap:operation soapAction="http://tempuri.org/UserLogin" style="document" />
       <wsdl:input>
@@ -983,6 +1104,7 @@
       <soap:operation soapAction="http://tempuri.org/SetItemClickSucceed" style="document" />
       <wsdl:input>
         <soap:body use="literal" />
+        <soap:header message="tns:SetItemClickSucceedMySoapHeader" part="MySoapHeader" use="literal" />
       </wsdl:input>
       <wsdl:output>
         <soap:body use="literal" />
@@ -1095,6 +1217,26 @@
         <soap12:body use="literal" />
       </wsdl:output>
     </wsdl:operation>
+    <wsdl:operation name="UserInfoEdit">
+      <soap12:operation soapAction="http://tempuri.org/UserInfoEdit" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+        <soap12:header message="tns:UserInfoEditMySoapHeader" part="MySoapHeader" use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="UserPwdEdit">
+      <soap12:operation soapAction="http://tempuri.org/UserPwdEdit" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+        <soap12:header message="tns:UserPwdEditMySoapHeader" part="MySoapHeader" use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
     <wsdl:operation name="UserLogin">
       <soap12:operation soapAction="http://tempuri.org/UserLogin" style="document" />
       <wsdl:input>
@@ -1148,6 +1290,7 @@
       <soap12:operation soapAction="http://tempuri.org/SetItemClickSucceed" style="document" />
       <wsdl:input>
         <soap12:body use="literal" />
+        <soap12:header message="tns:SetItemClickSucceedMySoapHeader" part="MySoapHeader" use="literal" />
       </wsdl:input>
       <wsdl:output>
         <soap12:body use="literal" />
@@ -1258,6 +1401,22 @@
       <wsdl:output>
         <mime:mimeXml part="Body" />
       </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="UserInfoEdit">
+      <http:operation location="/UserInfoEdit" />
+      <wsdl:input>
+        <http:urlEncoded />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="UserPwdEdit">
+      <http:operation location="/UserPwdEdit" />
+      <wsdl:input>
+        <http:urlEncoded />
+      </wsdl:input>
+      <wsdl:output />
     </wsdl:operation>
     <wsdl:operation name="UserLogin">
       <http:operation location="/UserLogin" />
@@ -1388,6 +1547,22 @@
       <wsdl:output>
         <mime:mimeXml part="Body" />
       </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="UserInfoEdit">
+      <http:operation location="/UserInfoEdit" />
+      <wsdl:input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="UserPwdEdit">
+      <http:operation location="/UserPwdEdit" />
+      <wsdl:input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </wsdl:input>
+      <wsdl:output />
     </wsdl:operation>
     <wsdl:operation name="UserLogin">
       <http:operation location="/UserLogin" />

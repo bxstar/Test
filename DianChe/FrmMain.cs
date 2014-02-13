@@ -32,7 +32,7 @@ namespace DianChe
 
         private BLL.BllItemClick bllItemClick = new BLL.BllItemClick();
 
-        public FrmWeb frmWeb = null;
+        //public FrmWeb frmWeb = null;
         public FrmItemMag frmItemMag = null;
         public FrmItemRank frmItemRank = null;
         public FrmLeftMenu frmLeftMenu = null;
@@ -62,7 +62,7 @@ namespace DianChe
         {
             frmItemMag = new FrmItemMag();
             frmItemRank = new FrmItemRank();
-            frmWeb = new FrmWeb();
+            //frmWeb = new FrmWeb();
             frmLeftMenu = new FrmLeftMenu();
 
             string uiFile = System.Windows.Forms.Application.StartupPath + "\\Configs\\CustomUI.xml";
@@ -77,7 +77,7 @@ namespace DianChe
                 frmItemRank.Show(dockPanel1);
                 frmLeftMenu.Show(dockPanel1);
                 frmLeftMenu.DockTo(dockPanel1, DockStyle.Left);
-                frmWeb.Show(dockPanel1);
+                //frmWeb.Show(dockPanel1);
             }
 
             SaveAlive();
