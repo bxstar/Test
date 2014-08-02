@@ -81,6 +81,53 @@ namespace DianChe.Model
         public int run_days { get; set; }
 
         /// <summary>
+        /// 最后一天执行日期
+        /// </summary>
+        public string last_run_date
+        {
+            get
+            {
+                if (create_time != null)
+                {
+                    if (create_time.AddDays(run_days) < DateTime.Now)
+                        return "已过期";
+                    else
+                        return create_time.AddDays(run_days).ToString("yyyy-MM-dd");
+                }
+                else
+                {
+                    return string.Empty;
+                }
+            }
+        }
+
+        /// <summary>
+        /// 点击有效开始时间，比如：0100
+        /// </summary>
+        public string effect_start_time { get; set; }
+
+        /// <summary>
+        /// 点击有效截至时间，比如：0800
+        /// </summary>
+        public string effect_end_time { get; set; }
+
+        /// <summary>
+        /// 有效时间段
+        /// </summary>
+        public string effect_time_span
+        {
+            get
+            {
+                if (!string.IsNullOrEmpty(effect_start_time) && !string.IsNullOrEmpty(effect_end_time))
+                {
+                    return string.Format("{0}-{1}", effect_start_time.Insert(2, ":"), effect_end_time.Insert(2, ":"));
+                }
+                else
+                    return "无";
+            }
+        }
+
+        /// <summary>
         /// 创建时间
         /// </summary>		
         public DateTime create_time { get; set; }
@@ -99,6 +146,20 @@ namespace DianChe.Model
         /// </summary>
         public Boolean is_enable { get; set; }
 
+
+        /// <summary>
+        /// 状态显示值
+        /// </summary>
+        public string is_enable_display
+        {
+            get
+            {
+                if (is_enable)
+                    return "有效";
+                else
+                    return "无效";
+            }
+        }
 
     }
 }

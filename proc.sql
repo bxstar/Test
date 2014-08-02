@@ -1,25 +1,75 @@
-﻿
-/****** Object:  StoredProcedure [dbo].[proc_dispatch_item_click]    Script Date: 01/06/2014 20:07:10 ******/
-IF  EXISTS (SELECT * FROM sys.objects WHERE object_id = OBJECT_ID(N'[dbo].[proc_dispatch_item_click]') AND type in (N'P', N'PC'))
-DROP PROCEDURE [dbo].[proc_dispatch_item_click]
+﻿USE [SEM]
 GO
-
-USE [demo]
-GO
-
-/****** Object:  StoredProcedure [dbo].[proc_dispatch_item_click]    Script Date: 01/06/2014 20:07:10 ******/
+/****** Object:  UserDefinedFunction [dbo].[func_is_effect_time]    Script Date: 02/09/2014 12:05:04 ******/
 SET ANSI_NULLS ON
 GO
-
 SET QUOTED_IDENTIFIER ON
 GO
+-- =============================================                    
+-- Author:  yrs                    
+-- Create date: 2014-02-09              
+-- Description: 判断时间段范围                
+-- =============================================   
+Create FUNCTION [dbo].[func_is_effect_time]
+(
+	@effect_start_time CHAR(4),
+	@effect_end_time CHAR(4)
+)
+RETURNS BIT
+AS
+BEGIN
+	DECLARE @int_es_time INT,@int_ee_time INT
+	SET @int_es_time=CAST(@effect_start_time AS INT)
+	SET @int_ee_time=CAST(@effect_end_time AS INT)
+	
+	DECLARE @int_now INT,@int_now_hh INT,@int_now_mi INT
+	DECLARE @char_now_hh CHAR(2),@char_now_mi CHAR(2)
+	DECLARE @now DATETIME
+	
+	SET @now= GETDATE()
+	SET @int_now_hh=DATEPART(hh,@now)
+	SET @int_now_mi=DATEPART(mi,@now)
+	IF(@int_now_hh<10)
+		SET @char_now_hh='0'+cast(@int_now_hh AS CHAR(1))
+	ELSE
+		SET @char_now_hh=@int_now_hh
+	IF(@int_now_mi<10)
+		SET @char_now_mi='0'+cast(@int_now_mi AS CHAR(1))
+	ELSE
+		SET @char_now_mi=@int_now_mi
+		
+	--SELECT @char_now_hh
+	--SELECT @char_now_mi
+	
+	SET @int_now=CAST(@char_now_hh+@char_now_mi AS INT)
+	
+	IF(@int_now>=@int_es_time AND @int_now<=@int_ee_time)
+	BEGIN
+		RETURN 1			--时间在限制的时间段内	
+	END
+		
+	
+	RETURN 0
+
+END
+
+
+
+USE [SEM]
+GO
+/****** Object:  StoredProcedure [dbo].[proc_dispatch_item_click]    Script Date: 02/09/2014 12:04:36 ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+
 
 -- =============================================                    
 -- Author:  yrs                    
 -- Create date: 2013-12-22              
 -- Description: 分配点击任务                
 -- =============================================    
-CREATE PROC [dbo].[proc_dispatch_item_click]
+Create PROC [dbo].[proc_dispatch_item_click]
 (
     @max_address VARCHAR(50),
     @ip_address VARCHAR(50)
@@ -50,8 +100,8 @@ BEGIN
     ) B
        ON B.local_item_task_id = A.local_item_task_id
      
-    WHERE A.is_enable=1 AND A.is_succeed IS NULL AND DATEDIFF(DAY,A.create_time,GETDATE())<=A.run_days
-    AND isnull(B.click_count,0)<A.max_click
+    WHERE A.is_enable=1 AND A.is_delete=0 AND A.is_succeed IS NULL AND DATEDIFF(DAY,A.create_time,GETDATE())<=A.run_days
+    AND isnull(B.click_count,0)<A.max_click AND dbo.func_is_effect_time(A.effect_start_time,A.effect_end_time)=1
    
 	DECLARE @i INT,@count INT
 	SET @i=1
@@ -83,5 +133,4 @@ BEGIN
 
 END
 
-GO
 

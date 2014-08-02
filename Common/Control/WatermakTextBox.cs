@@ -17,13 +17,17 @@ namespace Common.Control
             base.WndProc(ref m);
             if (m.Msg == WM_PAINT)
             {
-                WmPaint(ref m);
+                WmPaint();
             }
         }
 
-
-
-        private void WmPaint(ref Message m)
+        protected override void OnLeave(EventArgs e)
+        {
+            base.OnLeave(e);
+            WmPaint();
+        }
+        
+        private void WmPaint()
         {
             Rectangle rectangle = new Rectangle(0, 0, Width, Height);
             using (Graphics graphics = Graphics.FromHwnd(base.Handle))

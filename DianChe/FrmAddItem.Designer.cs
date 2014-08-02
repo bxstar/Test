@@ -32,6 +32,12 @@
             this.label1 = new System.Windows.Forms.Label();
             this.btnGetItem = new System.Windows.Forms.Button();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.cbkEffectTime = new System.Windows.Forms.CheckBox();
+            this.label13 = new System.Windows.Forms.Label();
+            this.dtEndTime = new System.Windows.Forms.DateTimePicker();
+            this.dtStartTime = new System.Windows.Forms.DateTimePicker();
+            this.lblEndTime = new System.Windows.Forms.Label();
+            this.lblStartTime = new System.Windows.Forms.Label();
             this.txtRemark = new System.Windows.Forms.TextBox();
             this.label10 = new System.Windows.Forms.Label();
             this.numRunDays = new System.Windows.Forms.NumericUpDown();
@@ -51,8 +57,8 @@
             this.picItem = new System.Windows.Forms.PictureBox();
             this.btnClose = new System.Windows.Forms.Button();
             this.txtInputUrl = new Common.Control.WatermakTextBox();
-            this.txtCreativeOne = new Common.Control.WatermakTextBox();
             this.txtCreativeTwo = new Common.Control.WatermakTextBox();
+            this.txtCreativeOne = new Common.Control.WatermakTextBox();
             this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.numRunDays)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.numMaxClick)).BeginInit();
@@ -61,7 +67,7 @@
             // 
             // btnSave
             // 
-            this.btnSave.Location = new System.Drawing.Point(174, 403);
+            this.btnSave.Location = new System.Drawing.Point(174, 450);
             this.btnSave.Name = "btnSave";
             this.btnSave.Size = new System.Drawing.Size(75, 23);
             this.btnSave.TabIndex = 1;
@@ -90,6 +96,12 @@
             // 
             // groupBox1
             // 
+            this.groupBox1.Controls.Add(this.cbkEffectTime);
+            this.groupBox1.Controls.Add(this.label13);
+            this.groupBox1.Controls.Add(this.dtEndTime);
+            this.groupBox1.Controls.Add(this.dtStartTime);
+            this.groupBox1.Controls.Add(this.lblEndTime);
+            this.groupBox1.Controls.Add(this.lblStartTime);
             this.groupBox1.Controls.Add(this.txtCreativeTwo);
             this.groupBox1.Controls.Add(this.txtCreativeOne);
             this.groupBox1.Controls.Add(this.txtRemark);
@@ -111,23 +123,82 @@
             this.groupBox1.Controls.Add(this.picItem);
             this.groupBox1.Location = new System.Drawing.Point(14, 70);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(793, 301);
+            this.groupBox1.Size = new System.Drawing.Size(803, 362);
             this.groupBox1.TabIndex = 4;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "宝贝详情";
             // 
+            // cbkEffectTime
+            // 
+            this.cbkEffectTime.AutoSize = true;
+            this.cbkEffectTime.Location = new System.Drawing.Point(310, 207);
+            this.cbkEffectTime.Name = "cbkEffectTime";
+            this.cbkEffectTime.Size = new System.Drawing.Size(84, 16);
+            this.cbkEffectTime.TabIndex = 27;
+            this.cbkEffectTime.Text = "设置时间段";
+            this.cbkEffectTime.UseVisualStyleBackColor = true;
+            this.cbkEffectTime.CheckedChanged += new System.EventHandler(this.cbkEffectTime_CheckedChanged);
+            // 
+            // label13
+            // 
+            this.label13.AutoSize = true;
+            this.label13.ForeColor = System.Drawing.Color.Red;
+            this.label13.Location = new System.Drawing.Point(308, 238);
+            this.label13.Name = "label13";
+            this.label13.Size = new System.Drawing.Size(485, 12);
+            this.label13.TabIndex = 26;
+            this.label13.Text = "提示：点击将发生在这个时间段内，将这个时间段的出价进行打折，降低成本提高质量得分";
+            // 
+            // dtEndTime
+            // 
+            this.dtEndTime.CustomFormat = "HH:mm";
+            this.dtEndTime.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
+            this.dtEndTime.Location = new System.Drawing.Point(708, 204);
+            this.dtEndTime.Name = "dtEndTime";
+            this.dtEndTime.Size = new System.Drawing.Size(76, 21);
+            this.dtEndTime.TabIndex = 25;
+            this.dtEndTime.Value = new System.DateTime(2014, 1, 27, 7, 0, 0, 0);
+            // 
+            // dtStartTime
+            // 
+            this.dtStartTime.CustomFormat = "HH:mm";
+            this.dtStartTime.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
+            this.dtStartTime.Location = new System.Drawing.Point(513, 204);
+            this.dtStartTime.Name = "dtStartTime";
+            this.dtStartTime.Size = new System.Drawing.Size(76, 21);
+            this.dtStartTime.TabIndex = 25;
+            this.dtStartTime.Value = new System.DateTime(2014, 1, 27, 1, 0, 0, 0);
+            // 
+            // lblEndTime
+            // 
+            this.lblEndTime.AutoSize = true;
+            this.lblEndTime.Location = new System.Drawing.Point(590, 208);
+            this.lblEndTime.Name = "lblEndTime";
+            this.lblEndTime.Size = new System.Drawing.Size(113, 12);
+            this.lblEndTime.TabIndex = 24;
+            this.lblEndTime.Text = "点击有效结束时间：";
+            // 
+            // lblStartTime
+            // 
+            this.lblStartTime.AutoSize = true;
+            this.lblStartTime.Location = new System.Drawing.Point(394, 208);
+            this.lblStartTime.Name = "lblStartTime";
+            this.lblStartTime.Size = new System.Drawing.Size(113, 12);
+            this.lblStartTime.TabIndex = 24;
+            this.lblStartTime.Text = "点击有效开始时间：";
+            // 
             // txtRemark
             // 
-            this.txtRemark.Location = new System.Drawing.Point(312, 242);
+            this.txtRemark.Location = new System.Drawing.Point(367, 269);
             this.txtRemark.Multiline = true;
             this.txtRemark.Name = "txtRemark";
-            this.txtRemark.Size = new System.Drawing.Size(352, 53);
+            this.txtRemark.Size = new System.Drawing.Size(417, 53);
             this.txtRemark.TabIndex = 8;
             // 
             // label10
             // 
             this.label10.AutoSize = true;
-            this.label10.Location = new System.Drawing.Point(257, 256);
+            this.label10.Location = new System.Drawing.Point(312, 283);
             this.label10.Name = "label10";
             this.label10.Size = new System.Drawing.Size(41, 12);
             this.label10.TabIndex = 22;
@@ -135,9 +206,9 @@
             // 
             // numRunDays
             // 
-            this.numRunDays.Location = new System.Drawing.Point(588, 205);
+            this.numRunDays.Location = new System.Drawing.Point(709, 167);
             this.numRunDays.Name = "numRunDays";
-            this.numRunDays.Size = new System.Drawing.Size(76, 21);
+            this.numRunDays.Size = new System.Drawing.Size(74, 21);
             this.numRunDays.TabIndex = 7;
             this.numRunDays.Value = new decimal(new int[] {
             1,
@@ -147,9 +218,9 @@
             // 
             // numMaxClick
             // 
-            this.numMaxClick.Location = new System.Drawing.Point(362, 205);
+            this.numMaxClick.Location = new System.Drawing.Point(432, 167);
             this.numMaxClick.Name = "numMaxClick";
-            this.numMaxClick.Size = new System.Drawing.Size(80, 21);
+            this.numMaxClick.Size = new System.Drawing.Size(75, 21);
             this.numMaxClick.TabIndex = 6;
             this.numMaxClick.Value = new decimal(new int[] {
             1,
@@ -160,7 +231,7 @@
             // label9
             // 
             this.label9.AutoSize = true;
-            this.label9.Location = new System.Drawing.Point(493, 209);
+            this.label9.Location = new System.Drawing.Point(590, 169);
             this.label9.Name = "label9";
             this.label9.Size = new System.Drawing.Size(89, 12);
             this.label9.TabIndex = 18;
@@ -169,7 +240,7 @@
             // label8
             // 
             this.label8.AutoSize = true;
-            this.label8.Location = new System.Drawing.Point(255, 209);
+            this.label8.Location = new System.Drawing.Point(312, 171);
             this.label8.Name = "label8";
             this.label8.Size = new System.Drawing.Size(101, 12);
             this.label8.TabIndex = 18;
@@ -177,7 +248,7 @@
             // 
             // txtKeyword
             // 
-            this.txtKeyword.Location = new System.Drawing.Point(312, 169);
+            this.txtKeyword.Location = new System.Drawing.Point(432, 133);
             this.txtKeyword.Name = "txtKeyword";
             this.txtKeyword.Size = new System.Drawing.Size(352, 21);
             this.txtKeyword.TabIndex = 5;
@@ -185,16 +256,16 @@
             // label7
             // 
             this.label7.AutoSize = true;
-            this.label7.Location = new System.Drawing.Point(253, 172);
+            this.label7.Location = new System.Drawing.Point(310, 133);
             this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(53, 12);
+            this.label7.Size = new System.Drawing.Size(77, 12);
             this.label7.TabIndex = 16;
-            this.label7.Text = "关键词：";
+            this.label7.Text = "搜索关键词：";
             // 
             // label6
             // 
             this.label6.AutoSize = true;
-            this.label6.Location = new System.Drawing.Point(253, 138);
+            this.label6.Location = new System.Drawing.Point(310, 96);
             this.label6.Name = "label6";
             this.label6.Size = new System.Drawing.Size(53, 12);
             this.label6.TabIndex = 14;
@@ -203,7 +274,7 @@
             // label5
             // 
             this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(253, 104);
+            this.label5.Location = new System.Drawing.Point(310, 62);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(53, 12);
             this.label5.TabIndex = 14;
@@ -211,15 +282,15 @@
             // 
             // txtPrice
             // 
-            this.txtPrice.Location = new System.Drawing.Point(524, 64);
+            this.txtPrice.Location = new System.Drawing.Point(721, 22);
             this.txtPrice.Name = "txtPrice";
-            this.txtPrice.Size = new System.Drawing.Size(140, 21);
+            this.txtPrice.Size = new System.Drawing.Size(63, 21);
             this.txtPrice.TabIndex = 2;
             // 
             // label4
             // 
             this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(472, 68);
+            this.label4.Location = new System.Drawing.Point(669, 26);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(41, 12);
             this.label4.TabIndex = 12;
@@ -227,7 +298,7 @@
             // 
             // txtNickName
             // 
-            this.txtNickName.Location = new System.Drawing.Point(312, 64);
+            this.txtNickName.Location = new System.Drawing.Point(519, 22);
             this.txtNickName.Name = "txtNickName";
             this.txtNickName.Size = new System.Drawing.Size(140, 21);
             this.txtNickName.TabIndex = 1;
@@ -235,7 +306,7 @@
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(265, 68);
+            this.label3.Location = new System.Drawing.Point(472, 26);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(41, 12);
             this.label3.TabIndex = 10;
@@ -243,7 +314,7 @@
             // 
             // txtItemTitle
             // 
-            this.txtItemTitle.Location = new System.Drawing.Point(77, 23);
+            this.txtItemTitle.Location = new System.Drawing.Point(77, 22);
             this.txtItemTitle.Name = "txtItemTitle";
             this.txtItemTitle.Size = new System.Drawing.Size(375, 21);
             this.txtItemTitle.TabIndex = 0;
@@ -264,14 +335,14 @@
             this.picItem.Cursor = System.Windows.Forms.Cursors.Hand;
             this.picItem.Location = new System.Drawing.Point(6, 50);
             this.picItem.Name = "picItem";
-            this.picItem.Size = new System.Drawing.Size(229, 245);
+            this.picItem.Size = new System.Drawing.Size(298, 293);
             this.picItem.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.picItem.TabIndex = 7;
             this.picItem.TabStop = false;
             // 
             // btnClose
             // 
-            this.btnClose.Location = new System.Drawing.Point(391, 403);
+            this.btnClose.Location = new System.Drawing.Point(551, 450);
             this.btnClose.Name = "btnClose";
             this.btnClose.Size = new System.Drawing.Size(75, 23);
             this.btnClose.TabIndex = 5;
@@ -288,29 +359,29 @@
             this.txtInputUrl.Size = new System.Drawing.Size(587, 21);
             this.txtInputUrl.TabIndex = 13;
             // 
-            // txtCreativeOne
-            // 
-            this.txtCreativeOne.EmptyTextTip = "系统将根据创意来寻找宝贝，请正确输入";
-            this.txtCreativeOne.EmptyTextTipColor = System.Drawing.Color.Silver;
-            this.txtCreativeOne.Location = new System.Drawing.Point(312, 101);
-            this.txtCreativeOne.Name = "txtCreativeOne";
-            this.txtCreativeOne.Size = new System.Drawing.Size(352, 21);
-            this.txtCreativeOne.TabIndex = 23;
-            // 
             // txtCreativeTwo
             // 
             this.txtCreativeTwo.EmptyTextTip = "当创意一找不到时将使用创意二，没有创意二则不用输入";
             this.txtCreativeTwo.EmptyTextTipColor = System.Drawing.Color.Silver;
-            this.txtCreativeTwo.Location = new System.Drawing.Point(312, 135);
+            this.txtCreativeTwo.Location = new System.Drawing.Point(432, 96);
             this.txtCreativeTwo.Name = "txtCreativeTwo";
             this.txtCreativeTwo.Size = new System.Drawing.Size(352, 21);
             this.txtCreativeTwo.TabIndex = 23;
+            // 
+            // txtCreativeOne
+            // 
+            this.txtCreativeOne.EmptyTextTip = "系统将根据创意来寻找宝贝，请正确输入";
+            this.txtCreativeOne.EmptyTextTipColor = System.Drawing.Color.Silver;
+            this.txtCreativeOne.Location = new System.Drawing.Point(432, 62);
+            this.txtCreativeOne.Name = "txtCreativeOne";
+            this.txtCreativeOne.Size = new System.Drawing.Size(352, 21);
+            this.txtCreativeOne.TabIndex = 23;
             // 
             // FrmAddItem
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(841, 450);
+            this.ClientSize = new System.Drawing.Size(841, 497);
             this.Controls.Add(this.txtInputUrl);
             this.Controls.Add(this.btnClose);
             this.Controls.Add(this.groupBox1);
@@ -320,6 +391,7 @@
             this.Name = "FrmAddItem";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "新增宝贝点击";
+            this.Load += new System.EventHandler(this.FrmAddItem_Load);
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.numRunDays)).EndInit();
@@ -357,5 +429,11 @@
         private Common.Control.WatermakTextBox txtInputUrl;
         private Common.Control.WatermakTextBox txtCreativeOne;
         private Common.Control.WatermakTextBox txtCreativeTwo;
+        private System.Windows.Forms.Label lblStartTime;
+        private System.Windows.Forms.DateTimePicker dtEndTime;
+        private System.Windows.Forms.DateTimePicker dtStartTime;
+        private System.Windows.Forms.Label lblEndTime;
+        private System.Windows.Forms.Label label13;
+        private System.Windows.Forms.CheckBox cbkEffectTime;
     }
 }

@@ -40,14 +40,14 @@
             this.btnReg = new System.Windows.Forms.Button();
             this.label7 = new System.Windows.Forms.Label();
             this.label6 = new System.Windows.Forms.Label();
-            this.txtRegPhone = new System.Windows.Forms.TextBox();
             this.txtRegEmail = new System.Windows.Forms.TextBox();
-            this.txtRegPwdConfirm = new System.Windows.Forms.TextBox();
-            this.txtRegPwd = new System.Windows.Forms.TextBox();
             this.label5 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
-            this.txtRegUserName = new System.Windows.Forms.TextBox();
             this.label4 = new System.Windows.Forms.Label();
+            this.txtRegUserName = new Common.Control.WatermakTextBox();
+            this.txtRegPwd = new Common.Control.WatermakTextBox();
+            this.txtRegPwdConfirm = new Common.Control.WatermakTextBox();
+            this.txtRegPhone = new Common.Control.WatermakTextBox();
             this.tabControl1.SuspendLayout();
             this.tabPage1.SuspendLayout();
             this.tabPage2.SuspendLayout();
@@ -126,16 +126,16 @@
             // 
             // tabPage2
             // 
+            this.tabPage2.Controls.Add(this.txtRegPhone);
+            this.tabPage2.Controls.Add(this.txtRegPwdConfirm);
+            this.tabPage2.Controls.Add(this.txtRegPwd);
+            this.tabPage2.Controls.Add(this.txtRegUserName);
             this.tabPage2.Controls.Add(this.btnReg);
             this.tabPage2.Controls.Add(this.label7);
             this.tabPage2.Controls.Add(this.label6);
-            this.tabPage2.Controls.Add(this.txtRegPhone);
             this.tabPage2.Controls.Add(this.txtRegEmail);
-            this.tabPage2.Controls.Add(this.txtRegPwdConfirm);
-            this.tabPage2.Controls.Add(this.txtRegPwd);
             this.tabPage2.Controls.Add(this.label5);
             this.tabPage2.Controls.Add(this.label3);
-            this.tabPage2.Controls.Add(this.txtRegUserName);
             this.tabPage2.Controls.Add(this.label4);
             this.tabPage2.Location = new System.Drawing.Point(4, 22);
             this.tabPage2.Name = "tabPage2";
@@ -173,35 +173,12 @@
             this.label6.TabIndex = 8;
             this.label6.Text = "邮箱地址：";
             // 
-            // txtRegPhone
-            // 
-            this.txtRegPhone.Location = new System.Drawing.Point(129, 144);
-            this.txtRegPhone.Name = "txtRegPhone";
-            this.txtRegPhone.Size = new System.Drawing.Size(147, 21);
-            this.txtRegPhone.TabIndex = 3;
-            // 
             // txtRegEmail
             // 
             this.txtRegEmail.Location = new System.Drawing.Point(129, 178);
             this.txtRegEmail.Name = "txtRegEmail";
-            this.txtRegEmail.Size = new System.Drawing.Size(147, 21);
+            this.txtRegEmail.Size = new System.Drawing.Size(249, 21);
             this.txtRegEmail.TabIndex = 4;
-            // 
-            // txtRegPwdConfirm
-            // 
-            this.txtRegPwdConfirm.Location = new System.Drawing.Point(129, 110);
-            this.txtRegPwdConfirm.Name = "txtRegPwdConfirm";
-            this.txtRegPwdConfirm.PasswordChar = '*';
-            this.txtRegPwdConfirm.Size = new System.Drawing.Size(147, 21);
-            this.txtRegPwdConfirm.TabIndex = 2;
-            // 
-            // txtRegPwd
-            // 
-            this.txtRegPwd.Location = new System.Drawing.Point(129, 74);
-            this.txtRegPwd.Name = "txtRegPwd";
-            this.txtRegPwd.PasswordChar = '*';
-            this.txtRegPwd.Size = new System.Drawing.Size(147, 21);
-            this.txtRegPwd.TabIndex = 1;
             // 
             // label5
             // 
@@ -221,13 +198,6 @@
             this.label3.TabIndex = 6;
             this.label3.Text = "密码：";
             // 
-            // txtRegUserName
-            // 
-            this.txtRegUserName.Location = new System.Drawing.Point(129, 38);
-            this.txtRegUserName.Name = "txtRegUserName";
-            this.txtRegUserName.Size = new System.Drawing.Size(147, 21);
-            this.txtRegUserName.TabIndex = 0;
-            // 
             // label4
             // 
             this.label4.AutoSize = true;
@@ -236,6 +206,42 @@
             this.label4.Size = new System.Drawing.Size(53, 12);
             this.label4.TabIndex = 4;
             this.label4.Text = "用户名：";
+            // 
+            // txtRegUserName
+            // 
+            this.txtRegUserName.EmptyTextTip = "请使用店铺的旺旺名称";
+            this.txtRegUserName.EmptyTextTipColor = System.Drawing.Color.Silver;
+            this.txtRegUserName.Location = new System.Drawing.Point(129, 38);
+            this.txtRegUserName.Name = "txtRegUserName";
+            this.txtRegUserName.Size = new System.Drawing.Size(147, 21);
+            this.txtRegUserName.TabIndex = 9;
+            // 
+            // txtRegPwd
+            // 
+            this.txtRegPwd.EmptyTextTip = "必须6位或6位以上";
+            this.txtRegPwd.EmptyTextTipColor = System.Drawing.Color.Silver;
+            this.txtRegPwd.Location = new System.Drawing.Point(129, 74);
+            this.txtRegPwd.Name = "txtRegPwd";
+            this.txtRegPwd.Size = new System.Drawing.Size(166, 21);
+            this.txtRegPwd.TabIndex = 10;
+            // 
+            // txtRegPwdConfirm
+            // 
+            this.txtRegPwdConfirm.EmptyTextTip = "同上";
+            this.txtRegPwdConfirm.EmptyTextTipColor = System.Drawing.Color.Silver;
+            this.txtRegPwdConfirm.Location = new System.Drawing.Point(129, 110);
+            this.txtRegPwdConfirm.Name = "txtRegPwdConfirm";
+            this.txtRegPwdConfirm.Size = new System.Drawing.Size(183, 21);
+            this.txtRegPwdConfirm.TabIndex = 11;
+            // 
+            // txtRegPhone
+            // 
+            this.txtRegPhone.EmptyTextTip = "请使用移动手机号，否则系统无法推送消息";
+            this.txtRegPhone.EmptyTextTipColor = System.Drawing.Color.Silver;
+            this.txtRegPhone.Location = new System.Drawing.Point(129, 144);
+            this.txtRegPhone.Name = "txtRegPhone";
+            this.txtRegPhone.Size = new System.Drawing.Size(249, 21);
+            this.txtRegPhone.TabIndex = 12;
             // 
             // FrmLoginReg
             // 
@@ -268,16 +274,16 @@
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.TabPage tabPage2;
         private System.Windows.Forms.Button btnLogin;
-        private System.Windows.Forms.TextBox txtRegPwdConfirm;
-        private System.Windows.Forms.TextBox txtRegPwd;
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.Label label3;
-        private System.Windows.Forms.TextBox txtRegUserName;
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.Label label6;
         private System.Windows.Forms.TextBox txtRegEmail;
         private System.Windows.Forms.Label label7;
-        private System.Windows.Forms.TextBox txtRegPhone;
         private System.Windows.Forms.Button btnReg;
+        private Common.Control.WatermakTextBox txtRegUserName;
+        private Common.Control.WatermakTextBox txtRegPwd;
+        private Common.Control.WatermakTextBox txtRegPwdConfirm;
+        private Common.Control.WatermakTextBox txtRegPhone;
     }
 }

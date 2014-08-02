@@ -33,6 +33,11 @@ namespace DianChe
             InitializeComponent();
         }
 
+        private void FrmAddItem_Load(object sender, EventArgs e)
+        {
+            lblEndTime.Enabled = lblStartTime.Enabled = dtEndTime.Enabled = dtStartTime.Enabled = false;
+        }
+
         private void btnGetItem_Click(object sender, EventArgs e)
         {
             if (txtInputUrl.Text.ToLower().Contains("&id") || txtInputUrl.Text.ToLower().Contains("?id"))
@@ -72,6 +77,11 @@ namespace DianChe
             currentItem.creative_one_title = txtCreativeOne.Text.Trim();
             currentItem.creative_two_title = txtCreativeTwo.Text.Trim();
             currentItem.keyword = txtKeyword.Text.Trim();
+            if (cbkEffectTime.Checked)
+            {
+                currentItem.effect_start_time = dtStartTime.Value.ToString("HHmm");
+                currentItem.effect_end_time = dtEndTime.Value.ToString("HHmm");
+            }
             currentItem.remark = txtRemark.Text.Trim();
             currentItem.create_time = currentItem.update_time = DateTime.Now;
             currentItem.is_enable = true;
@@ -81,7 +91,7 @@ namespace DianChe
                 if (result.Length == 0)
                 {
                     bllMyItem.AddMyItem(currentItem);
-                    frmItemMag.InitData();
+                    frmItemMag.LoadData();
                     this.Close();
                 }
                 else
@@ -91,8 +101,7 @@ namespace DianChe
             }
             catch (Exception se)
             {
-                logAX.Error("添加宝贝失败！", se);
-                MessageBox.Show("添加宝贝失败，请联系管理员！");
+                MessageBox.Show("添加宝贝失败，请联系管理员！\r\n" + se.Message);
                 return;
             }
 
@@ -102,6 +111,13 @@ namespace DianChe
         {
             this.Close();
         }
+
+        private void cbkEffectTime_CheckedChanged(object sender, EventArgs e)
+        {
+            lblEndTime.Enabled = lblStartTime.Enabled = dtEndTime.Enabled = dtStartTime.Enabled = cbkEffectTime.Checked;
+        }
+
+
 
 
     }

@@ -40,7 +40,6 @@
             this.numHighestZtcRank = new System.Windows.Forms.NumericUpDown();
             this.lblNature = new System.Windows.Forms.Label();
             this.numHighestNatureRank = new System.Windows.Forms.NumericUpDown();
-            this.txtRemark = new System.Windows.Forms.TextBox();
             this.label10 = new System.Windows.Forms.Label();
             this.txtKeyword = new System.Windows.Forms.TextBox();
             this.label5 = new System.Windows.Forms.Label();
@@ -57,6 +56,7 @@
             this.btnStart = new System.Windows.Forms.Button();
             this.btnStop = new System.Windows.Forms.Button();
             this.txtInputUrl = new Common.Control.WatermakTextBox();
+            this.txtRemark = new Common.Control.WatermakTextBox();
             this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.numLowestZtcRank)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.numLowestNatureRank)).BeginInit();
@@ -77,6 +77,7 @@
             // 
             // groupBox1
             // 
+            this.groupBox1.Controls.Add(this.txtRemark);
             this.groupBox1.Controls.Add(this.chkMailNotify);
             this.groupBox1.Controls.Add(this.chkSmsNotify);
             this.groupBox1.Controls.Add(this.chkZtc);
@@ -87,7 +88,6 @@
             this.groupBox1.Controls.Add(this.numHighestZtcRank);
             this.groupBox1.Controls.Add(this.lblNature);
             this.groupBox1.Controls.Add(this.numHighestNatureRank);
-            this.groupBox1.Controls.Add(this.txtRemark);
             this.groupBox1.Controls.Add(this.label10);
             this.groupBox1.Controls.Add(this.txtKeyword);
             this.groupBox1.Controls.Add(this.label5);
@@ -252,14 +252,6 @@
             0,
             0});
             // 
-            // txtRemark
-            // 
-            this.txtRemark.Location = new System.Drawing.Point(312, 232);
-            this.txtRemark.Multiline = true;
-            this.txtRemark.Name = "txtRemark";
-            this.txtRemark.Size = new System.Drawing.Size(352, 63);
-            this.txtRemark.TabIndex = 8;
-            // 
             // label10
             // 
             this.label10.AutoSize = true;
@@ -398,10 +390,21 @@
             // 
             this.txtInputUrl.EmptyTextTip = "输入宝贝网址，再点击获取，相关属性会自动填充，宝贝网址可以从浏览器中复制";
             this.txtInputUrl.EmptyTextTipColor = System.Drawing.Color.Silver;
+            this.txtInputUrl.Enabled = false;
             this.txtInputUrl.Location = new System.Drawing.Point(91, 31);
             this.txtInputUrl.Name = "txtInputUrl";
             this.txtInputUrl.Size = new System.Drawing.Size(497, 21);
             this.txtInputUrl.TabIndex = 19;
+            // 
+            // txtRemark
+            // 
+            this.txtRemark.EmptyTextTip = "记录备注信息，例如宝贝上下架时间等";
+            this.txtRemark.EmptyTextTipColor = System.Drawing.Color.Silver;
+            this.txtRemark.Location = new System.Drawing.Point(314, 239);
+            this.txtRemark.Multiline = true;
+            this.txtRemark.Name = "txtRemark";
+            this.txtRemark.Size = new System.Drawing.Size(350, 56);
+            this.txtRemark.TabIndex = 31;
             // 
             // FrmEditItemRank
             // 
@@ -443,7 +446,6 @@
         private System.Windows.Forms.NumericUpDown numHighestZtcRank;
         private System.Windows.Forms.Label lblNature;
         private System.Windows.Forms.NumericUpDown numHighestNatureRank;
-        private System.Windows.Forms.TextBox txtRemark;
         private System.Windows.Forms.Label label10;
         private System.Windows.Forms.TextBox txtKeyword;
         private System.Windows.Forms.Label label5;
@@ -462,5 +464,6 @@
         private System.Windows.Forms.CheckBox chkMailNotify;
         private System.Windows.Forms.CheckBox chkSmsNotify;
         private Common.Control.WatermakTextBox txtInputUrl;
+        private Common.Control.WatermakTextBox txtRemark;
     }
 }

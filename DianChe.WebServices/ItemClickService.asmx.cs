@@ -88,6 +88,30 @@ namespace DianChe.WebServices
             return user;
         }
 
+        [System.Web.Services.Protocols.SoapHeader("myHeader")]
+        [WebMethod]
+        public EntityUser UserInfoEdit(int user_id, string user_name, string phone, string email)
+        {
+            if (bllUser.Get(myHeader.UserName, myHeader.PassWord) == null)
+            {
+                throw new Exception( "对不起，您没有权限调用此服务！");
+            }
+            bllUser.UpdateUserInfo(user_id, user_name, phone, email);
+            EntityUser user = bllUser.Get(user_id);
+            return user;
+        }
+
+        [System.Web.Services.Protocols.SoapHeader("myHeader")]
+        [WebMethod]
+        public void UserPwdEdit(int user_id, string pwd)
+        {
+            if (bllUser.Get(myHeader.UserName, myHeader.PassWord) == null)
+            {
+                throw new Exception( "对不起，您没有权限调用此服务！");
+            }
+            bllUser.UpdateUserPwd(user_id, pwd);
+        }
+
         [WebMethod]
         public EntityUser UserLogin(string user_name, string pwd, string cpu, string mem, string os)
         {
@@ -112,6 +136,31 @@ namespace DianChe.WebServices
 
         [System.Web.Services.Protocols.SoapHeader("myHeader")]
         [WebMethod]
+        public string EditMyItem(EntityItemTask model)
+        {
+            if (bllUser.Get(myHeader.UserName, myHeader.PassWord) == null)
+            {
+                return "对不起，您没有权限调用此服务！";
+            }
+            return bllItemClick.EditItemTask(model);
+        }
+
+        [System.Web.Services.Protocols.SoapHeader("myHeader")]
+        [WebMethod]
+        public string DeleteMyItem(string local_item_task_id)
+        {
+            if (bllUser.Get(myHeader.UserName, myHeader.PassWord) == null)
+            {
+                return "对不起，您没有权限调用此服务！";
+            }
+            return bllItemClick.DeleteItemTask(new Guid(local_item_task_id));
+        }
+
+        /// <summary>
+        /// 分配点击任务
+        /// </summary>
+        [System.Web.Services.Protocols.SoapHeader("myHeader")]
+        [WebMethod]
         public List<EntityItemClick> DispatchItemClick(string mac_address)
         {
             if (bllUser.Get(myHeader.UserName, myHeader.PassWord) == null)
@@ -121,6 +170,20 @@ namespace DianChe.WebServices
             string ip_address = GetRequestIP();
 
             return bllItemClick.DispatchItemClick(mac_address, ip_address);
+        }
+
+        /// <summary>
+        /// 设置点击任务的完成状态
+        /// </summary>
+        [System.Web.Services.Protocols.SoapHeader("myHeader")]
+        [WebMethod]
+        public void SetItemClickSucceed(long item_id, string mac_address, Boolean is_succeed)
+        {
+            if (bllUser.Get(myHeader.UserName, myHeader.PassWord) == null)
+            {
+                throw new Exception("对不起，您没有权限调用此服务！");
+            }
+            bllItemClick.SetItemClickSucceed(item_id, mac_address, is_succeed);
         }
 
         [System.Web.Services.Protocols.SoapHeader("myHeader")]

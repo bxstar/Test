@@ -17,6 +17,8 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "文件", "文件", "{5E2CEC
 		structure.sql = structure.sql
 	EndProjectSection
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DianChe.Search", "DianChe.Search\DianChe.Search.csproj", "{461CCA43-0867-4596-94B8-ADF37E444E3A}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -77,6 +79,16 @@ Global
 		{7D267EFA-B718-4466-936B-C268F256A6ED}.Release|Mixed Platforms.ActiveCfg = Release|Any CPU
 		{7D267EFA-B718-4466-936B-C268F256A6ED}.Release|Mixed Platforms.Build.0 = Release|Any CPU
 		{7D267EFA-B718-4466-936B-C268F256A6ED}.Release|x86.ActiveCfg = Release|Any CPU
+		{461CCA43-0867-4596-94B8-ADF37E444E3A}.Debug|Any CPU.ActiveCfg = Debug|x86
+		{461CCA43-0867-4596-94B8-ADF37E444E3A}.Debug|Mixed Platforms.ActiveCfg = Debug|x86
+		{461CCA43-0867-4596-94B8-ADF37E444E3A}.Debug|Mixed Platforms.Build.0 = Debug|x86
+		{461CCA43-0867-4596-94B8-ADF37E444E3A}.Debug|x86.ActiveCfg = Debug|x86
+		{461CCA43-0867-4596-94B8-ADF37E444E3A}.Debug|x86.Build.0 = Debug|x86
+		{461CCA43-0867-4596-94B8-ADF37E444E3A}.Release|Any CPU.ActiveCfg = Release|x86
+		{461CCA43-0867-4596-94B8-ADF37E444E3A}.Release|Mixed Platforms.ActiveCfg = Release|x86
+		{461CCA43-0867-4596-94B8-ADF37E444E3A}.Release|Mixed Platforms.Build.0 = Release|x86
+		{461CCA43-0867-4596-94B8-ADF37E444E3A}.Release|x86.ActiveCfg = Release|x86
+		{461CCA43-0867-4596-94B8-ADF37E444E3A}.Release|x86.Build.0 = Release|x86
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
