@@ -269,6 +269,16 @@ namespace DianChe.WebServices
         }
 
         /// <summary>
+        /// 淘宝在线获取宝贝信息，格式化输出
+        /// </summary>
+        [WebMethod]
+        public string GetItemOnlineByUrl(string itemIdOrUrl)
+        {
+            string jsonItem = BLL.BllTopApi.GetItemOnline(itemIdOrUrl);
+            return jsonItem;
+        }
+
+        /// <summary>
         /// 从宝贝的Json数据中，获取结构化的宝贝对象
         /// </summary>
         [WebMethod]

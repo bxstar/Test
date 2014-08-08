@@ -9,6 +9,7 @@ using DianChe.Model;
 using NetServ.Net.Json;
 using Common;
 using System.IO;
+using Newtonsoft.Json;
 
 namespace DianChe.WebServices.BLL
 {
@@ -33,6 +34,48 @@ namespace DianChe.WebServices.BLL
             ItemGetResponse response = client.Execute(req);
 
             return response.Body;
+        }
+
+        /// <summary>
+        /// 淘宝在线获取宝贝信息，格式化输出
+        /// </summary>
+        public static string GetItemOnline(string itemIdOrUrl)
+        {
+            long item_id = 0;
+            Int64.TryParse(itemIdOrUrl, out item_id);
+            if (item_id == 0)
+            {
+                item_id = Strings.GetItemId(itemIdOrUrl.ToLower());
+            }
+            ItemGetRequest req = new ItemGetRequest();
+            req.Fields = "detail_url,num_iid,title,nick,props_name,price,cid,seller_cids,pic_url,num,location";
+            req.NumIid = item_id;
+            ItemGetResponse response = client.Execute(req);
+            string strBody = response.Body;
+            try
+            {
+                JsonSerializer s = new JsonSerializer();
+                JsonReader reader = new JsonReader(new StringReader(strBody));
+                Object jsonObject = s.Deserialize(reader);
+                if (jsonObject != null)
+                {
+                    StringWriter sWriter = new StringWriter();
+                    Newtonsoft.Json.JsonWriter writer = new Newtonsoft.Json.JsonWriter(sWriter);
+                    writer.Formatting = Formatting.Indented;
+                    writer.Indentation = 4;
+                    writer.IndentChar = ' ';
+                    s.Serialize(writer, jsonObject);
+                    return sWriter.ToString();
+                }
+                else
+                {
+                    return "无法解析";
+                }
+            }
+            catch (Exception ex)
+            {
+                return string.Format("无法解析：{0}", ex.Message);
+            }
         }
 
         /// <summary>
